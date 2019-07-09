@@ -1,0 +1,88 @@
+{include file="common/header"}
+
+<link href="__ROOT__/tpl/zixun/mobile/static/css/i-list.css" rel="stylesheet">
+<link href="__ROOT__/tpl/zixun/mobile/static/css/n-list.css" rel="stylesheet">
+<script src="__ROOT__/tpl/zixun/mobile/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__ROOT__/tpl/zixun/mobile/static/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/tpl/zixun/static/js/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/clipboard.min.js"></script>
+<script type="text/javascript">
+    layui.use(['form', 'layedit', 'laydate'], function(){
+
+    });
+</script>
+<script>
+    setInterval(function(){
+        doItPerSecond();
+    },4000);
+
+    function doItPerSecond() {
+        var self = document.getElementsByClassName("fn-huangguan");
+
+    }
+/*    $(function(){
+        $("#cp-btn").zclip({
+            path:'__ROOT__/tpl/zixun/static/js/ZeroClipboard.swf', //记得把ZeroClipboard.swf引入到项目中
+            copy:function(){
+                return $('#tg-link').val();
+            }
+        });
+    });*/
+</script>
+<script>
+    $(function(){
+        var clipboard = new Clipboard('.btn');
+        clipboard.on('success', function(e) {
+            layer.msg('复制成功！');
+        });
+    });
+</script>
+<style>
+    .panel{margin-top: 0;padding: 5px 0;}
+    .vault-main{    padding: 10px 10px 0;}
+    .content{margin: 0 auto !important;overflow-x: inherit;}
+    .mod-new{width: 96% !important;}
+    .panel .title{padding: 5px 0 5px 10px;color: #555;font-size: 14px;}
+    .mod-row .mod-col{width: 223px;margin: 0 6px 15px 6px;}
+    .novel-list li .novel-box{float: left;margin-left: 20px;}
+    .mod-row.images{max-height: none;}
+    .novel-list li .novel-box .box-f span{margin-right: 10px;}
+
+</style>
+
+<div class="s-body">
+    <div class="banner-img">
+        <div class="share">
+            <input type="text" id="tg-link"  onmouseover="this.select();" readonly="readonly" value="{:request()->domain()}/{$userinfo.id}" /><button class="btn" data-clipboard-action="copy" data-clipboard-target="#tg-link" id="cp-btn">复制</button>
+        </div>
+    </div>
+    <div class="content" id="vip-content">
+        <div class="v-content">
+            <div class="t-top">
+                <div class="l-vip">
+                    <div class="h-vip">
+                        <img style="max-width: 100%;max-height:100%;" src="{$userinfo.headimgurl}" />
+                    </div>
+                    <div class="info-vip">
+                        <p class="title">{$userinfo['nickname']}</p>
+                        <p>性别：{if $userinfo['sex']==1}男{elseif $userinfo.sex==2}女{else/}未知{/if}</p>
+                    </div>
+                </div>
+                <div class="r-vip">
+                    <ul>
+                        <li><span>视频</span>{$userVideoTotal}</li>
+                        <li><span>资讯</span>{$userNovelTotal}</li>
+                        <li><span>图册</span>{$userAtlasTotal}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="t-box">
+                <div class="tab">
+                    <div class="tab">
+                        <a href="{:url('homepage/index')}" {if strtolower(request()->action())=='index'}class="cur"{/if}>首页</a>
+                        <a href="{:url('homepage/videopage')}" {if strtolower(request()->action()=='videopage')}class="cur"{/if}>视频</a>
+                        <a href="{:url('homepage/imgpage')}"  {if strtolower(request()->action()=='imgpage')}class="cur"{/if}>图册</a>
+                        <a href="{:url('homepage/infopage')}"  {if strtolower(request()->action()=='infopage')}class="cur"{/if}>资讯</a>
+                    </div>
+                </div>
+

@@ -1,0 +1,94 @@
+{include file="common/header"}
+<link href="__ROOT__/tpl/default/static/css/novel.css" rel="stylesheet">
+<link href="__ROOT__/tpl/default/static/css/video-sort.css" rel="stylesheet">
+<link href="__ROOT__/tpl/default/static/css/index.css" rel="stylesheet">
+<script type="text/javascript" src="__ROOT__/tpl/default/static/js/index.js"></script>
+<script src="__ROOT__/tpl/default/static/js/jquery.zclip.min.js"></script>
+<script>
+    setInterval(function(){
+        doItPerSecond();
+    },4000);
+
+    function doItPerSecond() {
+        var self = document.getElementsByClassName("fn-huangguan");
+
+    }
+    $(function(){
+        $("#cp-btn").zclip({
+            path:'__ROOT__/tpl/default/static/js/ZeroClipboard.swf', //记得把ZeroClipboard.swf引入到项目中
+            copy:function(){
+                return $('#tg-link').val();
+            }
+        });
+    });
+    /*    /!*公告弹窗*!/
+        function showNotice(content){
+            $('.tips-box').html(content);
+            layer.open({
+                type: 1,
+                title: '公告',
+                area: ['500px', 'auto'],
+                shadeClose: false,
+                skin: 'demo-class',
+                anim: 0,
+                content: $('.tips-box')
+            });
+        }*/
+</script>
+<style>
+    .mod-new{width: 96% !important;}
+    .mod-row .mod-col{width: 223px;margin: 0 6px 15px 6px;}
+    .t-box .tab{margin-bottom: 20px;}
+    .novel-list li .novel-box{float: left;margin-left: 20px;}
+    .mod-row.images{max-height: none;}
+    .vault-main{box-shadow: none;}
+    .novel-left{width: 100% !important; border: 0;}
+    .novel-left li{width: 48%;display: inline-block; float: left;border-bottom: 1px solid #eee !important;margin: 0;}
+    .novel-left li .novel-box{width: 400px;float: left;margin-left: 13px;}
+    .novel-left li .novel-box .text{margin: 0;}
+    .vault-main .sort-title .sort-item{line-height: 34px;}
+    @media screen and (max-width: 1400px){
+        .mod-new {width: 96% !important; }
+        .mod-row .mod-col{width: 222px !important;}
+        .novel-main .novel-left {width: 100% !important;}
+        .novel-left li{width: 47%;}
+        .novel-left li .novel-box{width: 295px !important;}
+        .novel-list li .novel-box{width:276px !important;}
+        .novel-list li a p{width: 100%;}
+    }
+
+</style>
+
+<div class="s-body">
+    <div class="banner-img">
+        <div class="share">
+            <input type="text" id="tg-link"  onmouseover="this.select();" value="{:request()->domain()}/{$userinfo.id}" /><button id="cp-btn">复制</button>
+        </div>
+    </div>
+    <div class="content" id="vip-content">
+        <div class="v-content">
+            <div class="t-top">
+                <div class="l-vip">
+                    <div class="h-vip">
+                        <img style="max-width: 100%;max-height:100%;" src="{$userinfo.headimgurl}" />
+                    </div>
+                    <div class="info-vip">
+                        <p class="title">{$userinfo['nickname']}</p>
+                        <p>性别：{if $userinfo['sex']==1}男{elseif $userinfo.sex==2}女{else/}未知{/if}</p>
+                    </div>
+                </div>
+                <div class="r-vip">
+                    <ul>
+                        <li><span>视频</span>{$userVideoTotal}</li>
+                        <li><span>资讯</span>{$userNovelTotal}</li>
+                        <li><span>图册</span>{$userAtlasTotal}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="t-box">
+                <div class="tab">
+                    <a href="{:url('homepage/index')}" {if strtolower(request()->action())=='index'}class="cur"{/if}>首页</a>
+                    <a href="{:url('homepage/videopage')}" {if strtolower(request()->action()=='videopage')}class="cur"{/if}>视频</a>
+                    <a href="{:url('homepage/imgpage')}"  {if strtolower(request()->action()=='imgpage')}class="cur"{/if}>图册</a>
+                    <a href="{:url('homepage/infopage')}"  {if strtolower(request()->action()=='infopage')}class="cur"{/if}>资讯</a>
+                </div>

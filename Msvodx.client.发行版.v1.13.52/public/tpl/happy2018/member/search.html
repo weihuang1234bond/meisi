@@ -1,0 +1,253 @@
+{include file="common/header"}
+<!--<link href="__ROOT__/tpl/happy2018/static/css/video-sort.css" rel="stylesheet">-->
+
+<style>
+    .content{width: 1240px;}
+    .vault-main {
+        padding: 10px 0px 20px;
+        background: #fff;
+        margin: 20px 0 10px;
+        overflow: hidden;
+        zoom: 1;
+    }
+    .vault-main .sort-title{
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 3px;
+        overflow: hidden;
+    }
+    .vault-main .sort-title .sort-label{
+        float: left;
+        width: 42px;
+        margin-top: 1px;
+        line-height: 30px;
+        color: #909090;
+        font-size: 14px;
+    }
+    .vault-main .sort-title .sort-item{
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 31px;
+    }
+    .vault-main .sort-title .sort-item select{
+        border: 0;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .vault-main .sort-title .sort-stat{
+        float: right;
+        line-height: 34px;
+        font-size: 12px;
+        color: #999;
+    }
+    .vault-main .sort-title .sort-stat b{
+        margin: 0 4px;
+        font-weight: 400;
+    }
+    .vault-main .sort-box,.vault-main .sort-box .panel {
+        overflow: hidden;
+        zoom: 1;
+    }
+    .vault-main .sort-box .panel .sort-cel{
+        float: left;
+        margin: 0 6px;
+        width: 238px;
+        /*height:380px;*/
+        overflow: hidden;
+    }
+    .vault-main .sort-box .panel .sort-cel .sort-pack{
+        position: relative;
+        background-color: #f1f1f1;
+        width: 223px;
+        height:118px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid #f5f3f3;
+        display: block;
+    }
+    .vault-main .sort-box .panel .sort-cel .pic-bg{
+        width: 100%;
+        height:335px;
+        line-height: 333px;
+    }
+    .vault-main .sort-box .panel .sort-cel .pic-bg a{
+        display: block;
+        height: 100%;
+    }
+    .vault-main .sort-box .panel .sort-cel .sort-pack img{
+        width: 100%;
+        height:100%;
+    }
+    .vault-main .sort-box .panel .sort-cel .sort-pack p{
+        display: inline-block;
+        position: absolute;
+        bottom: 5px;
+        right: 0px;
+        color: #fff;
+        padding: 3px 6px;
+        background-color: rgba(0,0,0,0.6);
+        font-size: 12px;
+    }
+    .vault-main .sort-box .panel .sort-cel .title{
+        height: 30px;
+        text-align: left;
+        padding-left: 10px;
+        line-height: 30px;
+        margin-bottom: 15px;
+    }
+    .vault-main .sort-box .panel .subtitle {
+        color: #d6d5d5;
+        padding: 5px 5px 3px 5px;
+        position: absolute;
+        bottom:0;
+        left:0;
+        right: 0;
+        background: rgba(0,0,0,.5);
+        text-align: left;
+        line-height: normal;
+        font-size: 12px;
+    }
+    .vault-main .sort-box .panel .subtitle .fn-see{
+        font-size: 18px;
+        vertical-align: middle;
+    }
+    .vault-main .sort-box .panel .subtitle span {
+        float: right;
+        cursor: pointer;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    .vault-main .sort-box .panel .subtitle span i {
+        /*height: 23px;*/
+        font-size: 15px;
+    }
+    .vault-main .sort-box .panel .collect-box{
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
+    .vault-main .sort-box .panel .collect-box i{
+        color: #888;
+        font-size: 20px;
+    }
+    .vault-main .sort-box .panel .collect-box i.cur{
+        color:#3b9eff;
+    }
+
+    .vault-main .sort-box .panel .sort-cel .info-list{
+        height:70px;
+        margin-bottom: 0;
+        margin-top: 1px;
+        padding: 5px 5px 5px 0;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list li{
+        width: 220px;
+        float: left;
+        padding: 0;
+        line-height: 18px;
+        color:#999;
+        text-align: right;
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list li var{
+        font-style: normal;
+        float: left;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list .title{
+        height:18px;
+        line-height: 18px;
+        overflow: hidden;
+        color:#333;
+        margin-bottom: 5px;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list .actor{
+        color: #999;
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list em{
+        font-style: normal;
+    }
+    .vault-main .sort-box .panel .sort-cel .info-list a{
+        color: #999;
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+    }
+    .vault-main .sort-box .panel .sort-cel{box-shadow: 0px 1px 13px #dedede;margin-bottom: 12px;}
+    .vault-main .sort-box .panel .sort-cel .pic-bg{height:223px;line-height: 223px;}
+    .vault-main .sort-box .panel .sort-cel .title{height: 40px;line-height: 40px;margin-bottom: 5px;}
+    .vault-main .sort-title h2{font-weight: bold;color: #444;margin-bottom: 10px;padding-left: 10px;}
+    @media screen and (max-width:1400px) {
+        .content{width: 1000px;}
+    }
+</style>
+
+<div class="s-body">
+    <div class="content">
+        <div class="vault-main">
+            <div class="sort-title">
+                <h2>会员搜索结果</h2>
+            </div>
+            <div class="sort-box">
+                <ul class="panel">
+                    {notempty name="list"}
+                    {volist name="list" id="v"}
+                    <li class="sort-cel">
+                        <div class="sort-pack pic-bg">
+                            <a href="{:url('homepage/index',array('uid'=>$v['id']))}">
+                                <img src="{$v['headimgurl']}">
+                            </a>
+                            <div class="subtitle">性别:{if $v.sex==1}男{elseif $v.sex==2}女{else/}未知{/if}<span>加入时间:{:date('Y-m-d',$v['add_time'])}</span></div>
+                            <span class="collect-box"><i class="btn fn-shoucang1"></i></span>
+                        </div>
+                        <div class="title">
+                            <?php
+                            $regex  = '/('.$key_word.')/i';
+                            preg_match_all($regex,$v['nickname'],$rs);
+                            foreach($rs[1] as $val){
+                                $keywords =$val;
+                                  $v['nickname'] = str_replace( $keywords,"<font>$keywords</font>",$v['nickname']);
+                            }
+                            ?>
+                            {$v['nickname']}
+                        </div>
+                    </li>
+                    {/volist}
+                    {else/}
+                    <div class="not-comment not">暂时没有数据 ~</div>
+                    {/notempty}
+                </ul>
+            </div>
+            <div class="sort-pager">
+                {$pages}
+            </div>
+        </div>
+    </div>
+    <form action="" method="get" id="forms">
+        <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+        <input type="hidden"  name="key_word" value="{$key_word|default=''}" >
+        <input type="hidden"  name="type" value="{$type|default='video'}" >
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').change(function(){
+            $('#current_orderCodes').val($(this).val());
+            $('#forms').submit();
+        })
+    })
+</script>
+{include file="common/footer"}

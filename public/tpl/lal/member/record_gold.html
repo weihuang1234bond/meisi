@@ -1,0 +1,66 @@
+{include file="common/top"}
+<link rel="stylesheet" href="__ROOT__/tpl/ms360/static/css/viewer.min.css">
+<link rel="stylesheet" href="__ROOT__/tpl/ms360/static/css/member.css">
+<script type="application/javascript" charset="utf-8" src="/static/UEditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.all.min.js"></script>
+
+
+<div class="s-body">
+    <div class="content">
+        <!--左边选择-->
+        {include file="member/common"}
+        <!--右边内容-->
+        <div class="M-content">
+            <div class="M-info">
+                <div class="v-content summary">
+                    <div class="t-top">
+                        <div class="l-vip">
+                            <div class="h-vip">
+                                <img src="{$member_info['headimgurl']|default=''}" />
+                            </div>
+                            <div class="info-vip">
+                                <p class="title">{$member_info['nickname']|default='未命名'}</p>
+                                <p>总金币：{$member_info['money']|default='0'}</p>
+                            </div>
+                        </div>
+                        <div class="r-vip">
+                            <ul>
+                                <li><span>总消费</span>{$total_data['total_consume']|default='0'}</li>
+                                <li><span>今日消费</span>{$total_data['consume']|default='0'}</li>
+                                <li><span>总收入</span>{$total_data['total_income']|default='0'}</li>
+                                <li><span>今日收入</span>{$total_data['income']|default='0'}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>单号</th>
+                            <th>金币数</th>
+                            <th>时间</th>
+                            <th>说明</th>
+                        </tr>
+                        {volist name='list' id='v'}
+                        <tr>
+                            <td><div class="name">{$v['id']}</div></td>
+                            <td>{$v['gold']}</td>
+                            <td>{:date('Y-m-d H:i:s',$v['add_time'])}</td>
+                            <td>{$v['explain']}</td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sort-pager">
+                    <ul class="pagination">
+                        {$pages}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="common/bottom"}

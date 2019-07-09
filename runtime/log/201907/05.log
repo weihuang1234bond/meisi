@@ -1,0 +1,147 @@
+---------------------------------------------------------------
+[ 2019-07-05T12:16:19+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070512161965602.html
+[ info ] qm668.xyz/system_pay/pay/orderSn/2019070512161965602.html [运行时间：0.087495s][吞吐率：11.43req/s] [内存消耗：3,440.41kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T12:19:55+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070512195479567.html
+[ info ] qm668.xyz/system_pay/pay/orderSn/2019070512195479567.html [运行时间：0.105904s][吞吐率：9.44req/s] [内存消耗：3,450.38kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T12:20:12+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070512201273848.html
+[ info ] qm668.xyz/system_pay/pay/orderSn/2019070512201273848.html [运行时间：0.088800s][吞吐率：11.26req/s] [内存消耗：3,451.55kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T12:30:43+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.092961s][吞吐率：10.76req/s] [内存消耗：3,198.98kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T12:30:46+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.157191s][吞吐率：6.36req/s] [内存消耗：3,198.98kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T12:30:47+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.154327s][吞吐率：6.48req/s] [内存消耗：3,198.98kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T12:32:34+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=17&sub_cid=0&cid=34&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=17&sub_cid=0&cid=34&area_id=1 [运行时间：0.155258s][吞吐率：6.44req/s] [内存消耗：3,203.70kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T12:53:26+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.091712s][吞吐率：10.90req/s] [内存消耗：3,205.01kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T12:54:10+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.078219s][吞吐率：12.78req/s] [内存消耗：3,207.59kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T13:43:18+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=1
+[ info ] qm668.xyz/video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=1 [运行时间：0.117422s][吞吐率：8.52req/s] [内存消耗：3,208.18kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T13:43:31+08:00 ] 23.225.154.210 175.176.26.13 GET /video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=2
+[ info ] qm668.xyz/video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=2 [运行时间：0.158137s][吞吐率：6.32req/s] [内存消耗：3,208.77kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T13:44:31+08:00 ] 23.225.154.210 14.123.225.250 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=2
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=2 [运行时间：0.155344s][吞吐率：6.44req/s] [内存消耗：3,132.16kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T13:45:30+08:00 ] 23.225.154.210 14.123.225.250 GET /video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1
+[ info ] qm668.xyz/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=0&area_id=1 [运行时间：0.087160s][吞吐率：11.47req/s] [内存消耗：3,132.16kb] [文件加载：71]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ms_video.area_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T14:05:58+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.120779s][吞吐率：8.28req/s] [内存消耗：3,449.98kb] [文件加载：75]
+[ error ] [8]Use of undefined constant 首页 - assumed '首页'[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:12]
+---------------------------------------------------------------
+[ 2019-07-05T14:06:00+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.109643s][吞吐率：9.12req/s] [内存消耗：3,280.55kb] [文件加载：73]
+[ error ] [8]Use of undefined constant 首页 - assumed '首页'[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:12]
+---------------------------------------------------------------
+[ 2019-07-05T14:06:06+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.112662s][吞吐率：8.88req/s] [内存消耗：3,280.68kb] [文件加载：73]
+[ error ] [8]Use of undefined constant 首页 - assumed '首页'[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:12]
+---------------------------------------------------------------
+[ 2019-07-05T14:06:08+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.106007s][吞吐率：9.43req/s] [内存消耗：3,280.65kb] [文件加载：73]
+[ error ] [8]Use of undefined constant 首页 - assumed '首页'[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:12]
+---------------------------------------------------------------
+[ 2019-07-05T14:06:25+08:00 ] 23.225.154.210 192.99.100.93 GET /
+[ info ] qm588.xyz/ [运行时间：0.104543s][吞吐率：9.57req/s] [内存消耗：3,240.29kb] [文件加载：73]
+[ error ] [8]Use of undefined constant 首页 - assumed '首页'[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:12]
+---------------------------------------------------------------
+[ 2019-07-05T14:11:01+08:00 ] 23.225.154.210 14.123.225.250 GET /api/getregistercode.html
+[ info ] www.qm668.xyz/api/getregistercode.html [运行时间：0.043762s][吞吐率：22.85req/s] [内存消耗：1,943.03kb] [文件加载：51]
+[ error ] [0]语法解析错误: syntax error, unexpected ':'[/www/wwwroot/www.qimiba.xyz/application/controller/Api.php:545]
+---------------------------------------------------------------
+[ 2019-07-05T14:11:19+08:00 ] 23.225.154.210 175.176.26.13 GET /api/getcaptcha.html
+[ info ] www.qm668.xyz/api/getcaptcha.html [运行时间：0.039718s][吞吐率：25.18req/s] [内存消耗：1,943.19kb] [文件加载：51]
+[ error ] [0]语法解析错误: syntax error, unexpected ':'[/www/wwwroot/www.qimiba.xyz/application/controller/Api.php:545]
+---------------------------------------------------------------
+[ 2019-07-05T14:11:21+08:00 ] 23.225.154.210 175.176.26.13 GET /api/rewardranking.html?nums=5
+[ info ] www.qm668.xyz/api/rewardranking.html?nums=5 [运行时间：0.041637s][吞吐率：24.02req/s] [内存消耗：1,944.21kb] [文件加载：51]
+[ error ] [0]语法解析错误: syntax error, unexpected ':'[/www/wwwroot/www.qimiba.xyz/application/controller/Api.php:545]
+---------------------------------------------------------------
+[ 2019-07-05T14:22:15+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070514221461811.html
+[ info ] www.qm668.xyz/system_pay/pay/orderSn/2019070514221461811.html [运行时间：0.086340s][吞吐率：11.58req/s] [内存消耗：3,457.98kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T14:22:25+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070514221461811.html
+[ info ] www.qm668.xyz/system_pay/pay/orderSn/2019070514221461811.html [运行时间：0.085014s][吞吐率：11.76req/s] [内存消耗：3,457.94kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T14:22:37+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070514223717668.html
+[ info ] www.qm668.xyz/system_pay/pay/orderSn/2019070514223717668.html [运行时间：0.084129s][吞吐率：11.89req/s] [内存消耗：3,459.15kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T14:23:01+08:00 ] 23.225.154.210 175.176.26.13 GET /system_pay/pay/orderSn/2019070514230161949.html
+[ info ] www.qm668.xyz/system_pay/pay/orderSn/2019070514230161949.html [运行时间：0.085067s][吞吐率：11.76req/s] [内存消耗：3,460.16kb] [文件加载：71]
+[ error ] [8]未定义数组索引: thirdOrderId[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+[ error ] [8]未定义数组索引: realPayPrice[/www/wwwroot/www.qimiba.xyz/application/controller/SystemPay.php:288]
+---------------------------------------------------------------
+[ 2019-07-05T20:28:17+08:00 ] 23.225.154.210 175.176.26.13 GET /member/addvideo.html
+[ info ] qm668.xyz/member/addvideo.html [运行时间：0.098888s][吞吐率：10.11req/s] [内存消耗：3,500.95kb] [文件加载：74]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b13c41884967ac1a046af1204e079d17.php:111]
+---------------------------------------------------------------
+[ 2019-07-05T20:28:42+08:00 ] 23.225.154.210 175.176.26.13 GET /member/addatlas.html
+[ info ] qm668.xyz/member/addatlas.html [运行时间：0.087134s][吞吐率：11.48req/s] [内存消耗：3,488.41kb] [文件加载：74]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b484bd4a904242d896c5af24d87a53f4.php:66]
+---------------------------------------------------------------
+[ 2019-07-05T20:28:51+08:00 ] 23.225.154.210 175.176.26.13 GET /member/addnovel.html
+[ info ] qm668.xyz/member/addnovel.html [运行时间：0.075644s][吞吐率：13.22req/s] [内存消耗：3,488.25kb] [文件加载：74]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/4178c7a3e0066957fec28814dab8a652.php:101]
+---------------------------------------------------------------
+[ 2019-07-05T20:38:43+08:00 ] 23.225.154.210 175.176.26.13 GET /member/addnovel.html
+[ info ] qm668.xyz/member/addnovel.html [运行时间：0.089457s][吞吐率：11.18req/s] [内存消耗：3,348.18kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/4178c7a3e0066957fec28814dab8a652.php:101]
+---------------------------------------------------------------
+[ 2019-07-05T20:58:34+08:00 ] 23.225.154.211 175.176.24.109 POST /api/moredata.html
+[ info ] qm.qm668.xyz/api/moredata.html [运行时间：0.050901s][吞吐率：19.65req/s] [内存消耗：3,221.36kb] [文件加载：63]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column '1user_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T21:10:45+08:00 ] 23.225.154.211 175.176.24.109 POST /api/moredata.html
+[ info ] qm.qm668.xyz/api/moredata.html [运行时间：0.062531s][吞吐率：15.99req/s] [内存消耗：3,221.36kb] [文件加载：63]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column '1user_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T21:10:58+08:00 ] 23.225.154.211 175.176.24.109 GET /member/addnovel.html
+[ info ] qm.qm668.xyz/member/addnovel.html [运行时间：0.096692s][吞吐率：10.34req/s] [内存消耗：3,549.41kb] [文件加载：75]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/7f5acf90dd5b158fec77b7e78e0abc30.php:137]
+---------------------------------------------------------------
+[ 2019-07-05T21:21:38+08:00 ] 23.225.154.211 175.176.24.109 GET /member/addnovel.html
+[ info ] qm.qm668.xyz/member/addnovel.html [运行时间：0.092205s][吞吐率：10.85req/s] [内存消耗：3,394.49kb] [文件加载：73]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/7f5acf90dd5b158fec77b7e78e0abc30.php:137]
+---------------------------------------------------------------
+[ 2019-07-05T21:21:40+08:00 ] 23.225.154.211 175.176.24.109 POST /api/moredata.html
+[ info ] qm.qm668.xyz/api/moredata.html [运行时间：0.051491s][吞吐率：19.42req/s] [内存消耗：3,221.36kb] [文件加载：63]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column '1user_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-05T21:27:57+08:00 ] 23.225.154.211 175.176.24.109 GET /member/addvideo.html
+[ info ] qm.qm668.xyz/member/addvideo.html [运行时间：0.089864s][吞吐率：11.13req/s] [内存消耗：3,560.73kb] [文件加载：75]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/36a9256aa391e7ceaff80b9a9e60fc24.php:158]

@@ -1,0 +1,598 @@
+{include file="common/header"}
+<link href="__ROOT__/tpl/ms360/static/css/detail.css" rel="stylesheet">
+<link href="__ROOT__/tpl/ms360/static/css/player.css" rel="stylesheet">
+<style>
+.layui-layer-hui{
+background-color: #fff!important;
+color:#000;
+}
+.layui-layer-hui .layui-layer-content{
+font-size:16px!important;
+text-align: left!important;
+}
+.important{
+font-weight: bold;
+color:#843534;
+}
+.member_link{
+border:none!important;
+padding: 0px !important;
+}
+</style>
+<div class="alternate">
+  <div class="wrapper clearfix pad26">
+    <div class="barrage-box"> </div>
+    <div class="live-player" style="border-radius:5px;">
+      <p style="line-height:25px;font-size:15px;color:#fff;">&nbsp;&nbsp;正在播放：{$videoInfo['title']}</p>
+      <div class="player-box" style="border-radius:5px;">
+        <div class="play-box" id="playerBox" style="height:473px;"> <img src="{$videoInfo['thumbnail']}" width="100%" height="100%" /> </div>
+      </div>
+    </div>
+    <div class="host-box" style="border-radius:5px;">
+      <div class="host-header"> <a {if $videoInfo.user_id>0}href="{:url('homepage/index',array('uid'=>$videoInfo['user_id']))}" target="_blank"{else/}href="#" onclick="alert('管理员没有开通个人主页哦~！');"{/if}> <img src="{$videoInfo['headimgurl']|default='/static/images/user_dafault_headimg.jpg'}"></a></div>
+      <div class="host-name"><a {if $videoInfo.user_id>0}href="{:url('homepage/index',array('uid'=>$videoInfo['user_id']))}" target="_blank"{else/}href="#" onclick="alert('管理员没有开通个人主页哦~！');"{/if}>{if $videoInfo.user_id>0}{$videoInfo['member']|default=''}{else/}管理员{/if}</a></div>
+      <div class="host-tags"> <span class="host-tags-1" id="giveGoodBtn"><i class="fa fa-thumbs-o-up"></i> 支持（<var id="goodNum">{$videoInfo['good']}</var>）</span> <span class="host-tags-2 fn-shoucang1" id="shoucang"><i class="fa fa-star"></i> <var id="shoucang">{if condition='$isCollected'}已收藏{else/}收藏{/if}</var></span> </div>
+      <div class="host-num">
+        <p>视频日期：{:date('Y-m-d', $videoInfo['add_time'])}</p>
+        <p>打赏人次：<var id="count" style="color:red;">{$count}</var> 次<span>|</span>打赏金额：<var id='countprice' style="color:red;">{$count_price}</var> 元</p>
+      </div>
+      <div class="mshost-concerned" style="margin-top:0px;"> <a {if $videoInfo.user_id>0}href="{:url('homepage/index',array('uid'=>$videoInfo['user_id']))}" target="_blank"{else/}href="#" onclick="alert('管理员没有开通个人主页哦~！');"{/if} class="host-btn">TA的主页</a> </div>
+      <div class="share1" style="padding: 0 18px 20px;margin-top:50px;">
+        <div class="bshare-custom icon-medium"><a title="分享到QQ空间" class="bshare-qzone"></a> <a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a> <a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a> <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
+        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+      </div>
+    </div>
+  </div>
+  <div style="width:1200px;margin: auto;height:60px;padding: 0px 0px 0px;">
+    <p style="float:right;">
+    <div class="reward" style="display: block;float:right;padding:7px 0px 0px;text-align: center;">
+      <div class="reward-box" style="overflow:hidden;">
+        <div class="reward-content" id="gift_box"> </div>
+      </div>
+    </div>
+    </p>
+    <p style="float:right;">
+    <div class="reward" style="display: block;float:right;padding:7px 0px 10px;text-align: center;">
+      <div class="reward-box" style="overflow:hidden;border: 1px solid #eee;padding:5px;margin-right: 5px;border-radius: 5px;color:#4B4B4B;background-color: #f6f6f6;"> <b style="">打赏<br>
+        作者</b> </div>
+    </div>
+    </p>
+    <p style="line-height:60px;float:left;margin-right:30px;"> <b style="font-size:15px;">分类：</b> <a href="/video/lists.html?cid={$videoInfo['classid']|default=''}" target="_blank" style="border: 1px solid #00aaee;padding: 5px;margin-right: 5px;border-radius: 5px;color: #00aaee;">{$videoInfo['classname']|default=''}</a> </p>
+    {if condition="$videoInfo['taglist']"}
+      <p style="line-height:60px;float:left;margin-right:30px;"> <b style="font-size:15px;">标签：</b>{volist name="$videoInfo['taglist']|default=''" id="v"} <a  href="/video/lists.html?tag_id={$v['id']}" target="_blank" style="border: 1px solid #da2657;padding: 5px;margin-right: 5px;border-radius: 5px;color: #da2657;">{$v['name']|default=''}</a>{/volist} </p>
+    {/if}
+    <p style="line-height:60px;float:left;"> <b style="font-size:15px;">{$classname['name']}：</b><a  href="/video/lists.html?area_id={$videoInfo['area_id']|default='0'}" target="_blank" style="border: 1px solid #FF5722;padding: 5px;margin-right: 5px;border-radius: 5px;color: #FF5722;">{$classarea['name']|default='未知'}</a> </p>
+  </div>
+  {notempty name="videoInfo.info"}
+  <div class="section" >
+    <div class="wrapper clearfix bigbox">
+      <div class="wrapper">
+        <h3>视频<span>简介</span></h3>
+        <div style="margin-top:10px;border-top: 1px solid #e0e0e0;font-size:13px;line-height:22px;">
+          <p style="margin-top:10px;">{$videoInfo['info']|htmlspecialchars_decode}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/notempty}
+  <script src="__ROOT__/tpl/ms360/static/js/zoom.js"></script>
+  <style>
+body{background: #f5f5f5}
+.bigimg{width:600px;position: fixed;left: 0;top: 0; right: 0;bottom: 0;margin:auto;display: none;z-index:9999;border: 10px solid #fff;}
+.mask{position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #000;opacity:0.5;filter: Alpha(opacity=50);z-index: 98;transition:all 1s;display: none}
+.bigbox{width:1200px;background: #fff;border:1px solid #ededed;margin:0 auto;border-radius: 10px;overflow: hidden;padding:10px;}
+.bigbox>.imgbox{width:400px;height:250px;float:left;border-radius:5px;overflow: hidden;margin: 0 10px 10px 10px;}
+.bigbox>.imgbox>img{width:100%;}
+.imgbox:hover{cursor:zoom-in}
+.mask:hover{cursor:zoom-out}
+.mask>img{position: fixed;right:10px;top: 10px;width: 60px;}
+.mask>img:hover{cursor:pointer}
+</style>
+  <script>
+$(function(){
+var obj = new zoom('mask', 'bigimg','smallimg');
+obj.init();
+})
+</script>
+  {notempty name="img"}
+  <div class="section" >
+    <div class="wrapper clearfix bigbox">
+      <div class="wrapper">
+        <h3>视频<span>截图</span></h3>
+        <div style="margin-top:10px;border-top: 1px solid #e0e0e0;"> {volist name="img" id="v"}
+          <p style="margin-top:10px;float:left;padding: 0 7px 5px;" class="imgbox"><img src="{$v}" class="smallimg" width="225" height="140"></p>
+          {/volist} </div>
+      </div>
+    </div>
+  </div>
+  <img src="" alt="" class="bigimg">
+  <div class="mask"></div>
+  {/notempty}
+  <div class="section">
+    <div class="wrapper clearfix bigbox"">
+      <div class="wrapper">
+        <h3>猜你<span>喜欢</span></h3>
+        <?php
+        $params = array(
+        'type' => 'video',
+        'limit'=>10,
+        );
+        $recom_list = get_recom_data($params);
+        ?>
+        <ul class="live-list clearfix">
+          {volist name="recom_list" id="vo"}
+          <li> <a href="{:url('video/play',array('id'=>$vo['id']))}" title="{$vo['title']}"> <img src="/tpl/ms360/static/images/404.png" data-original="{$vo['thumbnail']}">
+            <p class="title"> <span>{$vo['title']}</span> <em>{$vo['click']}</em> </p>
+            <p class="desc"> <span>20{$vo['update_time']|date="y-m-d",###}</span> <em><i class="fa fa-usd" aria-hidden="true"></i> {$vo['gold']}</em> </p>
+            <p class="play"></p>
+            <p class="time">{$vo['play_time']}</p>
+            </a> 
+			</li>
+          {/volist}
+        </ul>
+      </div>
+    </div>
+    <div class="section" >
+      <div class="wrapper clearfix bigbox">
+        <div class="wrapper">
+          <h3>视频<span>评论</span></h3>
+          <div class="area-form">
+            <div class="comment-form">
+              <div class="form-cell">
+                <div class="form-wordlimit"> <span class="form-wordlimit-input input-count" id="length">0</span> <span class="form-wordlimit-upper">/300</span> </div>
+                <div class="form-textarea form-textarea-picdom" style="position:relative">
+                  <textarea data-maxlength="300" name="content"placeholder="看点槽点，不吐不快！别憋着，马上大声说出来吧！"  id="comment_content" ></textarea>
+                  <div class="comment-atuser" style="position:absolute;left:5px;top:41px;background: #ebebeb"></div>
+                  <input type="hidden" id="to_user" value="0">
+                  <input type="hidden" id="to_id" value="0">
+                </div>
+                <div class="form-toolbar">
+                  <div class="form-tool form-action"> <a href="javascript:;" class="form-btn-submit" id="submit_comment">发表评论</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="area-box">
+            <div class="comment-tab"> <span class="comment-tab-left">全部评论<em class="num" id="comment_num">(0)</em></span> </div>
+            <div class="comment-list" >
+              <ul id="comment-list">
+                <li id='not-comment'>暂没评论~</li>
+              </ul>
+              <div id="more-comment"><span onclick="getCommentList()">更多<i class="btn fn-more"></i></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var viewer = new Viewer(document.getElementById('video-img'), {
+url: 'data-original'
+});
+</script>
+<script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
+<style>
+.layui-layer-hui{
+background-color: #fff!important;
+color:#000;
+}
+.layui-layer-hui .layui-layer-content{
+font-size:16px!important;
+text-align: left!important;
+}
+.important{
+font-weight: bold;
+color:#843534;
+}
+.member_link{
+border:none!important;
+padding: 0px !important;
+}
+</style>
+<script src="__ROOT__/tpl/ms360/static/js/video.js"></script>
+<script type="text/javascript">
+var playRequestUrl='{:url("api/payVideo")}';    //*必需配置项
+var player,timer;
+var page = 0;
+var addLiIndex=1;
+var trySeeTime=10;
+function adjump(){
+var canJumpAd="{$adSetting['skip_ad_on']}";
+if(canJumpAd==1){
+player.videoPlay();
+}else{
+layer.msg('您不能跳过广告',{icon:2,time:2000});
+}
+}
+function replyComment(username,id,to_id){
+var reply = '回复 @'+username+' : ';
+var length = reply.length;
+$('#to_user').val(id);
+$('#to_id').val(to_id);
+//alert(length);
+$(' .comment-atuser').html(reply);
+$('#comment_content').val(reply);
+$('#comment_content').focus();
+}
+function getCommentList(){
+var nowDate = new Date().getTime();
+var times = "";
+var url = "{:url('api/getCommentList')}";
+var  resourceId = " {$videoInfo['id']}";
+var data = {
+"page":page,
+"resourceId":resourceId,
+"resourceType":1,
+};
+var html = '';
+$.ajax({
+type: 'POST',
+url: url,
+data: data,
+dataType: 'json',
+success: function(data){
+$('#comment_num').html("("+data.data.count+")");
+var datas = data.data.list;
+if(datas==undefined) return false;
+page++;
+datas.forEach(function(item) {
+var headimgurl = '/static/images/user_dafault_headimg.jpg';
+if(item.headimgurl){
+headimgurl = item.headimgurl;
+}
+var time = parseInt(item.last_time*1000);
+if(parseInt(time+60*30*1000) > nowDate){
+times = '刚刚';
+}else if(parseInt(time+60*60*1000) > nowDate){
+times = '半个小时前';
+} else if(parseInt(time+2*60*60*1000) > nowDate){
+times = '1小时前';
+}else{
+var oDate = new Date(time);
+var Hours = oDate.getHours()>10 ? oDate.getHours() :  '0'+oDate.getHours();
+var Minutes = oDate.getMinutes()>10 ? oDate.getMinutes() :  '0'+oDate.getMinutes();
+times = oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+' '+Hours+':'+Minutes;
+}
+html += '<li id="common_'+item.id+'">';
+html += '<div style="overflow: hidden;padding-bottom: 10px;">';
+html += '   <div class="user-avatar">';
+html += '       <a href="javascript:">';
+html += '           <img src="'+headimgurl+'">';
+html += '       </a>';
+html += '    </div>';
+html += '    <div class="comment-section">';
+html += '   <div class="user-msinfo">';
+html += '       <a href="javascript:" class="user-msname">'+item.nickname+'</a>';
+html += '       <span class="comment-timestamp">'+times+'</span>';
+html += '       <span class="comment-Reply" onclick="replyComment(\''+item.nickname+'\',\''+item.send_user+'\',\''+item.id+'\')" ></span>';
+html += '   </div>';
+html += '   <div class="comment-text">'+item.content+'</div>';
+html += '   </div>';
+html += '</div>';
+var list = item.list;
+if(list!=undefined) {
+list.forEach(function(it) {
+var headimgurl = '/static/images/user_dafault_headimg.jpg';
+if(it.headimgurl){
+headimgurl = it.headimgurl;
+}
+var time = parseInt(it.last_time*1000);
+if(parseInt(time+60*30*1000) > nowDate){
+times = '刚刚';
+}else if(parseInt(time+60*60*1000) > nowDate){
+times = '半个小时前';
+} else if(parseInt(time+2*60*60*1000) > nowDate){
+times = '1小时前';
+}else{
+var oDate = new Date(time);
+var Hours = oDate.getHours()>10 ? oDate.getHours() :  '0'+oDate.getHours();
+var Minutes = oDate.getMinutes()>10 ? oDate.getMinutes() :  '0'+oDate.getMinutes();
+times = oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+' '+Hours+':'+Minutes;
+}
+html += '<div style="padding: 15px 20px;overflow: hidden;border-top: 1px solid #fbfbfb;">';
+html += '    <div class="user-avatar">';
+html += '    <a href="javascript:"><img src="'+headimgurl+'"></a>';
+html += '    </div>';
+html += '    <div class="comment-section">';
+html += '    <div class="user-info">';
+html += '    <a href="javascript:" class="user-name">'+it.nickname+'</a>';
+html += '    <span class="comment-timestamp">'+times+'</span>';
+html += '       <span class="comment-Reply" onclick="replyComment(\''+it.nickname+'\',\''+it.send_user+'\',\''+item.id+'\')" ></span>';
+html += '    </div>';
+html += '    <div class="comment-text">'+it.content+'</div>';
+html += '</div>';
+html += '</div>';
+})
+}
+html += ' </li>';
+})
+if(data.data.isMore == 1){
+$('#more-comment').show();
+}else{
+$('#more-comment').hide();
+}
+$('#not-comment').remove();
+$('#comment-list').append(html);
+}
+});
+}
+function loadedHandler(){
+if(player.getMetaDate()){
+player.addListener('pause', pauseHandler);
+player.addListener('play', playHandler);
+}
+}
+function pauseHandler(){
+console.log('pause');
+clearInterval(timer);
+if(trySeeTime>0)layer.msg('试看计时暂停',{icon:6,time:1000});
+}
+function playHandler(){
+layer.msg('试看计时开始……',{icon:6,time:1000});
+timer=setInterval(checkTrySeeTime,1000);
+}
+function checkTrySeeTime(){
+if(trySeeTime<=0){
+layer.msg('很抱歉，试看时间到.',{icon:2,time:1000});
+//setTimeout("videoPlayInit({$videoInfo['id']})",2000);
+setTimeout("location.href=\"{:url('index/prompt',['id'=>$videoInfo['id']])}\"",1500);
+player.videoPause();
+}else{
+trySeeTime--;
+console.log(trySeeTime);
+}
+}
+function createPlayer(playParams,isTrySee){
+//console.log(playParams);
+if(isTrySee==undefined) isTrySee=false;
+if(layer!=undefined) layer.closeAll();
+var vodUrl=(playParams==undefined)?'#':playParams.videoInfo.url;
+var params={
+container: '#playerBox',
+variable: 'player',
+poster:'{$videoInfo["thumbnail"]}',
+video: vodUrl,
+//loaded:'loadedHandler',
+autoplay:false,
+flashplayer:false
+};
+if(playParams!=undefined){
+$.ajax({
+url:playRequestUrl,
+type:'POST',
+dataType:'JSON',
+data:{id:playParams.videoInfo.id,surePlay:1,isTrySee:isTrySee},
+async:false,
+success:function(resp){
+//console.log(resp);
+if(resp.resultCode!=0){
+layer.msg('您不能观看此视频！',{time:2000,icon:2});
+return false;
+}
+params.video=resp.data.videoInfo.url;
+if(resp.data.freeType==2 && resp.data.videoInfo.gold>0 && isTrySee){
+//按时长试看
+trySeeTime=resp.data.freeNum;
+console.log('begion try see:'+trySeeTime+'s');
+params.loaded="loadedHandler";
+}
+},
+error:function(){
+layer.msg('视频信息加载失败！',{time:2000,icon:2});
+return false;
+}
+});
+}
+{if $adSetting['ad_on']==1}
+params.adfront='{$adSetting["pre_ad"]}';
+params.adfrontlink='{$adSetting["pre_ad_url"]}';
+params.adfronttime='{$adSetting["play_video_ad_time"]}';
+params.adpause='{$adSetting["suspend_ad"]}';
+params.adpauselink='{$adSetting["suspend_ad_url"]}';
+params.adpausetime='{$adSetting["play_video_ad_time"]}';
+{/if}
+params.skipButtonShow=false;
+player = new ckplayer(params);
+if(isTrySee) setTimeout("player.changeControlBarShow(false)",1000); //hide control
+if(playParams!=undefined){
+setTimeout("player.videoPlay()",1000);//play
+}
+}
+$(function(){
+getCommentList();
+getGift();
+createPlayer(null,null);
+videoPlayInit({$videoInfo['id']});
+//点赞
+{if condition='$isGooded==false'}
+$("#giveGoodBtn").on('click',function(){
+var reqData={resourceType:'video',resourceId:{$videoInfo['id']}};
+$.post('{:url("api/giveGood")}',reqData,function(data){
+//console.log(data);
+if(data.resultCode==0){
+$('#goodNum').html(data.data.good);
+$('#giveGoodBtn').addClass("isSelected");
+layer.msg('点赞成功',{time:1000,icon:1});
+}else{
+layer.msg('点赞失败，原因：'+data.error,{time:1000,icon:2});
+}
+},'JSON');
+});
+{/if}
+//收藏
+{if condition='!$isCollected'}
+$(".fn-shoucang1").on("click",function () {
+var collectData={type:'1',id:'{$videoInfo["id"]}'};
+$.post('{:url("api/colletion")}',collectData,function (data) {
+if(data.resultCode==0){
+$('#shoucang').html('已收藏');
+$('.fn-shoucang1').addClass("isSelected");
+layer.msg('收藏成功',{time:1000,icon:1});
+}else{
+layer.msg('收藏失败，原因：'+data.error,{time:1000,icon:2});
+}
+},'json');
+});
+{/if}
+$("#comment_content").on("keyup",function () {
+var length = $("#comment_content").val().length;
+var atuser_length  = $(".comment-atuser").html().length;
+if(length < atuser_length){
+$(".comment-atuser").html('');
+$("#comment_content").val('');
+$("#length").html(0);
+$('#to_user').val(0);
+$('#to_id').val(0);
+}
+if(atuser_length > 0){
+length = (length - atuser_length) > 0 ?  (length - atuser_length) : 0;
+}
+$("#length").html(length);
+if(length > 300){
+var text = $("#comment_content").val().substring(0,300);
+$("#comment_content").val(text);
+}
+});
+//评论
+$("#submit_comment").on("click",function () {
+var content =  $.trim($("#comment_content").val());
+var to_user = $("#to_user").val();
+var to_id = $("#to_id").val();
+if((content == "" || content == undefined || content == null || content == $(".comment-atuser").html())) {
+layer.msg('请输入评论的内容!');
+return false;
+}
+var reqData={resourceType:'1',resourceId:{$videoInfo['id']},content:content,to_user:to_user,to_id:to_id};
+$.post('{:url("api/comment")}',reqData,function(data){
+if(data.resultCode==0){
+layer.msg(data.message,{time:1000,icon:1});
+$("#comment_content").val('');
+$("#length").html(0);
+$(".comment-atuser").html('');
+$('#to_user').val(0);
+$('#to_id').val(0);
+if(data.data.comment_examine_on != 1){
+var headimgurl = '/static/images/user_dafault_headimg.jpg';
+if(data.data.userinfo.headimgurl){
+headimgurl = data.data.userinfo.headimgurl;
+}
+var html = '';
+$('#not-comment').remove();
+if(data.data.to_id != 0){
+html += '<div style="padding: 15px 20px;overflow: hidden;border-top: 1px solid #fbfbfb;" id="common_'+data.data.id+'">';
+html += '    <div class="user-avatar">';
+html += '           <img src="'+headimgurl+'">';
+html += '    </div>';
+html += '    <div class="comment-section">';
+html += '    <div class="user-info">';
+html += '    <a href="javascript:" class="user-name">'+data.data.userinfo.nickname+'</a>';
+html += '    <span class="comment-timestamp">刚刚</span>';
+html += '       <span class="comment-Reply" onclick="replyComment(\''+data.data.userinfo.nickname+'\',\''+data.data.userinfo.id+'\',\''+data.data.to_id+'\')" ></span>';
+html += '    </div>';
+html += '    <div class="comment-text">'+data.data.content+'</div>';
+html += '   </div>';
+html += '</div>';
+$("#common_"+data.data.to_id).append(html);
+var go_id = 'common_'+data.data.id;
+window.location.href="#"+go_id;
+}else{
+html += '<li id="common_'+data.data.id+'">';
+html += '<div style="overflow: hidden;padding-bottom: 10px;">';
+html += '   <div class="user-avatar">';
+html += '       <a href="javascript:">';
+html += '           <img src="'+headimgurl+'">';
+html += '       </a>';
+html += '    </div>';
+html += '    <div class="comment-section">';
+html += '   <div class="user-info">';
+html += '       <a href="javascript:" class="user-name">'+data.data.userinfo.nickname+'</a>';
+html += '       <span class="comment-timestamp">刚刚</span>';
+html += '       <span class="comment-Reply" onclick="replyComment(\''+data.data.userinfo.nickname+'\',\''+data.data.userinfo.id+'\',\''+data.data.id+'\')" ></span>';
+html += '   </div>';
+html += '   <div class="comment-text">'+data.data.content+'</div>';
+html += '   </div>';
+html += '</div>';
+html += ' </li>';
+$("#comment-list ").prepend(html);
+window.location.href="#comment_content";
+}
+$("#common_"+addLiIndex).hide().slideDown('fast');
+addLiIndex++;
+}
+}else{
+layer.msg('评论失败，原因：'+data.error,{time:2000,icon:2});
+}
+},'JSON');
+});
+});
+function getGift(){
+var url = "{:url('Api/getGift')}";
+var data = {
+"func": "getNameAndTime" ,
+};
+var html = '';
+$.ajax({
+type: 'POST',
+url: url,
+data: data,
+dataType: 'json',
+success: function(data){
+data.forEach(function(item) {
+html += '<div class="r-cel" style="float:left;margin-left:25px;" title="'+item.name+'">' ;
+html += '<a onclick="reward('+item.id+','+item.price+',{$videoInfo.id},1)"><img src="'+item.images+'"/ width="30"></a><br>' ;
+html += '<a onclick="reward('+item.id+','+item.price+',{$videoInfo.id},1)"><span>'+item.name+'</span></a>' ;
+html += ' </div>' ;
+})
+$('#gift_box').html(html);
+}
+});
+}
+</script>
+<script>
+$(function(){
+$(".list-box .tab span").click(function(){
+var $self = $(this);
+$self.addClass("cur").siblings().removeClass("cur");
+var $attr = $self.attr("data-for");
+$(".list-box .sub-tab>div").hide();
+$(".list-box .sub-tab").find("."+ $attr).show();
+});
+$(".select1").on("click","a",function(){
+$(".select1 a").removeClass("cur");
+$(this).addClass("cur");
+});
+});
+function check_logins(){
+$.post('/api/get_login_status','{}',function (e) {
+if(e.resultCode == 3){
+layer.msg('该账号已在其他地方登陆',
+{
+icon: 5,
+time: 3000,
+shadeClose: false,
+shade: 0.8,
+btn: ['确定'],
+yes:function (index) {
+layer.close(index);
+window.location.reload();
+},
+success: function (layero) {
+var btn = layero.find('.layui-layer-btn');
+btn.css('text-align', 'center');
+}
+},function () {
+window.location.reload();
+});
+}
+},'json');
+setTimeout('check_logins()', 5000);
+}
+</script>
+{if condition="$login_status['resultCode'] eq 1 "}
+<script>
+check_logins();
+</script>
+{/if}
+{include file="common/footer"}

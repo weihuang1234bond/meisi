@@ -1,0 +1,102 @@
+{include file="homepage/common"}
+
+            <div class="vault-main">
+            <div class="sort-title"  style="padding: 0 14px;">
+                <div class="sort-label">排序：</div>
+                <div class="sort-item">
+                    <select id="orderCode" name="orderCode">
+                        <option value="lastTime" {if condition="$orderCode eq 'lastTime'"}selected="selected"{/if}>最新视频</option>
+                        <option value="hot" {if condition="$orderCode eq 'hot'"}selected="selected"{/if}>最热视频</option>
+                        <option value="reco" {if condition="$orderCode eq 'reco'"}selected="selected"{/if}>推荐视频</option>
+                    </select>
+                </div>
+                <div class="sort-stat">共<b>{$count}</b>个筛选结果</div>
+            </div>
+            <div class="eg-width-1200 eg-radius">
+                <div class="package">
+                    <div class="new-project">
+                        <ul class="overflow">
+                            {notempty name="video_list"}
+                            {volist name="video_list" id="vo"}
+                            <li class="eg-border new">
+                                <div class="box1">
+                                    <a target="_blank" title="{$vo['title']}" href="{:url('video/play',array('id'=>$vo['id']))}">
+                                        <div class="video-play-btn"></div>
+                                        <img src="{$vo['thumbnail']}" alt="{$vo['title']}">
+                                    </a>
+                                </div>
+                                <div class="video-info-cnt">
+                                    <a target="_blank" class="box2 eg-mb-10" title="{$vo['title']}" href="{:url('video/play',array('id'=>$vo['id']))}">
+                                        <span class="video-times">{$vo['play_time']}</span>
+                                        <p>{$vo['title']}</p>
+                                    </a>
+                                    <div class="box3">
+                                        <div class="author eg-mb-10">
+                                            <div class="subtitle">
+                                                <span><i class="btn fn-see"></i>{$vo['click']}</span>
+                                                <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$vo['gold']}</span>
+                                                <span style="float:right;"><i class="btn fn-zan2"></i>{:date('Y/m/d',$vo['update_time'])}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {/volist}
+                            {else/}
+                            <div class="not-comment not">暂时没有数据 ~</div>
+                            {/notempty}
+                        </ul>
+                    </div>
+                    <div class="sort-pager">
+                        {$pages}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <form action="" method="get" id="forms">
+            <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+            <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+            <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+            <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').change(function(){
+            $('#current_orderCodes').val($(this).val());
+            $('#forms').submit();
+        })
+
+        $('#sub_box').find('li').click(function(){
+            var sub = $(this).attr('data');
+            $('#current_sub_cid').val(sub);
+            $('#forms').submit();
+        })
+
+        $('#class_box').find('li').click(function(){
+            var cid = $(this).attr('data');
+            $('#current_cid').val(cid);
+            $('#current_sub_cid').val(0);
+            $('#forms').submit();
+        })
+
+        $('#tag_box').find('li').click(function(){
+            var tag_id = $(this).attr('data');
+            $('#current_tag_id').val(tag_id);
+            $('#forms').submit();
+        })
+
+        $(".sort-pack").hover(function(){
+            $(this).find(".play-bg").show();
+            $(this).find("span").addClass("cur");
+        },function(){
+            $(this).find(".play-bg").hide();
+            $(this).find("span").removeClass("cur");
+        });
+    });
+
+</script>
+{include file="common/footer"}

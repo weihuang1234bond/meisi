@@ -1,0 +1,100 @@
+{include file="common/header"}
+
+<div id="eg-content" class="eg-mb-30">
+
+    <div class="eg-main-pic eg-mb-30 pos-r"></div>
+
+    <div class="eg-width-1200 eg-radius eg-mb-30">
+        <div class="package" style="padding-top: 30px;">
+
+            <div class="eg-item-one">
+
+                <ul>
+                    {notempty name="list"}
+                    {volist name="list" id="v"}
+                    <li class="eg-border-b overflow">
+                        <div class="eg-pic pos-r fl eg-mr-20">
+                            <a href="{:url('novel/show',array('id'=>$v['id']))}" title="{$v['title']}">
+                                <img src="{$v['thumbnail']}" alt="{$v['title']}"></a>
+                        </div>
+                        <div class="eg-info pos-r overflow">
+                            <div class="play-count-two tc pos-a">
+                                <div class="p1 eg-color-666"><span>全网播放量</span></div>
+                                <div class="p2 eg-font-size-24">{$v['click']}</div>
+                            </div>
+                            <dl class="eg-mb-15">
+                                <dt class="eg-pl-20 eg-mb-10">
+                                    <a href="{:url('novel/show',array('id'=>$v['id']))}" title="{$v['title']}">
+                                        <?php
+                                    $regex  = '/('.$key_word.')/i';
+                                    preg_match_all($regex,$v['title'],$rs);
+                                    foreach($rs[1] as $val){
+                                        $keywords =$val;
+                                          $v['title'] = str_replace( $keywords,"<font>$keywords</font>",$v['title']);
+                                        }
+                                        ?>
+                                        {$v['title']}
+                                    </a>
+                                </dt>
+                                <dd>
+                                    {$v['short_info']|default="暂没短说明"}
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="detail-box">
+
+                            <div class="box-f">
+                                <span><i class="btn fn-time"></i>{$v['update_time']|date="y-m-d H:i:s",###}</span>
+                                <span><i class="btn fn-jinbi1"></i>{$v['gold']}</span>
+                            </div>
+                            <div class="box-r">
+                                {volist name="$tag[$v['id']]" id="v"}
+                                {if condition="isset($tags_list[$v])"}<span>{$tags_list[$v]}</span>{/if}
+                                {/volist}
+                            </div>
+
+                        </div>
+                    </li>
+                    {/volist}
+                    {else/}
+                    <div class="not-comment not">暂时没有数据 ~</div>
+                    {/notempty}
+
+                </ul>
+
+            </div>
+
+            <div class="sort-pager">
+                {$pages}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    $('.xcx').mouseover(function () {
+
+        $('.xcx-scan').hide();
+
+        $('.wx-scan').show();
+
+    })
+
+
+    $('.xcx').mouseleave(function () {
+
+        $('.xcx-scan').show();
+
+        $('.wx-scan').hide();
+
+    })
+
+</script>
+
+{include file="common/footer"}

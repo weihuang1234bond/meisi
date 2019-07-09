@@ -1,0 +1,69 @@
+{include file="common/header"}
+
+    <div id="eg-content" class="eg-mt-30 eg-mb-30">
+        <div class="eg-width-1200 eg-radius">
+            <div class="package" style="padding-top: 30px;">
+                <div class="eg-film-list">
+                    <ul class="eg-pb-10 overflow">
+                        {notempty name="list"}
+                        {volist name="list" id="v"}
+                        <li class="eg-mb-20">
+                            <a href="{:url('images/show',array('id'=>$v['id']))}">
+                                <div class="box1 eg-mb-10">
+                                    <img src="{$v['cover']}">
+                                </div>
+                                <div class="box2 tc eg-font-size-20 eg-mb-5">
+                                    <a title="{$v['title']}">
+                                        <?php
+                                    $regex  = '/('.$key_word.')/i';
+                                    preg_match_all($regex,$v['title'],$rs);
+                                    foreach($rs[1] as $val){
+                                        $keywords =$val;
+                                          $v['title'] = str_replace( $keywords,"<font>$keywords</font>",$v['title']);
+                                        }
+                                        ?>
+                                        {$v['title']}
+                                    </a>
+                                </div>
+                                <div class="box3 tc eg-color-666">{:date('Y-m-d',$v['update_time'])}</div>
+                                <div class="box3 tc eg-color-666 eg-mb-5">
+                                    <span><i class="btn fn-see"></i>{$v['click']}</span>
+                                    <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$v['gold']}</span>
+                                    <span><i class="btn fn-zan2"></i>{$v['good']}</span>
+                                </div>
+                                <div class="eg-menu-five eg-font-size-14 eg-margin-center">
+                                    <a href="/filmfestival/ymsjmov" title="查看详情">查看详情</a>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+                    </ul>
+                </div>
+                <div class="sort-pager">
+                    {$pages}
+                </div>
+            </div>
+        </div>
+    </div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+    <input type="hidden"  name="key_word" value="{$key_word|default=''}" >
+    <input type="hidden"  name="type" value="{$type|default='video'}" >
+</form>
+
+<script>
+    $('.xcx').mouseover(function () {
+        $('.xcx-scan').hide();
+        $('.wx-scan').show();
+    })
+    
+    $('.xcx').mouseleave(function () {
+        $('.xcx-scan').show();
+        $('.wx-scan').hide();
+    })
+</script>
+
+{include file="common/footer"}

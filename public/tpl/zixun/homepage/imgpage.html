@@ -1,0 +1,93 @@
+{include file="homepage/common"}
+<link href="__ROOT__/tpl/zixun/static/css/video-sort.css" rel="stylesheet">
+
+<style>
+    .vault-main{padding: 20px 20px 0;box-shadow: none;}
+    .eg-width-1200 .package{    padding: 0px 30px 15px 10px;}
+</style>
+
+            </div>
+            <div class="vault-main">
+            <div class="sort-title" style="padding: 0 14px;">
+                <div class="sort-label">排序：</div>
+                <div class="sort-item">
+                    <select id="orderCode" name="orderCode">
+                        <option value="lastTime" {if condition="$orderCode eq 'lastTime'"}selected="selected"{/if}>最新图册</option>
+                        <option value="hot" {if condition="$orderCode eq 'hot'"}selected="selected"{/if}>最热图册</option>
+                    </select>
+                </div>
+                <div class="sort-stat">共<b>{$count}</b>个筛选结果</div>
+            </div>
+            <div class="eg-width-1200 eg-radius">
+                <div class="package">
+                    <div class="eg-film-list">
+                        <ul class="eg-pb-10 overflow">
+                            {notempty name="list"}
+                            {volist name="list" id="vo"}
+                            <li class="eg-mb-20">
+                                <a target="_blank" href="{:url('images/show',array('id'=>$vo['id']))}">
+                                    <div class="box1 eg-mb-10">
+                                        <img src="{$vo['cover']}" alt="{$vo['title']}">
+                                    </div>
+                                </a>
+                                <div class="box2 tc eg-font-size-20 eg-mb-5">
+                                    <a target="_blank" href="{:url('images/show',array('id'=>$vo['id']))}" title="{$vo['title']}">{$vo['title']}</a>
+                            </div>
+                                <div class="box3 tc eg-color-666">{:date('Y-m-d',$vo['update_time'])}</div>
+                                <div class="box3 tc eg-color-666 eg-mb-5">
+                                    <span><i class="btn fn-see"></i>{$vo['click']}</span>
+                                    <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$vo['gold']}</span>
+                                    <span><i class="btn fn-zan2"></i>{$vo['good']}</span>
+                                </div>
+                                <div class="eg-menu-five eg-font-size-14 eg-margin-center">
+                                    <a target="_blank" href="{:url('images/show',array('id'=>$vo['id']))}" title="查看详情">查看详情</a>
+                                </div>
+                            </li>
+                            {/volist}
+                            {else/}
+                            <div class="not-comment not">暂时没有数据 ~</div>
+                            {/notempty}
+                        </ul>
+                    </div>
+                <div class="sort-pager">
+                    {$pages}
+                </div>
+            </div>
+        </div>
+    <form action="" method="get" id="forms">
+        <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+        <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+        <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+        <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+    </form>
+</div>
+        </div>
+<script>
+    $(function(){
+        $('#orderCode').change(function(){
+            $('#current_orderCodes').val($(this).val());
+            $('#forms').submit();
+        })
+        $('#sub_box').find('li').click(function(){
+            var sub = $(this).attr('data');
+            $('#current_sub_cid').val(sub);
+            $('#forms').submit();
+        })
+        $('#class_box').find('li').click(function(){
+            var cid = $(this).attr('data');
+            $('#current_cid').val(cid);
+            $('#current_sub_cid').val(0);
+            $('#forms').submit();
+        })
+        $('#tag_box').find('li').click(function(){
+            var tag_id = $(this).attr('data');
+            $('#current_tag_id').val(tag_id);
+            $('#forms').submit();
+        })
+    });
+
+
+
+</script>
+
+{include file="common/footer"}

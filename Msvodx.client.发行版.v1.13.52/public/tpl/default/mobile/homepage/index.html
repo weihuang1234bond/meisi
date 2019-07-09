@@ -1,0 +1,99 @@
+{include file="homepage/common"}
+                <!--最新视频-->
+                <div class="panel">
+                    <p class="title">最新视频</p>
+                    <ul class="content-list">
+                        {notempty name="videoList"}
+                        {volist name='videoList' id='video'}
+                        <li>
+                            <a class="v" href="{:url('video/play',array('id'=>$video.id))}">
+                                <div class="v-thumb">
+                                    <div class="v-pic-real" style="background-image:url('{$video.thumbnail}');"></div>
+                                    <div class="v-tagrb">
+                                        <span class="v-time">{$video.play_time}</span>
+                                    </div>
+                                </div>
+                                <div class="v-metadata">
+                                    <div class="v-title">{$video.title}</div>
+                                    <div class="v-desc">
+                                        <i class="btn fn-bofang" title="播放"></i>
+                                        <span class="v-num">{$video.click}</span>&nbsp;
+                                        <i class="btn fn-jinbi1" title="金币"></i>
+                                        <span class="v-num">{$video.gold}</span>
+                                        <var style="float: right;">
+                                            <i class="btn fn-time" title="上传时间"></i>
+                                            <span class="v-num">{:date('m/d',$video['update_time'])}</span>
+                                        </var>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+                    </ul>
+                </div>
+
+                <!--最新图册-->
+                <div class="panel">
+                    <p class="title">最新图册</p>
+                    <ul class="pic-list clearfix">
+                        {notempty name="atlasList"}
+                        {volist name='atlasList' id='atlas'}
+                        <li>
+                            <div class="ub-list">
+                                <a href="{:url('images/show',array('id'=>$atlas.id))}" class="ub-link">
+                                    <div class="ub-pic" style="background-image: url('{$atlas.cover}');"></div>
+                                    <span class="ub-tit">{$atlas.title}</span>
+                                    <span class="ub-tit">
+                                        <i class="btn fn-bofang"></i><span class="v-num" title="访问量">{$atlas.click}</span>
+                                        <var style="float: right;"><i class="btn fn-time"></i>{:date('m/d',$atlas.update_time)}</var>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+                    </ul>
+                </div>
+
+                <!--最新资讯-->
+                <div class="panel" style="margin-bottom: 40px;">
+                    <p class="title">最新资讯</p>
+                    <ul class="novel-list">
+                        {notempty name="novelList"}
+                        {volist name="novelList" id="novel"}
+                        <li>
+                            <a href="{:url('novel/show',array('id'=>$novel.id))}">
+                                <div class="novelPic">
+                                    <img src="{$novel.thumbnail}">
+                                </div>
+                                <div class="novel-box">
+                                    <p>{$novel.title}</p>
+                                    <span class="text">{$novel.short_info|default="暂没短说明"}</span>
+                                    <div>
+                                        <div class="box-f">
+                                            <span><i class="btn fn-time"></i>{:date('Y/m/d',$novel.update_time)}</span>
+                                            <span><i class="btn fn-bofang"></i>{$novel.click}</span>
+                                            <span><i class="btn fn-jinbi1"></i>{$novel.gold}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{include file="common/footer"}

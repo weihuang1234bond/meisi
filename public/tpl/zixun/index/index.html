@@ -1,0 +1,349 @@
+
+{include file="common/header"}
+<script type="text/javascript" src="__ROOT__/tpl/zixun/static/js/index.js"></script>
+<script>
+    setInterval(function () {
+        doItPerSecond();
+    }, 4000);
+
+    function doItPerSecond() {
+        var self = document.getElementsByClassName("fn-huangguan");
+
+    }
+
+    /*公告弹窗*/
+    function showNotice(html) {
+        $(".tips-box").show();
+        $('.tips').html(html);
+
+    }
+
+    $(function () {
+        $(".tips-box .tips-bg").click(function () {
+            $(".tips-box").hide();
+        });
+    });
+</script>
+
+<div id="eg-content" class="eg-mb-30">
+
+
+    <!--banner-->
+    <div class="focus-wrap">
+        <ul class="focus-list">
+            {volist name="seo['banner']" id="v"}
+            <li class="pic">
+                <a href="{$v['url']}" {if condition="$v['target'] eq 1"} target='_bank'{/if} style="background: url({$v['images_url']})no-repeat;background-size: cover;background-position: center;">
+                <!--<img src="{$v['images_url']}" />-->
+                </a>
+            </li>
+            {/volist}
+
+        </ul>
+    </div>
+
+    {notempty name="notice"}
+    <div class="copyright-tips">
+        <div class="layout-cont">
+            <span><i class="fa fa-volume-up"></i> &nbsp;公告：</span>
+            <ul>
+                {volist name="notice" id="v"}
+                <li><a {if condition="$v['type'] eq 1" } onclick="showNotice('{$v['content']}')" {else/} href="{$v['url']}"
+                    target='_bank' {/if} > {$i}、{$v['title']}</a></li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+    {/notempty}
+    <!--公告弹窗-->
+    <div class="tips-box">
+        <div class="tips-bg"></div>
+        <div class="tipsBox">
+            <p>公告</p>
+            <div class="tips"></div>
+        </div>
+    </div>
+
+<!--    <div class="eg-width-1200 count eg-radius eg-mb-30" style="margin-top: 30px !important;">
+        <div class="count-one">
+            <ul class="overflow">
+                <li class="eg-col-3 tc">
+                    <div class="box1 eg-mb-25">
+                        <span class="t1">4329</span>
+                        <span class="t3"></span>
+                        <span class="t2 eg-color-333">部</span>
+                    </div>
+                    <div class="box2 eg-mb-30"><span class="s1">累计发行作品</span></div>
+                </li>
+                <li class="eg-col-3 tc">
+                    <div class="box1 eg-mb-25">
+                        <span class="t1">258</span>
+                        <span class="t3"></span>
+                        <span class="t2 eg-color-333">亿</span>
+                    </div>
+                    <div class="box2 eg-mb-30"><span class="s2">累计播放数量</span></div>
+                </li>
+                <li class="eg-col-3 tc">
+                    <div class="box1 eg-mb-25">
+                        <span class="t1">320</span>
+                        <span class="t3"></span>
+                        <span class="t2 eg-color-333">家</span>
+                    </div>
+                    <div class="box2 eg-mb-30"><span class="s3">合作媒体渠道</span></div>
+                </li>
+                <li class="eg-col-3 tc">
+                    <div class="box1 eg-mb-25">
+                        <span class="t1">10000</span>
+                        <span class="t3"><sup>+</sup></span>
+                        <span class="t2 eg-color-333">名</span>
+                    </div>
+                    <div class="box2 eg-mb-30"><span class="s4">专业创作人加入</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+
+    <div class="eg-width-1200 eg-radius eg-mb-30" style="margin-top: 30px !important;">
+        <div class="package-one">
+            <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                <em class="one fl"><span>推荐视频</span></em>
+                <span class="more eg-mr-20 fr"><a href="{:url('video/lists')}" title="更多>">更多<i>/MORE&gt;</i></a></span>
+            </h3>
+            <div class="new-project">
+                <ul class="overflow">
+                    {volist name="recom_list" id="vo" length='8'}
+                    <li class="eg-border new">
+                        <div class="box1">
+                            <a title="{$vo['title']}" href="{:url('video/play',array('id'=>$vo['id']))}" target="_self">
+                                <div class="video-play-btn"></div>
+                                <img src="{$vo['thumbnail']}" alt="{$vo['title']}">
+                            </a>
+                        </div>
+                        <div class="video-info-cnt">
+                            <a class="box2 eg-mb-10" title="{$vo['title']}" href="{:url('video/play',array('id'=>$vo['id']))}">
+                                <span class="video-times">{$vo['play_time']}</span>
+                                <p>{$vo['title']}</p>
+                            </a>
+                            <div class="box3">
+                                <div class="author eg-mb-10">
+                                    <div class="subtitle">
+                                        <span><i class="btn fn-see"></i>{$vo['click']}</span>
+                                        <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$vo['gold']}</span>
+                                        <span style="float:right;"><i class="btn fn-time"></i>{:date('Y/m/d',$vo['update_time'])}</span><!--{$vo['good']}-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    {volist name="video_list" id="vo"}
+    {notempty name="$vo['list']"}
+    <div class="eg-width-1200 eg-radius eg-mb-30">
+        <div class="package-one">
+            <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                <em class="one fl"><span>{$vo['name']}</span></em>
+                <span class="more eg-mr-20 fr"><a href="{:url('video/lists')}" title="更多>">更多<i>/MORE&gt;</i></a></span>
+            </h3>
+            <div class="new-project">
+                <ul class="overflow">
+                    {volist name="$vo['list']" id="v" length='8'}
+                    <li class="eg-border new">
+                        <div class="box1">
+                            <a title="{$v['title']}" href="{:url('video/play',array('id'=>$v['id']))}" target="_self">
+                                <div class="video-play-btn"></div>
+                                <img src="{$v['thumbnail']}" alt="{$v['title']}">
+                            </a>
+                        </div>
+                        <div class="video-info-cnt">
+                            <a class="box2 eg-mb-10" title="{$v['title']}" href="#">
+                                <span class="video-times">{$v['play_time']}</span>
+                                <p>{$v['title']}</p>
+                            </a>
+                            <div class="box3">
+                                <div class="author eg-mb-10">
+                                    <div class="subtitle">
+                                        <span><i class="btn fn-see"></i>{$v['click']}</span>
+                                        <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$v['gold']}</span>
+                                        <span style="float:right;"><i class="btn fn-time"></i>{:date('Y/m/d',$v['update_time'])}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/notempty}
+    {/volist}
+<!--图集-->
+
+    {volist name="image_list" id="vo"}
+    {notempty name="$vo['list']"}
+    <div class="eg-width-1200 eg-radius eg-mb-30">
+
+        <div class="package">
+
+            <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                <em class="two fl"><span>{$vo['name']}</span></em>
+                <span class="more eg-mr-20 fr">
+                    <a href="{:url('images/lists')}" title="更多">更多<i>/MORE&gt;</i></a></span>
+            </h3>
+
+            <div class="eg-film-list">
+                <ul class="eg-pb-10 overflow">
+                    {volist name="$vo['list']" id="v" length='8'}
+                    <li>
+                        <div class="box1 eg-mb-10">
+                            <img src="{$v['cover']}" alt="{$v['title']}">
+                        </div>
+                        <div class="box2 tc eg-font-size-20 eg-mb-5">
+                            <a href="{:url('images/show',array('id'=>$v['id']))}"
+                                title="{$v['title']}">{$v['title']}</a>
+                        </div>
+                        <div class="box3 tc eg-color-666">{:date('Y-m-d',$v['update_time'])}</div>
+                        <div class="box3 tc eg-color-666 eg-mb-5">
+                            <span><i class="btn fn-see"></i>{$v['click']}</span>
+                            <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$v['gold']}</span>
+                            <span><i class="btn fn-zan2"></i>{$v['good']}</span>
+                        </div>
+                        <div class="eg-menu-five eg-font-size-14 eg-margin-center">
+                            <a href="{:url('images/show',array('id'=>$v['id']))}" title="查看详情">查看详情</a>
+                        </div>
+                    </li>
+                    {/volist}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/notempty}
+    {/volist}
+<!--小说-->
+
+    {volist name="novel_list" id="vo"}
+    {notempty name="$vo['list']"}
+    <div class="eg-width-1200 eg-radius eg-mb-30">
+
+        <div class="package">
+
+            <h3 class="eg-title-1 eg-border-b overflow">
+
+                <em class="three eg-mr-20 fl"><span>{$vo['name']}</span></em>
+
+                <span class="more eg-mr-20 fr">
+                    <a href="{:url('novel/lists')}" title="更多">更多<i>/MORE&gt;</i></a></span>
+
+            </h3>
+
+            <div class="eg-item-one">
+
+                <ul>
+                    {volist name="$vo['list']" id="v" length='8'}
+                    <li class="eg-border-b overflow">
+                        <div class="eg-pic pos-r fl eg-mr-20">
+                            <a href="{:url('novel/show',array('id'=>$v['id']))}" title="{$v['title']}">
+                                <img src="{$v['thumbnail']}" alt="{$v['title']}"></a>
+                           <!-- <span class="status-st01 pos-a db tc">已完成</span>-->
+                        </div>
+                        <div class="eg-info pos-r overflow">
+                            <div class="play-count-two tc pos-a">
+                                <div class="p1 eg-color-666"><span>全网点击量</span></div>
+                                <div class="p2 eg-font-size-24">{$v['click']}</div>
+                            </div>
+                            <dl class="eg-mb-15">
+                                <dt class="eg-pl-20 eg-mb-10"><a href="{:url('novel/show',array('id'=>$v['id']))}" title="{$v['title']}">{$v['title']}</a></dt>
+                                <dd>
+                                    {$v['short_info']|default="暂没短说明"}
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="detail-box">
+
+                            <div class="box-f">
+                                <span><i class="btn fn-time"></i>{$v['update_time']|date="y-m-d H:i:s",###}</span>
+                                <span><i class="btn fn-jinbi1"></i>{$v['gold']}</span>
+                            </div>
+                            <div class="box-r">
+
+                            </div>
+
+                        </div>
+                    </li>
+                    {/volist}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+    {/notempty}
+    {/volist}
+    <div class="eg-width-1200 eg-radius eg-mb-30">
+
+        <div class="package">
+
+            <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                <em class="five fl">
+                    <span>品牌客户</span>
+                </em>
+            </h3>
+
+            <div class="new-brand-one">
+                {php}
+                $baseConfig = get_config_by_group('base');
+                $baseConfig['friend_link'] =  empty($seo['friend_link']) ? $baseConfig['friend_link'] : $seo['friend_link'];
+                $baseConfig['site_icp'] = empty($seo['site_icp']) ? $baseConfig['site_icp'] : $seo['site_icp'];
+                $baseConfig['site_statis'] = empty($seo['site_statis']) ? $baseConfig['site_statis'] : $seo['site_statis'];
+                $linkList=get_friend_link($baseConfig);
+                {/php}
+                <ul class="overflow">
+                    {volist name='linkList' id='link'}
+                    <li>
+                        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+                    </li>
+                    {/volist}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    $('.xcx').mouseover(function () {
+
+        $('.xcx-scan').hide();
+
+        $('.wx-scan').show();
+
+    })
+
+
+    $('.xcx').mouseleave(function () {
+
+        $('.xcx-scan').show();
+
+        $('.wx-scan').hide();
+
+    })
+
+</script>
+
+{include file="common/footer"}

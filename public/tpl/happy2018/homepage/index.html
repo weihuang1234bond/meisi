@@ -1,0 +1,125 @@
+{include file="homepage/common"}
+<style>
+    .flow-list{padding: 0 20px;margin: 0;}
+    .pub-title{margin: 0 0px 20px;}
+    .flow-list .flow-item .info-title .title-name{max-width: 147px;}
+    .flow-list .flow-item{margin: 0 2px 20px 2px;}
+    .pub-title h3{font-weight: bold;}
+</style>
+<!--最新图册-->
+<div class="main-wrap">
+    <div class="layout-cont">
+        <div class="pub-title clearfix" style="margin: 0 20px 20px;"><h3>最新视频</h3></div>
+        <div class="tab-cont">
+            <div class="cont-body">
+                <div class="flow-list clearfix">
+                    {notempty name='videoList'}
+                    {volist name='videoList' id='video'}
+                    <div class="flow-item fl">
+                        <a href="{:url('video/play',array('id'=>$video.id))}" title="{$video.title}" target="_blank">
+                        <div class="item-show">
+                            <div class="show-img">
+                                <img class="lazy" src="{$video.thumbnail}" alt="{$video.title}">
+                                <span class="time-length">{$video.play_time}</span>
+                            </div>
+                            <div class="show-mask"><span class="play-btn"></span></div>
+                        </div>
+                        <div class="item-info">
+                            <div class="info-title clearfix">
+                                <span class="title-name fl">{$video.title}</span>
+                                <span class="title-type fr">
+                                    <span class="type-label type-words">金币：{$video.gold}</span>
+                                </span>
+                            </div>
+                            <div class="info-tabs clearfix">
+                                <div class="tab-left fl">
+                                    <span class="tabs-sp view-num">{$video.click}人已观看</span>
+                                </div>
+                                <span class="fr other-sp"> {:safe_date('Y/m/d',$video['update_time'])}</span>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                {/volist}
+                {else/}
+                <div style="text-align: center;color: #c1c1c1;line-height: 100px;">这家伙还没发布过.</div>
+                {/notempty}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--最新图册-->
+<div class="wrap">
+    <div class="pub-title clearfix">
+        <div class="pt-left fl">
+            <h3>最新图册</h3>
+        </div>
+    </div>
+    {notempty name='atlasList'}
+    {volist name='atlasList' id='atlas'}
+    <div class="list" >
+        <div class="img">
+            <a href="{:url('images/show',array('id'=>$atlas.id))}" target="_blank">
+                <img src="{$atlas.cover}">
+            </a>
+        </div>
+        <div class="con">
+            <a href="{:url('images/show',array('id'=>$vo['id']))}" target="_blank">{$atlas.title}</a>
+        </div>
+        <div class="con">
+            <span style=""><i class="fa fa-eye" style="color:#666666;margin-right:5px;"></i>{$atlas.click}</span>
+            <span style="margin-left:8px;"> <i class="fa fa-dot-circle-o" style="color:#666666;margin-left:10px;"></i> {$atlas.good}</span>
+            <span style="float:right;">{:date('Y/m/d',$atlas.update_time)}</span>
+        </div>
+    </div>
+    {/volist}
+    {else/}
+    <div style="text-align: center;color: #c1c1c1;line-height: 100px;">这家伙还没发布过.</div>
+    {/notempty}
+</div>
+<div class="wrap" id="wrap" style="margin-top:15px;">
+    <div class="pub-title clearfix">
+        <div class="pt-left fl">
+            <h3>最新资讯</h3>
+        </div>
+    </div>
+    <div class="software-wrap">
+        <div class="news-cont">
+            <div class="software-lesson">
+                <ul class="lesson-cont clearfix">
+                    {notempty name="novelList"}
+                    {volist name="novelList" id="novel"}
+                    <li class="lesson-item fl">
+                        <a href="{:url('novel/show',array('id'=>$novel.id))}" class="item-img fl" title="{$novel.title}" target="_blank">
+                            <img src="{$novel.thumbnail}" alt="{$novel.title}"></a>
+                        <div class="img-info">
+                            <div style="width:100%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
+                                <a href="{:url('novel/show',array('id'=>$vo['id']))}" style="" class="les-tit" target="_blank">{$novel.title}</a>
+                            </div>
+                            <p class="les-num"> <span><i class="fa fa-calendar-o"></i>{:date('Y/m/d',$novel.update_time)}</span>
+                                <em class="fg-line">|</em>
+                                <span><i class="fa fa-eye"></i>{$novel.click}</span>
+                                <em class="fg-line">|</em>
+                                <span><i class="fa fa-dot-circle-o"></i>{$novel.gold}</span>
+                            </p>
+                            <p class="pre-num" style="width:280px;overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">{$novel.short_info|default="暂没简介"}</p>
+                            <a href="{:url('novel/show',array('id'=>$novel['id']))}" class="to-learn-btn tran" target="_blank">立即阅读</a>
+                        </div>
+                    </li>
+                    {/volist}
+                    {else/}
+                    <div align="center" style="text-align: center;color: #c1c1c1;line-height: 100px;">这家伙还没发布过.</div>
+                    {/notempty}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{include file="common/footer"}

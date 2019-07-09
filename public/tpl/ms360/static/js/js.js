@@ -1,0 +1,14 @@
+document.writeln("<script src=\"/tpl/ms360/static/js/msvodx.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/monitor_analytic.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/cookie.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/5.0.3.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/swfobject.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/common.js\" ></script>    ");
+document.writeln("<script src=\"/tpl/ms360/static/js/jquery.lazyload.min.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/jqueryrotate.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/main.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/js/monitor_main.js\" ></script>");
+document.writeln("<script src=\"/tpl/ms360/static/broadcast/js/modernizr-custom-v2.7.1.min.js\" type=\"text/javascript\"></script>");
+document.writeln("<script src=\"/tpl/ms360/static/broadcast/js/jquery-finger-v0.1.0.min.js\" type=\"text/javascript\"></script>");
+document.writeln("<link href=\"/tpl/ms360/static/broadcast/css/flickerplate.css\"  type=\"text/css\" rel=\"stylesheet\">");
+document.writeln("<script src=\"/tpl/ms360/static/broadcast/js/flickerplate.min.js\" type=\"text/javascript\"></script>");

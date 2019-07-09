@@ -1,0 +1,140 @@
+{include file="homepage/common"}
+
+            </div>
+{notempty name='video_list'}
+    <div>
+        <div class="item">
+            <label>排序：</label>
+            <ul id="orderCode" style="margin-left: -10px;">
+                <li id="lastTime" {if condition="$orderCode eq 'lastTime'"}class="current"{/if}><a href="#">最新</a></li>
+                <li id="hot" {if condition="$orderCode eq 'hot'"}class="current"{/if}><a href="#">最热</a></li>
+                <li id="reco" {if condition="$orderCode eq 'reco'"}class="current"{/if}><a href="#">推荐</a></li>
+            </ul>
+        </div>
+    </div>
+{/notempty}
+
+    <div class="panel" style="margin-bottom: 40px;">
+        <ul class="content-list">
+            {notempty name="video_list"}
+            {volist name="video_list" id="vo"}
+            <li>
+                <a class="v" href="{:url('video/play',array('id'=>$vo['id']))}">
+                    <div class="v-thumb">
+                        <div class="v-pic-real" style="background-image:url('{$vo['thumbnail']}');"></div>
+                        <div class="v-tagrb">
+                            <span class="v-time">{$vo['play_time']}</span>
+                        </div>
+                        {if condition="$vo['type'] eq 1"}<span class="btn fn-duoji"></span>{/if}
+                    </div>
+                    <div class="v-metadata">
+                        <div class="v-title">{$vo['title']}</div>
+                        <div class="v-desc">
+                            <i class="btn fn-bofang" title="播放"></i>
+                            <span class="v-num">{$vo['click']}</span>&nbsp;
+                            <i class="btn fn-jinbi1" title="金币"></i>
+                            <span class="v-num">{$vo['gold']}</span>
+                            <var style="float: right;">
+                                <i class="btn fn-time" title="上传时间"></i>
+                                <span class="v-num">{:date('m/d',$vo['update_time'])}</span>
+                            </var>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {/volist}
+            {else/}
+            <div class="not-comment not">暂时没有数据 ~</div>
+            {/notempty}
+        </ul>
+    </div>
+    </div>
+
+</div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+    <input type="hidden"  name="key_word" value="{$key_word|default=''}" >
+    <input type="hidden"  name="type" value="{$type|default='video'}" >
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').find('li').click(function () {
+            $('#current_orderCodes').val($(this).attr('id'));
+            $('#forms').submit();
+        });
+    });
+
+    var status = 1;
+    var page  = 0;
+    $(window).scroll(function(){
+        var srollPos = $(window).scrollTop();
+        var orderCode = $('#current_orderCodes').val();
+        var cid = $('#current_cid').val();
+        var data = {
+            "page" : page ,
+            "orderCode" : orderCode,
+            "cid" : cid,
+            "offset" : 20,
+            'userid':{$userinfo.id|default=0}
+        };
+        if(srollPos+$(window).height() > $(document).height() - 80){
+            if(status == 1) {
+                status = 0;
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    dataType: "JSON",
+                    url: "{:url('Api/moreData')}",
+                    success: function (data) {
+                        if(data.resultCode == 0){
+                            var datas = data.data.list;
+                            if(datas){
+                                var html = '';
+                                datas.forEach(function(item) {
+                                    var  url =  '/video/play/id/'+item['id'];
+                                    var update_time = item['update_time'];
+                                    var newDate = new Date(update_time * 1000);
+                                    html += '<li>';
+                                    html += '<a class="v" href="'+url+'">';
+                                    html += '    <div class="v-thumb">';
+                                    html += '   <img src="'+item['thumbnail']+'">';
+                                    html += '    <div class="v-tagrb"><span class="v-time">'+item['play_time']+'</span></div>';
+                                    if(item['reco'] > 0){
+                                        html += '     <div class="v-straw">推荐</div>';
+                                    }
+                                    html += '</div>';
+                                    html += '<div class="v-metadata">';
+                                    html += '   <div class="v-title">'+item['title']+'</div>';
+                                    html += '    <div class="v-desc">';
+                                    html += '   <i class="btn fn-bofang" title="播放"></i>';
+                                    html += '   <span class="v-num">'+item['click']+'</span>&nbsp;';
+                                    html += ' <i class="btn fn-jinbi1" title="金币"></i>';
+                                    html += '   <span class="v-num">'+item['gold']+'</span>';
+                                    html += '     <var style="float: right;">';
+                                    html += '     <i class="btn fn-time" title="上传时间"></i>';
+                                    html += '     <span class="v-num">'+(newDate.getMonth() + 1)+'/'+newDate.getDate()+'</span>';
+                                    html += ' </var>';
+                                    html += ' </div>';
+                                    html += ' </div>';
+                                    html += ' </a>';
+                                    html += ' </li>';
+                                });
+                                $('.not-comment').remove();
+                                $('.content-list').append(html);
+                                page++;
+                                status = 1;
+                            }else{
+                                console.log('没有更多数据了！');
+                            }
+                        }else{
+                            console.log('没有更多数据了！');
+                        }
+                    }
+                });
+            }
+        }
+    })
+</script>
+
+{include file="common/footer"}

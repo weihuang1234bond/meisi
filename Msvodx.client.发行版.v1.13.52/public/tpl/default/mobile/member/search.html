@@ -1,0 +1,123 @@
+{include file="common/header"}
+<link rel="stylesheet" href="__ROOT__/tpl/default/mobile/static/css/i-list.css">
+<style>
+    .panel{margin-top: 0;}
+    .ub-tit{padding: 7px 5px;margin: 0;}
+    .pic-list li{border: 1px solid #eee;}
+    .ub-list .ub-link{position: relative;}
+    .pic-list li .info-tit{position: absolute; height:25px;background: rgba(0, 0, 0, 0.24);bottom: 30px;line-height: 25px;padding: 0 10px;left: 0;right: 0;color: #fff;}
+    .pic-list li .info-tit span{float: right;}
+</style>
+<div class="item" style="border-bottom: 1px solid #eee;">
+    <h3 style="padding: 10px 12px;">会员搜索结果</h3>
+</div>
+<div class="panel">
+    <ul class="pic-list clearfix">
+        {notempty name="list"}
+        {volist name="list" id="v"}
+        <li>
+            <div class="ub-list">
+                <a href="{:url('homepage/index',array('uid'=>$v['id']))}" class="ub-link">
+                    <div class="ub-pic" style="background-image:url('{$v['headimgurl']}');"></div>
+                    <span class="ub-tit">
+                        <?php
+                            $regex  = '/('.$key_word.')/i';
+                            preg_match_all($regex,$v['nickname'],$rs);
+                            foreach($rs[1] as $val){
+                                $keywords =$val;
+                                  $v['nickname'] = str_replace( $keywords,"<font>$keywords</font>",$v['nickname']);
+                            }
+                            ?>
+                            {$v['nickname']}
+                    </span>
+                    <span class="info-tit">
+                    {if $v.sex==1}男{elseif $v.sex==2}女{else/}未知{/if}<span>{:date('Y-m-d',$v['add_time'])}</span>
+                    </span>
+                </a>
+            </div>
+        </li>
+        {/volist}
+        {else/}
+        <div class="not-comment not">暂时没有数据 ~</div>
+        {/notempty}
+    </ul>
+</div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="key_word"  name="key_word" value="{$key_word|default=''}" >
+</form>
+
+{include file="common/footer"}
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').find('li').click(function(){
+            $('#current_orderCodes').val($(this).attr('id'));
+            $('#forms').submit();
+        })
+    })
+    var status = 1;
+    var page  = 0;
+    $(window).scroll(function(){
+        var srollPos = $(window).scrollTop();
+        var key_word = $('#key_word').val();
+        var data = {
+            "page" : page ,
+            "key_word" : key_word,
+            "offset" : 20,
+        };
+        if(srollPos+$(window).height() > $(document).height() - 80){
+            if(status == 1) {
+                status = 0;
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    dataType: "JSON",
+                    url: "{:url('Api/moreMember')}",
+                    success: function (data) {
+                        if(data.resultCode == 0){
+                            var datas = data.data.list;
+                            if(datas){
+                                var html = '';
+
+                                datas.forEach(function(item) {
+                                    var add_time = item['add_time'];
+                                    var newDate = new Date(add_time * 1000);
+                                    var url = '/homepage/index/uid/'+item['id'];
+                                    var reg = '/'+key_word+'/g';
+                                    if(item['sex'] == 1){
+                                        var sex = '男';
+                                    }else if(item['sex'] == 2){
+                                        var sex = '女';
+                                    }else{
+                                        var sex = '未知';
+                                    }
+                                    reg=eval(reg);
+                                    item['nickname'] = item['nickname'].replace(reg, "<font>"+key_word+"</font>");
+
+                                    html += '<li>';
+                                    html += '<div class="ub-list">';
+                                    html += '    <a href="'+url+'" class="ub-link">';
+                                    html += '    <div class="ub-pic" style="background-image:url('+item['headimgurl']+');"></div>';
+                                    html += '    <span class="ub-tit">'+item['nickname']+'</span>';
+                                    html += '<span class="info-tit">'+sex;
+                                    html += '    <span>'+(newDate.getFullYear() + 1)+'-'+(newDate.getMonth() + 1)+'-'+newDate.getDate()+'</span>';
+                                    html += '</span>';
+                                    html += '</a>';
+                                    html += '</div>';
+                                    html += '</li>';
+                                });
+                                $('.not-comment').remove();
+                                $('.pic-list').append(html);
+                                page++;
+                                status = 1;
+                            }else{
+                                console.log('没有更多数据了！');
+                            }
+                        }else{
+                            console.log('没有更多数据了！');
+                        }
+                    }
+                });
+            }
+        }
+    })
+</script>

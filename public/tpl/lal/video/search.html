@@ -1,0 +1,38 @@
+{include file="common/header"}
+<div class="section alternate">
+  <div class="wrapper">
+    <h3 class="yxlm"><img class="h-icon" src="/tpl/ms360/static/images/lmtb.png" />视频列表
+      <div style="float:right;font-size:15px;">
+      <span style="float:right;">共<b style="color:red;font-size:20px;"> {$count} </b>个筛选结果</span>
+      </div>
+     </h3>
+      <ul class="live-list clearfix">
+      {notempty name="list"}
+      {volist name="list" id="v"}
+      <?php
+      $regex  = '/('.$key_word.')/i';
+      preg_match_all($regex,$v['title'],$rs);
+      foreach($rs[1] as $val){
+      $keywords =$val;
+      $v['title'] = str_replace( $keywords,"<font color=red>$keywords</font>",$v['title']);
+      }
+      ?>
+       <li>
+	    <a href="{:url('video/play',array('id'=>$v['id']))}" title="{$v['title']}">
+	    <img src="/tpl/ms360/static/images/404.png" data-original="{$v['thumbnail']}">
+        <p class="title"> <span>{$v['title']}</span> <em>{$v['click']}</em> </p>
+        <p class="desc"> <span>20{$v['update_time']|date="y-m-d",###}</span>
+		<em><i class="fa fa-usd" aria-hidden="true"></i> {$v['gold']}</em> </p>
+        <p class="play"></p>
+        <p class="time">{$v['play_time']}</p>
+        </a>
+		</li>
+      {/volist} 
+      {else/}
+      <div align="center" style="color:red;" class="not-data"><b>暂没数据 ~</b></div>
+      {/notempty}
+    </ul>
+  </div>
+  <div class="sort-pager"> {$pages} </div>
+  </div>
+{include file="common/footer"}

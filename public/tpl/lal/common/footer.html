@@ -1,0 +1,281 @@
+{php}
+$baseConfig = get_config_by_group('base');
+$baseConfig['friend_link'] =  empty($seo['friend_link']) ? $baseConfig['friend_link'] : $seo['friend_link'];
+$baseConfig['site_icp'] = empty($seo['site_icp']) ? $baseConfig['site_icp'] : $seo['site_icp'];
+$baseConfig['site_statis'] = empty($seo['site_statis']) ? $baseConfig['site_statis'] : $seo['site_statis'];
+$linkList=get_friend_link($baseConfig);
+$type=getMenu();
+{/php}
+<div class="footer">
+  <div class="wrapper clearfix">
+    <div class="aboutus">
+      <h4>关于我们</h4>
+      <p>本网站严禁发表不合法的内容本站所有视频、图片、资讯均由网友发布，如有侵犯权限请联系本站客服删除，本站不承担任何版权相关的法律责任， 请遵守本站协议勿发布不合法内容,如果您不自觉遵守本站相关规定否则请单击离开谢谢合作。</p>
+      <div class="videologo"><a>{$seo['site_title']}</a></div>
+    </div>
+    <div class="business">
+      <h4>商务洽谈</h4>
+      <ul>
+        <li><p>网站合作</p>邮箱：12345678@qq.com</li>
+        <li><p>视频推广</p>邮箱：12345678@qq.com &nbsp;&nbsp;QQ群:123456789</li>
+        <li><p>广告合作</p>邮箱：12345678@qq.com</li>
+      </ul>
+    </div>
+    <div class="links clearfix">
+      <h4>友情链接</h4>
+       <ul>
+        {volist name='linkList' id='link'}
+        <li><a href="{$link.url}" target="_blank">{$link.name}</a></li>
+        {/volist}
+         </ul>
+          <h4>快速导航</h4>
+	<ul>
+        {volist name='type' id='vo'}
+		{notempty name="vo.sublist"}
+		{volist name="vo.sublist" id="v"}
+	        <li><a href="{$v.url}" target="_blank">{$v.name}</a></li>
+		{/volist}
+		{/notempty}
+        {/volist}
+         </ul>
+
+
+    </div>
+  </div>
+  <div class="copyright">ICP备案号：{$baseConfig['site_icp']}  - Copyright © 2014-2018 All Rights Reserved - <a href="#">免责声明</a> - <a href="#">意见反馈</a> - <a href="#">合作联系</a> - {:htmlspecialchars_decode($baseConfig['site_statis'])}</div>
+</div>
+<div class="totop">
+  <ul>
+   <li><a href="javascript:scroll(0,0)" class="totop-top" target="_self"><span>返回顶部</span></a></li>
+  </ul>
+</div>
+<script src="__ROOT__/tpl/ms360/static/js/js.js" ></script>
+<div class="modal" id="login-modal">
+<a class="close" data-dismiss="modal">×</a>
+<h1>登录</h1>
+{php} $longwait=get_sanfanlogin();{/php}
+{foreach name="longwait" item="vo"}
+<ul class="login-bind-tp">
+{if condition="$vo['login_code'] eq 'qq'"}
+<li class="qweibo"> <a href="{:url('open/login',['code'=>'qq'])}"><em>&nbsp;</em> QQ登录</a> </li>
+{/if}
+{if condition="$vo['login_code'] eq 'wechat'"}
+<li class="douban"> <a href="{:url('open/login',['code'=>'wechat'])}"><em>&nbsp;</em> 微信登录</a> </li>
+{/if}
+</ul>
+{/foreach}
+<p>
+</p>
+<form class="login-form clearfix">
+<div class="form-arrow"></div>
+<input id="userName" type="text" placeholder="用户名/手机号/邮箱">
+<input id="password" type="password" placeholder="输入登陆密码：">
+{if condition="get_config('verification_code_on')"}
+<input type="text" name="verifyCode" id="verifyCode" placeholder="请输入验证码" style="width: 50%;float: left;">
+<div class="yz-r fr"> <img src="{:url('api/getCaptcha')}" onClick="this.src='{:url(\'api/getCaptcha\')}?'+Math.random()" id="verifyCodeImg" style="float: right;width:120px;height:39px;border: 1px #ffa900 solid;"/> </div><br>
+{/if}
+<input type="submit" onclick="login()" class="button-blue login" value="登录">
+<div class="clearfix"></div>
+<a href="{:url('/index/register')}" class="forgot">没有账号？去注册</a>
+{if condition="$register_validate neq 0"}<a href="{:url('member/seek_pwd')}"><label class="remember">忘记密码？</label></a>{/if}
+
+</form>
+</div>
+<script type="text/javascript" src="__ROOT__/tpl/ms360/static/sign/js/modal.js"></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/tpl/ms360/static/sign/css/style.css">
+<script type="text/javascript">
+$(document).ready(function(){
+$("a.forgot").click(function(){
+$("#login-modal").modal("hide");
+$("#forgetform").modal({show:!0})
+});
+$("#signup-modal").modal("hide");
+$("#forgetform").modal("hide");
+$("#login-modal").modal("hide");
+$("#activation-modal").modal("hide");
+$("#setpassword-modal").modal("hide");
+});
+</script>
+<script>
+$(document).ready(function(){
+$('.flicker-example').flicker();
+});
+</script>
+<script type="text/javascript">
+var cpa_uid="{:request()->param('uid/d')}"; //cpa
+//console.log("当前用户Id:{:session('member_id')}");
+var disabled = 0;
+var register_validate = "{:$register_validate}";
+if(register_validate == 1){
+var reg_userName = '邮箱地址';
+}else if(register_validate == 2){
+var reg_userName = '手机号码';
+}else{
+var reg_userName = '用户名';
+}
+function login() {
+var user = $('#userName').val();
+var password = $('#password').val();
+var verifyCode=$('#verifyCode');
+if (user == '' || password == '') {
+layer.msg(reg_userName+'或密码不能为空.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+if(verifyCode.val()==''){
+layer.msg('验证码不能为空.', {icon: 2, anim: 6, time: 1000});
+verifyCode.focus();
+return false;
+}
+var url = "{:url('api/login')}";
+$.post(url, {userName: user, password: password,verifyCode:verifyCode.val()}, function (data) {
+if (data.statusCode == 0) {
+layer.msg('登陆成功', {time: 1000, icon: 1}, function() {
+location.reload();
+});
+} else {
+layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+$("#verifyCodeImg").click();
+}
+}, 'JSON');
+}
+$(document).keyup(function(event){
+if(event.keyCode ==13){
+if($(".login").is(":hidden")){
+return null;
+}else{
+login();
+}
+}
+});
+function codetTmes() {
+var second = $('#register_code').html();
+second--;
+if(second > 0){
+$('#register_code').html(second);
+setTimeout("codetTmes()",1000);
+}else{
+$('#register_code').html('获取验证码');
+disabled = 0;
+}
+}
+function getCode(){
+var user = $('#reg_userName').val();
+if(disabled)  return false;
+if (user == '') {
+$('#reg_userName').focus();
+layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+var url = "{:url('api/getRegisterCode')}";
+$.post(url, {username: user,reg_username:reg_userName}, function (data) {
+if (data.statusCode == 0) {
+disabled = 1;
+layer.msg(data.error, {icon: 1, anim: 6, time: 3000});
+$('#register_code').html('60');
+codetTmes();
+}else{
+layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+}
+}, 'JSON');
+}
+function register(){
+var user = $('#reg_userName').val();
+var password = $('#reg_pwd').val();
+var confirm_password=$('#reg_pwd_re').val();
+var verifyCode=$('#codes').val();
+var nickname = $('#nickname').val();
+if (user == '') {
+layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+if (nickname == '') {
+layer.msg('用户昵称不能为空.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+if (password == '') {
+layer.msg('密码不能为空.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+if (password != confirm_password) {
+layer.msg('两次密码不一致.', {icon: 2, anim: 6, time: 1000});
+return false;
+}
+if(verifyCode==''){
+layer.msg('验证码不能为空.', {icon: 2, anim: 6, time: 1000});
+$('#codes').focus();
+return false;
+}
+var url = "{:url('api/register')}";
+$.post(url, {username: user,nickname:nickname, password: password,confirm_password:confirm_password,verifyCode:verifyCode,cpa_uid:cpa_uid}, function (data) {
+if (data.statusCode == 0) {
+console.log(data);
+layer.msg('注册成功', {time: 1000, icon: 1}, function() {
+location.reload();
+});
+}else{
+layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+}
+}, 'JSON');
+}
+function sign(){
+var url = "{:url('api/sign')}";
+$.post(url, {}, function (data) {
+if (data.resultCode == 0) {
+$('.sign-btn').find('var').html('+'+data.data['value']);
+$('.sign-btn').addClass("signs");
+$('.sign-btn').addClass("Completion");
+layer.msg('签到成功',  {icon: 1, anim: 6, time: 2000},function () {
+$('.sign-btn').removeClass("signs");
+});
+}else{
+layer.msg(data.error, {icon: 2, anim: 6, time: 2000});
+}
+}, 'JSON');
+}
+function logout(){
+var url="{:url('api/logout')}";
+$.post(url,{},function(){
+layer.msg('退出成功', {time: 1000, icon: 1}, function() {
+location.reload();
+});
+},'JSON');
+}
+//$.post("",{userName:})
+$(function () {
+$(".select-loginType .account-login").click(function(){
+$(this).parent().hide().siblings().show();
+});
+$(".return-qqWechat").click(function () {
+$(this).parent().parent().hide().siblings().show();
+});
+});
+</script>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+});
+if(!!window.ActiveXObject || "ActiveXObject" in window){
+location.href="{:url('index/remind')}"
+}
+</script>
+{if condition="$login_status['resultCode'] eq 3 "}
+<script>
+layer.msg('该账号已在其他地方登陆',
+{
+icon: 5,
+time: 0,
+shadeClose: false,
+shade: 0.8,
+btn: ['确定'],
+yes:function (index) {
+layer.close(index);
+window.location.reload();
+},
+success: function (layero) {
+var btn = layero.find('.layui-layer-btn');
+btn.css('text-align', 'center');
+}
+});
+</script>
+{/if}
+</body>
+</html>

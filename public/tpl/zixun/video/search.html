@@ -1,0 +1,70 @@
+{include file="common/header"}
+
+    <div id="eg-content" class="eg-mt-30 eg-mb-30">
+        <div class="eg-width-1200 eg-radius">
+            <div class="package" style="padding-top: 30px;">
+                <div class="new-project">
+                    <ul class="overflow">
+                        {notempty name="list"}
+                        {volist name="list" id="v"}
+                        <li class="eg-border new">
+                            <div class="box1">
+                                <a title="回家" href="{:url('video/play',array('id'=>$v['id']))}">
+                                    <div class="video-play-btn"></div>
+                                    <img src="{$v['thumbnail']}" alt="{$v['title']}">
+                                </a>
+                            </div>
+                            <div class="video-info-cnt">
+                                <a class="box2 eg-mb-10" title="{$v['title']}" href="#" >
+                                    <span class="video-times">{$v['play_time']}</span>
+                                    <p>
+                                        <?php
+                                    $regex  = '/('.$key_word.')/i';
+                                    preg_match_all($regex,$v['title'],$rs);
+                                    foreach($rs[1] as $val){
+                                        $keywords =$val;
+                                          $v['title'] = str_replace( $keywords,"<font>$keywords</font>",$v['title']);
+                                        }
+                                        ?>
+                                        {$v['title']}
+                                    </p>
+                                </a>
+                                <div class="box3">
+                                    <div class="author eg-mb-10">
+                                        <div class="subtitle">
+                                            <span><i class="btn fn-see"></i>{$v['click']}</span>
+                                            <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$v['gold']}</span>
+                                            <span style="float:right;"><i class="btn fn-zan2"></i>{:date('Y/m/d',$v['update_time'])}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+
+                    </ul>
+                </div>
+                <div class="sort-pager">
+                    {$pages}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    $('.xcx').mouseover(function () {
+        $('.xcx-scan').hide();
+        $('.wx-scan').show();
+    })
+    
+    $('.xcx').mouseleave(function () {
+        $('.xcx-scan').show();
+        $('.wx-scan').hide();
+    })
+</script>
+
+{include file="common/footer"}

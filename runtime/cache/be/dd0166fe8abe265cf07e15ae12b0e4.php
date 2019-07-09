@@ -1,0 +1,6 @@
+<?php
+//000000000000
+ exit();?>
+a:11:{s:16:"site_logo_mobile";s:76:"http://www.qm668.xyz/XResource/20190703/7kfM7G2nCjGpTY47ASKt38biP6w8ypiB.png";s:9:"site_logo";s:76:"http://www.qm668.xyz/XResource/20190703/7kfM7G2nCjGpTY47ASKt38biP6w8ypiB.png";s:10:"site_title";s:18:"奇米吧频道558";s:13:"site_keywords";s:189:"奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558";s:16:"site_description";s:378:"奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558 奇米吧频道558";s:11:"site_statis";s:6:"tongji";s:11:"friend_link";s:56:"Msvodx|http://www.msvod.cc
+111111|http://www.msvod.cc
+";s:8:"site_icp";s:8:"22222222";s:20:"buy_cardpassword_uri";s:20:"http://www.baidu.com";s:6:"banner";a:1:{i:0;a:9:{s:2:"id";i:8;s:4:"name";s:2:"hh";s:10:"images_url";s:76:"http://www.qm668.xyz/XResource/20190703/7C4ycsSRaEZdXShD5PSWCk6mkryfRKCw.png";s:3:"url";s:21:"http://www.qm588.xyz/";s:4:"sort";i:0;s:6:"status";i:1;s:4:"info";s:2:"11";s:6:"target";i:1;s:3:"fid";i:1;}}s:9:"close_pay";i:0;}

@@ -1,0 +1,370 @@
+{include file="common/header"}
+    <style>
+        .eg-register-1 {margin: 100px auto 50px auto;padding-bottom: 50px;width: 1200px;background: #f3f3f3;}
+        .pos-r {position: relative;}
+        .mar-center {margin-right: auto;margin-left: auto; }
+        .register-content {padding: 65px 0 70px 0;width: 680px;}
+        .eg-border-b {border-bottom: 1px solid #ddd; }
+        .tc {text-align: center;}
+        .row-one {padding: 5px 0;line-height: 24px;}
+        .eg-font-size-22 {font-size: 22px !important;}
+        .font { font-weight: bold;}
+        .mar-bot-10 { margin-bottom: 10px;}
+        .form01 { margin-left: 55px;padding-top: 55px;width: 900px;}
+        .row-onef { padding: 22px 0; line-height: 24px;}
+        .label-st02 {display: inline-block; margin-right: 10px;width: 130px; text-align: right;font-size: 18px; }
+        .xing {padding: 5px; color: #ad0711;}
+        .collection {display: inline-block; vertical-align: middle; margin-left: 10px;width: 305px;}
+        .input-txt01 {width: 305px;height: 35px; line-height: 35px;background: #F1F1F1;padding: 0 5px; border: 0;border-bottom: 1px solid #ddd;outline: none;color: #666;}
+        .btn-wst01 { margin-top: 20px;margin-left: 140px;width: 374px; height: 52px;outline: none;border: 0;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;background: #ff7c00;color: #fff;font-weight: bold;font-size: 14px;cursor: pointer;}
+        .pad-left-132 {padding-left: 83px;}
+        .row-onev { padding: 0;line-height: 24px;}
+        .fr {float: right; }
+        .rc-st01 {font-size: 14px; color: #666;}
+    </style>
+<!--
+<div class="login-box" id="login-box">
+    <div class="box register">
+        <p>注册</p>
+        <div style="margin: auto;width: 610px;">
+            <div class="login-list">
+                <label>账号：</label>
+                <input type="text" id="reg_userName" class="phone"  {if condition="$register_validate eq 1"}placeholder="邮箱地址"{else/}{if condition="$register_validate eq 2"}placeholder="手机号码"{else/}placeholder="用户名"{/if}{/if} />
+            </div>
+            <div class="login-list">
+                <label>用户昵称：</label>
+                <input type="text" id="nickname" class="pwd" placeholder="用户昵称"/>
+            </div>
+            <div class="login-list">
+                <label>密码：</label>
+                <input type="password" id="reg_pwd" class="pwd" placeholder="密码"/>
+            </div>
+            <div class="login-list">
+                <label>确认密码：</label>
+                <input type="password" id="reg_pwd_re" placeholder="确认密码"/>
+            </div>
+            {if condition="$register_validate neq 0"}
+            <div class="login-list code-box">
+                <div class="code-input">
+                    <label>验证码：</label>
+                    <input type="text" name="verifyCode" id="codes" placeholder="验证码"/>
+                </div>
+                <span id="register_code" onclick="getCode()">获取验证码</span>
+            </div>
+            {else/}
+                {if condition="get_config('verification_code_on')"}
+                <div class="login-list">
+                    <label>验证码：</label>
+                    <input type="text" name="verifyCode" id="codes" class="code" placeholder="验证码" />
+                    <img src="{:url('api/getCaptcha')}" onclick="this.src='{:url(\'api/getCaptcha\')}?'+Math.random()" id="verifyCodeImg" /></div>
+                {/if}
+            {/if}
+            <a class="submit-btn" onclick="register()">注册</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var disabled = 0;
+    var register_validate = "{:$register_validate}";
+    if(register_validate == 1){
+        var reg_userName = '邮箱地址';
+    }else if(register_validate == 2){
+        var reg_userName = '手机号码';
+    }else{
+        var reg_userName = '用户名';
+    }
+    function codetTmes() {
+        var second = $('#register_code').html();
+        second&#45;&#45;;
+        if(second > 0){
+            $('#register_code').html(second);
+            setTimeout("codetTmes()",1000);
+        }else{
+            $('#register_code').html('获取验证码');
+            disabled = 0;
+        }
+    }
+
+    function getCode(){
+        var user = $('#reg_userName').val();
+        if(disabled)  return false;
+        if (user == '') {
+            $('#reg_userName').focus();
+            layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        var url = "{:url('api/getRegisterCode')}";
+        $.post(url, {username: user,reg_username:reg_userName}, function (data) {
+            if (data.statusCode == 0) {
+                disabled = 1;
+                layer.msg(data.error, {icon: 1, anim: 6, time: 3000});
+                $('#register_code').html('60');
+                codetTmes();
+            }else{
+                layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+            }
+        }, 'JSON');
+    }
+
+    function register(){
+        var user = $('#reg_userName').val();
+        var password = $('#reg_pwd').val();
+        var confirm_password=$('#reg_pwd_re').val();
+        var verifyCode=$('#codes').val();
+        var nickname = $('#nickname').val();
+        if (user == '') {
+            layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (nickname == '') {
+            layer.msg('用户昵称不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (password == '') {
+            layer.msg('密码不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (password != confirm_password) {
+            layer.msg('两次密码不一致.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if(verifyCode==''){
+            layer.msg('验证码不能为空.', {icon: 2, anim: 6, time: 1000});
+            $('#codes').focus();
+            return false;
+        }
+        var url = "{:url('api/register')}";
+        $.post(url, {username: user,nickname:nickname, password: password,confirm_password:confirm_password,verifyCode:verifyCode}, function (data) {
+            if (data.statusCode == 0) {
+                console.log(data);
+                layer.msg('注册成功', {time: 1000, icon: 1}, function() {
+                    location.href="/";
+                });
+            }else{
+                layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+            }
+        }, 'JSON');
+
+    }
+
+    //$.post("",{userName:})
+
+
+</script>
+
+-->
+
+<div id="eg-register-1" class="eg-register-1 pos-r ">
+
+    <div class="register-content mar-center border_color2">
+        <div class="eg-border-b tc">
+            <div class="row-one">
+                <!--<img src="__ROOT__/tpl/zixun/static/images/find_password.png" alt="" class="mar-left-267 mar-bom-25">-->
+                <p class="eg-font-size-22 font mar-bot-10">Register</p>
+                <p class="eg-font-size-16">为了您更好的体验，请注册</p>
+            </div>
+
+        </div>
+        <div class="form01 ">
+
+            <div class="row-onef">
+
+                <label class="label-st02"><span class="xing">*</span>账户</label>
+
+                <div class="collection error500">
+                    <input type="text" name="mobile" id="reg_userName" class="input-txt01" {if condition="$register_validate eq 1"}placeholder="邮箱地址"{else/}{if condition="$register_validate eq 2"}placeholder="手机号码"{else/}placeholder="用户名"{/if}{/if}>
+                </div>
+
+            </div>
+
+            <div class="row-onef">
+
+                <label class="label-st02"><span class="xing">*</span>昵称</label>
+
+                <div class="collection error300">
+                    <input type="text" name="nickname" id="nickname" class="input-txt01" placeholder="用户昵称">
+                </div>
+
+            </div>
+
+            <div class="row-onef">
+
+                <label class="label-st02"><span class="xing">*</span>密码</label>
+
+                <div class="collection error502">
+
+                    <input type="password" name="password" id="reg_pwd" class="input-txt01" placeholder="点击输入">
+
+                </div>
+            </div>
+
+            <div class="row-onef">
+
+                <label class="label-st02"><span class="xing">*</span></span>确认密码</label>
+
+                <div class="collection">
+
+                    <input type="password" name="password_confirm" id="reg_pwd_re" class="input-txt01" placeholder="确认密码">
+
+                </div>
+
+            </div>
+
+            {if condition="$register_validate neq 0"}
+            <div class="row-onef">
+                <div class="code-input">
+                    <label class="label-st02"><span class="xing">*</span>验证码</label>
+                    <input type="text" name="verifyCode" class="input-txt01" id="codes" placeholder="验证码"/>
+                    <span id="register_code" onclick="getCode()"><var>获取验证码</var></span>
+                </div>
+
+            </div>
+            {else/}
+            {if condition="get_config('verification_code_on')"}
+            <div class="row-onef">
+                <label class="label-st02"><span class="xing">*</span>验证码</label>
+                <div class="collection pos-r error501">
+                    <input type="text" name="verifyCode" id="codes" class="code input-txt01" placeholder="验证码" />
+                    <img src="{:url('api/getCaptcha')}" onclick="this.src='{:url(\'api/getCaptcha\')}?'+Math.random()" id="verifyCodeImg" />
+                </div>
+            </div>
+            {/if}
+            {/if}
+
+        </div>
+
+        <div class="row-onef">
+            <button class="btn-wst01 btn-wst01-creator mar-left-140" id="btn-wst01" onclick="register()">注册</button>
+        </div>
+        <div class="row-onev pad-left-132" style="width: 510px;">
+            <span class="fr"><a href="{:url('index/login')}" class="rc-st01">已有账号，去登录</a></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    //console.log("当前用户Id:{:session('member_id')}");
+    var disabled = 0;
+    var register_validate = "{:$register_validate}";
+    if(register_validate == 1){
+        var reg_userName = '邮箱地址';
+    }else if(register_validate == 2){
+        var reg_userName = '手机号码';
+    }else{
+        var reg_userName = '用户名';
+    }
+    function codetTmes() {
+        var second = $('#register_code var').html();
+        second--;
+        if(second > 0){
+            $('#register_code').html("<var>"+second+"</var>s后再试").css("cursor","not-allowed");
+            setTimeout("codetTmes()",1000);
+        }else{
+            $('#register_code').html("<var>获取验证码</var>").css("cursor","pointer");
+            disabled = 0;
+        }
+    }
+
+    function getCode(){
+        var user = $('#reg_userName').val();
+        if(disabled)  return false;
+        if (user == '') {
+            $('#reg_userName').focus();
+            layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        var url = "{:url('api/getRegisterCode')}";
+        $.post(url, {username: user,reg_username:reg_userName}, function (data) {
+            if (data.statusCode == 0) {
+                disabled = 1;
+                layer.msg(data.error, {icon: 1, anim: 6, time: 3000});
+                $('#register_code var').html('60');
+                codetTmes();
+            }else{
+                layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+            }
+        }, 'JSON');
+    }
+
+    function register(){
+        var user = $('#reg_userName').val();
+        var password = $('#reg_pwd').val();
+        var confirm_password=$('#reg_pwd_re').val();
+        var verifyCode=$('#codes').val();
+        var nickname = $('#nickname').val();
+        if (user == '') {
+            layer.msg(reg_userName+'不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (nickname == '') {
+            layer.msg('用户昵称不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+
+        if (password == '') {
+            layer.msg('密码不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (password == '') {
+            layer.msg('密码不能为空.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if (password != confirm_password) {
+            layer.msg('两次密码不一致.', {icon: 2, anim: 6, time: 1000});
+            return false;
+        }
+        if(verifyCode==''){
+            layer.msg('验证码不能为空.', {icon: 2, anim: 6, time: 1000});
+            $('#codes').focus();
+            return false;
+        }
+        var url = "{:url('api/register')}";
+        $.post(url, {username: user,nickname:nickname, password: password,confirm_password:confirm_password,verifyCode:verifyCode}, function (data) {
+            if (data.statusCode == 0) {
+                console.log(data);
+                layer.msg('注册成功', {time: 1000, icon: 1}, function() {
+                    location.href="/";
+                });
+            }else{
+
+                layer.msg(data.error, {icon: 2, anim: 6, time: 1000});
+            }
+        }, 'JSON');
+
+    }
+
+    function sign(){
+
+        var url = "{:url('api/sign')}";
+        $.post(url, {}, function (data) {
+            if (data.resultCode == 0) {
+                $('.sign-btn').find('var').html('+'+data.data['value']);
+                $('.sign-btn').addClass("signs");
+                $('.sign-btn').addClass("Completion");
+                layer.msg('签到成功',  {icon: 1, anim: 6, time: 2000},function () {
+                    $('.sign-btn').removeClass("signs");
+                });
+            }else{
+                layer.msg(data.error, {icon: 2, anim: 6, time: 2000});
+            }
+        }, 'JSON');
+    }
+
+    function logout(){
+        var url="{:url('api/logout')}";
+        $.post(url,{},function(){
+            layer.msg('退出成功', {time: 1000, icon: 1}, function() {
+                location.reload();
+            });
+        },'JSON');
+    }
+
+    //$.post("",{userName:})
+
+</script>
+
+</body>
+</html>

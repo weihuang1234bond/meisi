@@ -1,0 +1,650 @@
+{include file="common/header"}
+<script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
+<style>
+    .sub-tab .select li a p{
+        color: #bdbdbd;
+    }
+</style>
+
+<script src="/static/msvodx/js/video.js"></script>
+<script type="text/javascript">
+
+    var playRequestUrl='{:url("api/payVideo")}';    //*必需配置项
+    var player,timer;
+    var page = 0;
+    var addLiIndex=1;
+    var trySeeTime=10;
+
+    function adjump(){
+        var canJumpAd="{$adSetting['skip_ad_on']}";
+        if(canJumpAd==1){
+            player.videoPlay();
+        }else{
+            layer.msg('您不能跳过广告',{icon:2,time:2000});
+        }
+    }
+
+    function replyComment(username,id,to_id){
+        var reply = '回复 @'+username+' : ';
+        var length = reply.length;
+        $('#to_user').val(id);
+        $('#to_id').val(to_id);
+        //alert(length);
+        $(' .comment-atuser').html(reply);
+        $('#comment_content').val(reply);
+        $('#comment_content').focus();
+    }
+
+    function getCommentList(){
+        var nowDate = new Date().getTime();
+        var times = "";
+        var url = "{:url('api/getCommentList')}";
+        var  resourceId = " {$videoInfo['id']}";
+        var data = {
+            "page":page,
+            "resourceId":resourceId,
+            "resourceType":1,
+        };
+        var html = '';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            dataType: 'json',
+            success: function(data){
+                $('#comment_num').html("("+data.data.count+")");
+                var datas = data.data.list;
+                if(datas==undefined) return false;
+                page++;
+                datas.forEach(function(item) {
+                    var headimgurl = '/static/images/user_dafault_headimg.jpg';
+                    if(item.headimgurl){
+                        headimgurl = item.headimgurl;
+                    }
+                    var time = parseInt(item.last_time*1000);
+                    if(parseInt(time+60*30*1000) > nowDate){
+                        times = '刚刚';
+                    }else if(parseInt(time+60*60*1000) > nowDate){
+                        times = '半个小时前';
+                    } else if(parseInt(time+2*60*60*1000) > nowDate){
+                        times = '1小时前';
+                    }else{
+                        var oDate = new Date(time);
+                        var Hours = oDate.getHours()>10 ? oDate.getHours() :  '0'+oDate.getHours();
+                        var Minutes = oDate.getMinutes()>10 ? oDate.getMinutes() :  '0'+oDate.getMinutes();
+                        times = oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+' '+Hours+':'+Minutes;
+                    }
+                    html += '<li id="common_'+item.id+'">';
+                    html += '<div style="overflow: hidden;padding-bottom: 10px;">';
+                    html += '   <div class="user-avatar">';
+                    html += '       <a href="javascript:">';
+                    html += '           <img src="'+headimgurl+'">';
+                    html += '       </a>';
+                    html += '    </div>';
+                    html += '    <div class="comment-section">';
+                    html += '   <div class="user-info">';
+                    html += '       <a href="javascript:" class="user-name">'+item.nickname+'</a>';
+                    html += '       <span class="comment-timestamp">'+times+'</span>';
+                    html += '       <span class="comment-Reply" onclick="replyComment(\''+item.nickname+'\',\''+item.send_user+'\',\''+item.id+'\')" ></span>';
+                    html += '   </div>';
+                    html += '   <div class="comment-text">'+item.content+'</div>';
+                    html += '   </div>';
+                    html += '</div>';
+                    var list = item.list;
+                    if(list!=undefined) {
+                        list.forEach(function(it) {
+                            var headimgurl = '/static/images/user_dafault_headimg.jpg';
+                            if(it.headimgurl){
+                                headimgurl = it.headimgurl;
+                            }
+                            var time = parseInt(it.last_time*1000);
+                            if(parseInt(time+60*30*1000) > nowDate){
+                                times = '刚刚';
+                            }else if(parseInt(time+60*60*1000) > nowDate){
+                                times = '半个小时前';
+                            } else if(parseInt(time+2*60*60*1000) > nowDate){
+                                times = '1小时前';
+                            }else{
+                                var oDate = new Date(time);
+                                var Hours = oDate.getHours()>10 ? oDate.getHours() :  '0'+oDate.getHours();
+                                var Minutes = oDate.getMinutes()>10 ? oDate.getMinutes() :  '0'+oDate.getMinutes();
+                                times = oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+' '+Hours+':'+Minutes;
+                            }
+                            html += '<div style="padding: 15px 20px;overflow: hidden;border-top: 1px solid #fbfbfb;">';
+                            html += '    <div class="user-avatar">';
+                            html += '    <a href="javascript:"><img src="'+headimgurl+'"></a>';
+                            html += '    </div>';
+                            html += '    <div class="comment-section">';
+                            html += '    <div class="user-info">';
+                            html += '    <a href="javascript:" class="user-name">'+it.nickname+'</a>';
+                            html += '    <span class="comment-timestamp">'+times+'</span>';
+                            html += '       <span class="comment-Reply" onclick="replyComment(\''+it.nickname+'\',\''+it.send_user+'\',\''+item.id+'\')" ></span>';
+                            html += '    </div>';
+                            html += '    <div class="comment-text">'+it.content+'</div>';
+                            html += '</div>';
+                            html += '</div>';
+                        })
+                    }
+                    html += ' </li>';
+                })
+                if(data.data.isMore == 1){
+                    $('#more-comment').show();
+                }else{
+                    $('#more-comment').hide();
+                }
+                $('#not-comment').remove();
+                $('#comment-list').append(html);
+            }
+        });
+    }
+
+
+    function loadedHandler(){
+        if(player.getMetaDate()){
+            player.addListener('pause', pauseHandler);
+            player.addListener('play', playHandler);
+        }
+    }
+
+    function pauseHandler(){
+        clearInterval(timer);
+        if(trySeeTime>0)layer.msg('试看计时暂停',{icon:6,time:1000});
+    }
+
+    function playHandler(){
+        layer.msg('试看计时开始……',{icon:6,time:1000});
+        timer=setInterval(checkTrySeeTime,1000);
+    }
+
+    function checkTrySeeTime(){
+        if(trySeeTime<=0){
+            layer.msg('很抱歉，试看时间到.',{icon:2,time:1000});
+            //setTimeout("videoPlayInit({$videoInfo['id']})",2000);
+            setTimeout("location.href=\"{:url('index/prompt',['id'=>$videoInfo['id']])}\"",1500);
+            player.videoPause();
+        }else{
+            trySeeTime--;
+            console.log(trySeeTime);
+        }
+    }
+
+    function createPlayer(playParams,isTrySee){
+        //console.log(playParams);
+        if(isTrySee==undefined) isTrySee=false;
+        if(layer!=undefined) layer.closeAll();
+        var vodUrl=(playParams==undefined)?'#':playParams.videoInfo.url;
+        var params={
+            container: '#playerBox',
+            variable: 'player',
+            poster:'{$videoInfo["thumbnail"]}',
+            video: vodUrl,
+            //loaded:'loadedHandler',
+            autoplay:false,
+            flashplayer:false
+        };
+        if(playParams!=undefined){
+            $.ajax({
+                url:playRequestUrl,
+                type:'POST',
+                dataType:'JSON',
+                data:{id:playParams.videoInfo.id,surePlay:1,isTrySee:isTrySee},
+                async:false,
+                success:function(resp){
+                    //console.log(resp);
+                    if(resp.resultCode!=0){
+                        layer.msg('您不能观看此影片！',{time:2000,icon:2});
+                        return false;
+                    }
+                    params.video=resp.data.videoInfo.url;
+
+                    if(resp.data.freeType==2 && resp.data.videoInfo.gold>0 && isTrySee){
+                        //按时长试看
+                        trySeeTime=resp.data.freeNum;
+                        console.log('begion try see:'+trySeeTime+'s');
+                        params.loaded="loadedHandler";
+                    }
+                },
+                error:function(){
+                    layer.msg('影片信息加载失败！',{time:2000,icon:2});
+                    return false;
+                }
+            });
+        }
+
+        {if $adSetting['ad_on']==1}
+        params.adfront='{$adSetting["pre_ad"]}';
+        params.adfrontlink='{$adSetting["pre_ad_url"]}';
+        params.adfronttime='{$adSetting["play_video_ad_time"]}';
+
+        params.adpause='{$adSetting["suspend_ad"]}';
+        params.adpauselink='{$adSetting["suspend_ad_url"]}';
+        params.adpausetime='{$adSetting["play_video_ad_time"]}';
+        {/if}
+
+            params.skipButtonShow=false;
+            player = new ckplayer(params);
+            if(isTrySee) setTimeout("player.changeControlBarShow(false)",1000); //hide control
+            if(playParams!=undefined){
+                setTimeout("player.videoPlay()",1000);//play
+            }
+
+        }
+
+
+        $(function(){
+            getCommentList();
+            getGift();
+            createPlayer(null,null);
+            videoPlayInit({$videoInfo['id']});
+
+            //点赞
+            {if condition='$isGooded==false'}
+            $("#giveGoodBtn").on('click',function(){
+                var reqData={resourceType:'video',resourceId:{$videoInfo['id']}};
+                $.post('{:url("api/giveGood")}',reqData,function(data){
+                    //console.log(data);
+                    if(data.resultCode==0){
+                        $('#goodNum').html(data.data.good);
+                        $('#giveGoodBtn').addClass("isSelected");
+
+                        layer.msg('点赞成功',{time:1000,icon:1});
+                    }else{
+                        layer.msg('点赞失败，原因：'+data.error,{time:1000,icon:2});
+                    }
+                },'JSON');
+            });
+            {/if}
+
+                //收藏
+                {if condition='!$isCollected'}
+                $(".fn-shoucang1").on("click",function () {
+                    var collectData={type:'1',id:'{$videoInfo["id"]}'};
+                    $.post('{:url("api/colletion")}',collectData,function (data) {
+                        if(data.resultCode==0){
+                            $('#shoucang').html('已收藏');
+                            $('.fn-shoucang1').addClass("isSelected");
+                            layer.msg('收藏成功',{time:1000,icon:1});
+                        }else{
+                            layer.msg('收藏失败，原因：'+data.error,{time:1000,icon:2});
+                        }
+                    },'json');
+                });
+                {/if}
+
+                    $("#comment_content").on("keyup",function () {
+                        var length = $("#comment_content").val().length;
+                        var atuser_length  = $(".comment-atuser").html().length;
+                        if(length < atuser_length){
+                            $(".comment-atuser").html('');
+                            $("#comment_content").val('');
+                            $("#length").html(0);
+                            $('#to_user').val(0);
+                            $('#to_id').val(0);
+                        }
+                        if(atuser_length > 0){
+                            length = (length - atuser_length) > 0 ?  (length - atuser_length) : 0;
+                        }
+                        $("#length").html(length);
+                        if(length > 300){
+                            var text = $("#comment_content").val().substring(0,300);
+                            $("#comment_content").val(text);
+                        }
+
+                    });
+
+                    //评论
+                    $("#submit_comment").on("click",function () {
+                        var content =  $.trim($("#comment_content").val());
+                        var to_user = $("#to_user").val();
+                        var to_id = $("#to_id").val();
+                        if((content == "" || content == undefined || content == null || content == $(".comment-atuser").html())) {
+                            layer.msg('请输入评论的内容!');
+                            return false;
+                        }
+                        var reqData={resourceType:'1',resourceId:{$videoInfo['id']},content:content,to_user:to_user,to_id:to_id};
+                        $.post('{:url("api/comment")}',reqData,function(data){
+                            if(data.resultCode==0){
+                                layer.msg(data.message,{time:1000,icon:1});
+                                $("#comment_content").val('');
+                                $("#length").html(0);
+                                $(".comment-atuser").html('');
+                                $('#to_user').val(0);
+                                $('#to_id').val(0);
+                                if(data.data.comment_examine_on != 1){
+                                    var headimgurl = '/static/images/user_dafault_headimg.jpg';
+                                    if(data.data.userinfo.headimgurl){
+                                        headimgurl = data.data.userinfo.headimgurl;
+                                    }
+                                    var html = '';
+                                    $('#not-comment').remove();
+                                    if(data.data.to_id != 0){
+                                        html += '<div style="padding: 15px 20px;overflow: hidden;border-top: 1px solid #fbfbfb;" id="common_'+data.data.id+'">';
+                                        html += '    <div class="user-avatar">';
+                                        html += '           <img src="'+headimgurl+'">';
+                                        html += '    </div>';
+                                        html += '    <div class="comment-section">';
+                                        html += '    <div class="user-info">';
+                                        html += '    <a href="javascript:" class="user-name">'+data.data.userinfo.nickname+'</a>';
+                                        html += '    <span class="comment-timestamp">刚刚</span>';
+                                        html += '       <span class="comment-Reply" onclick="replyComment(\''+data.data.userinfo.nickname+'\',\''+data.data.userinfo.id+'\',\''+data.data.to_id+'\')" ></span>';
+                                        html += '    </div>';
+                                        html += '    <div class="comment-text">'+data.data.content+'</div>';
+                                        html += '   </div>';
+                                        html += '</div>';
+                                        $("#common_"+data.data.to_id).append(html);
+                                        var go_id = 'common_'+data.data.id;
+                                        window.location.href="#"+go_id;
+                                    }else{
+                                        html += '<li id="common_'+data.data.id+'">';
+                                        html += '<div style="overflow: hidden;padding-bottom: 10px;">';
+                                        html += '   <div class="user-avatar">';
+                                        html += '       <a href="javascript:">';
+                                        html += '           <img src="'+headimgurl+'">';
+                                        html += '       </a>';
+                                        html += '    </div>';
+                                        html += '    <div class="comment-section">';
+                                        html += '   <div class="user-info">';
+                                        html += '       <a href="javascript:" class="user-name">'+data.data.userinfo.nickname+'</a>';
+                                        html += '       <span class="comment-timestamp">刚刚</span>';
+                                        html += '       <span class="comment-Reply" onclick="replyComment(\''+data.data.userinfo.nickname+'\',\''+data.data.userinfo.id+'\',\''+data.data.id+'\')" ></span>';
+                                        html += '   </div>';
+                                        html += '   <div class="comment-text">'+data.data.content+'</div>';
+                                        html += '   </div>';
+                                        html += '</div>';
+                                        html += ' </li>';
+                                        $("#comment-list ").prepend(html);
+                                        window.location.href="#comment_content";
+                                    }
+                                    $("#common_"+addLiIndex).hide().slideDown('fast');
+                                    addLiIndex++;
+                                }
+                            }else{
+                                layer.msg('评论失败，原因：'+data.error,{time:2000,icon:2});
+                            }
+                        },'JSON');
+                    });
+                });
+
+
+        function getGift(){
+            var url = "{:url('Api/getGift')}";
+            var data = {
+                "func": "getNameAndTime" ,
+            };
+            var html = '';
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function(data){
+                    data.forEach(function(item) {
+                        html += '<div class="r-cel" title="'+item.name+'">' ;
+                        html += '  <img src="'+item.images+'"/>' ;
+                        html += '       <span>'+item.name+'</span>' ;
+                        html += '       <p>'+item.price+'金币</p>' ;
+                        html += '        <a onclick="reward('+item.id+','+item.price+',{$videoInfo.id},1)">打赏</a>' ;
+                        html += ' </div>' ;
+                    })
+                    $('#gift_box').html(html);
+                }
+            });
+        }
+</script>
+<div class="new-player eg-mb-30">
+    <div class="eg-width-1200 eg-pt-25 eg-bg-none">
+        <div class="video-title-one eg-width-970 eg-font-size-20 eg-bg-none eg-mb-10">
+            <span>{$videoInfo['title']}</span>
+            <div class="interact-box">
+                <span style="margin-right: 20px;">
+                    <b>分类：</b>
+                    <a href="/video/lists.html?cid={$videoInfo['classid']|default=''}" class="label">
+                        {$videoInfo['classname']|default=''}
+                    </a>
+                </span>
+                {if condition="$videoInfo['taglist']"}
+                    <span style="margin-right: 20px;">
+                        <b>标签：</b>
+                        {volist name="$videoInfo['taglist']|default=''" id="v"}
+                            <a  href="/video/lists.html?tag_id={$v['id']}" class="label">{$v['name']|default=''}</a>
+                        {/volist}
+                    </span>
+                {/if}
+                <span>
+                    <b>{$classname['name']}：</b>
+                    <a  href="/video/lists.html?area_id={$videoInfo['area_id']|default='0'}" class="label">{$classarea['name']|default='未知'}</a>
+                </span>
+            </div>
+        </div>
+        <div class="new-video-player eg-margin-center" id="video-box"style="overflow: hidden; background: #363535; position: relative;">
+
+            <div class="spv-player">
+                <div class="play-box" id="playerBox">
+                    <img src="{$videoInfo['thumbnail']}" width="100%" height="100%" />
+
+                </div>
+                <div class="box-one">
+                    <div class="share">
+                        <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1520817158401">
+                            <span>分享到：</span>
+                            <!--<a href="#" class="bds_more" data-cmd="more"></a>-->
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="popup_sqq" data-cmd="sqq" title="分享到QQ"></a>
+                            <a href="#" class="popup_tieba" data-cmd="tieba" title="分享到人人网"></a>
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        </div>
+                        <script>window._bd_share_config = {
+                            "common": {
+                                "bdSnsKey": {},
+                                "bdText": "",
+                                "bdMini": "2",
+                                "bdPic": "",
+                                "bdStyle": "0",
+                                "bdSize": "16"
+                            }, "share": {}
+                        };
+                        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+                        <div class="fn-updown">
+                            <span><i class="btn fn-shoucang1 {if condition='$isCollected'}isSelected{/if}"></i><var id="shoucang">{if condition='$isCollected'}已收藏{else/}收藏{/if}</var></span>
+                            <span><i class="btn fn-zan2 {if condition='$isGooded'}isSelected{/if}" id="giveGoodBtn"></i><var id="goodNum">{$videoInfo['good']}</var></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-box">
+                    <div class="tab">
+                        <span data-for="reward" class="cur">打赏</span>
+                        {if condition="isset($videoSet)"}
+                        <span data-for="select" id="videoSetLabel">选集</span>
+                        <script>
+                            setTimeout("$('#videoSetLabel').click()",500);
+                        </script>
+                        {/if}
+                    </div>
+                    <div class="sub-tab">
+                        <!--打赏-->
+                        <div class="reward" style="display: block;">
+                            <div class="reward-box" style="overflow:hidden;">
+                                <div class="reward-content" id="gift_box">
+                                </div>
+                            </div>
+                            <p class="text">该视频被<var id="count">{$count}</var>位网友打赏过,总额为<var id="countprice">{$count_price}</var>元</p>
+                        </div>
+                        <!--选集-->
+                        {if condition="isset($videoSet)"}
+                        <div class="select" >
+                            <ul>
+                                {volist name="videoSet" id="video"}
+                                <li {if condition="$video['id'] eq $videoInfo['id']"}class="curlPlayVideoLi"{/if}>
+                                <a href="{:url('video/play',array('id'=>$video.id))}" _stat="video-list-column:click">
+                                    <div class="pic" style="background:#1f1f1f;border:1px solid #535351;">
+                                        <img src="{$video.thumbnail}" />
+                                        <!--<span>{$video.play_time}</span>-->
+                                    </div>
+                                    <p>{$video.title}</p>
+                                    <p class="content-like">
+                                        <span class="mod-like"><i class="btn fn-see"></i>{$video['click']}</span>
+                                        <span class="mod-like" style="float: right;"><i class="btn fn-zan2"></i>{$video.good|default="0"}</span>
+                                    </p>
+                                </a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="eg-width-1200 eg-bg-none overflow">
+
+    <!--截图-->
+    <div class="left-part fl">
+
+        {notempty name="img"}
+        <div class="new-video-info translate">
+            <p>视频截图</p>
+            <div id="video-img">
+                {volist name="img" id="v"}
+                <span><img src="{$v}"/> </span>
+                {/volist}
+            </div>
+        </div>
+        {/notempty}
+
+
+        {notempty name="videoInfo.info"}
+        <div class="new-video-info eg-pt-20 eg-pb-20 eg-mb-15 eg-radius">
+            <h3 class="eg-font-size-22 eg-pb-10">视频简介：</h3>
+            <div class="tj eg-color-333"> {$videoInfo['info']|htmlspecialchars_decode}</div>
+        </div>
+        {/notempty}
+        <div class="new-video-info eg-pt-20 eg-pb-20 eg-mb-15 eg-radius">
+            <div class="area-form">
+                <div class="comment-form">
+                    <div class="form-cell">
+                        <div class="form-wordlimit">
+                            <span class="form-wordlimit-input input-count" id="length">0</span>
+                            <span class="form-wordlimit-upper">/300</span>
+                        </div>
+                        <div class="form-textarea form-textarea-picdom">
+                            <textarea data-maxlength="300" name="content" placeholder="看点槽点，不吐不快！别憋着，马上大声说出来吧！" id="comment_content"></textarea>
+                            <div class="comment-atuser" style="position:absolute;left:5px;top:32px;font-size:12px;background: #ebebeb"></div>
+                            <input type="hidden" id="to_user" value="0">
+                            <input type="hidden" id="to_id" value="0">
+                        </div>
+                        <div class="form-toolbar">
+                            <div class="form-tool form-action">
+                                <a href="javascript:;" class="form-btn-submit" id="submit_comment">发表评论</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area-box">
+                <div class="comment-tab">
+                    <span class="comment-tab-left">全部评论<em class="num" id="comment_num">(0)</em></span>
+                </div>
+                <div class="comment-list" >
+                    <ul id="comment-list">
+                        <li id='not-comment'>暂没评论~</li>
+                    </ul>
+                    <div id="more-comment"><span onclick="getCommentList()">更多<i class="btn fn-more"></i></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-part fr">
+        <div class="creator-work eg-radius eg-mb-15">
+            <div class="package">
+                <div class="photo-info">
+                    <div class="box1">
+                        <!---->
+                        <a href="{:url('homepage/index',array('uid'=>$videoInfo['user_id']))}">
+                            <img src="{$videoInfo['headimgurl']|default=''}">
+                        </a>
+                    </div>
+                    <div class="box2 eg-font-size-18 tc">
+                        <div class="fl" style="position: relative; left:50%;">
+                            <span class="eg-color-333 eg-mr-5 fl" style="position: relative; right:50%">
+                                {if $videoInfo.user_id>0}<a title="进入ta的主页" href="{:url('homepage/index',array('uid'=>$videoInfo['user_id']))}"><var>{$videoInfo['member']}</var></a>{else/}管理员{/if}
+                            </span>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    <div class="box3 tc"></div>
+                    <h3 class="tc eg-pd-20 eg-font-size-20"><em class="eg-bg-white">相关推荐</em></h3>
+                    <ul>
+                        {volist name="recom_list" id="vo"}
+                        <li>
+                            <a href="{:url('video/play',array('id'=>$vo['id']))}" title="{$vo['title']}">
+                                <div class="video-play-btn"></div>
+                                <img src="{$vo['thumbnail']}" alt="{$vo['title']}">
+                            </a><a class="box4 eg-mb-10" href="{:url('video/play',array('id'=>$vo['id']))}"  title="{$vo['title']}">
+                            <p>{$vo['title']}</p>
+                        </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="__ROOT__/tpl/zixun/static/css/viewer.min.css">
+<script type="text/javascript" src="__ROOT__/tpl/zixun/static/js/viewer.min.js"></script>
+<script>
+    var viewer = new Viewer(document.getElementById('video-img'), {
+        url: 'data-original'
+    });
+</script>
+<script>
+    $(function(){
+        $(".list-box .tab span").click(function(){
+            var $self = $(this);
+            $self.addClass("cur").siblings().removeClass("cur");
+            var $attr = $self.attr("data-for");
+            $(".list-box .sub-tab>div").hide();
+            $(".list-box .sub-tab").find("."+ $attr).show();
+        });
+
+        $(".select1").on("click","a",function(){
+            $(".select1 a").removeClass("cur");
+            $(this).addClass("cur");
+        });
+    });
+    function check_logins(){
+        $.post('/api/get_login_status','{}',function (e) {
+            if(e.resultCode == 3){
+                layer.msg('该账号已在其他地方登陆',
+                    {
+                        icon: 5,
+                        time: 3000,
+                        shadeClose: false,
+                        shade: 0.8,
+                        btn: ['确定'],
+                        yes:function (index) {
+                            layer.close(index);
+                            window.location.reload();
+                        },
+                        success: function (layero) {
+                            var btn = layero.find('.layui-layer-btn');
+                            btn.css('text-align', 'center');
+                        }
+                    },function () {
+                        window.location.reload();
+                    });
+            }
+        },'json');
+        setTimeout('check_logins()', 5000);
+    }
+</script>
+{if condition="$login_status['resultCode'] eq 1 "}
+<script>
+    check_logins();
+</script>
+{/if}
+
+{include file="common/footer"}

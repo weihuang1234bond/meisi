@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery全屏幻灯片插件finger</title>
+
+<style>
+html {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	background-color: #fff;
+	font-weight: 300;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+a, a:visited {
+	color: #E54028;
+	text-decoration: none;
+}
+a:hover {
+	color: #c22d18;
+	text-decoration: underline;
+	cursor: pointer;
+}
+</style>
+
+
+
+<!--Required libraries-->
+<script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+<script src="js/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+<!--Include flickerplate-->
+<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
+<script src="js/flickerplate.min.js" type="text/javascript"></script>
+<!--Execute flickerplate-->
+<script>
+$(document).ready(function(){
+	$('.flicker-example').flicker();
+});
+</script>
+</head>
+<body>
+
+<div class="flicker-example" data-block-text="false">
+	<ul>
+		<li data-background="img/field.jpg">
+			<div class="flick-title">Flickerplate Is Working</div>
+			<div class="flick-sub-text">Heaven forbid this package you downloaded is broken. That wouldn't be embarrassing at all.</div>
+		</li>
+		<li data-background="img/forest.jpg">
+			<div class="flick-title">Editable via Javascript or CSS</div>
+			<div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the settings in multiple ways.</div>
+		</li>
+		<li data-background="img/frozen-water.jpg">
+			<div class="flick-title">Touch Enabled Through the jQuery Finger Library</div>
+			<div class="flick-sub-text">jQuery Finger is a great touch library that has been included as part of the Flickerplate package.</div>
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+{include file="homepage/common"}
+
+
+                <div class="mod-new video-mod">
+                    <div class="title"><h2>最新视频</h2></div>
+                    <div class="mod-row">
+                        {notempty name='videoList'}
+                        {volist name='videoList' id='video'}
+                        <div class="mod-col">
+                            <a target="_blank" href="{:url('video/play',array('id'=>$video.id))}">
+                                <div class="view-layer">
+                                    <img src="{$video.thumbnail}">
+                                    <p>{$video.play_time}</p>
+                                    <div class="play-bg"><span><i></i></span></div>
+                                </div>
+                            </a>
+                            <p class="col-title">{$video.title}</p>
+                            <div class="subtitle">
+                                <i class="btn fn-see"></i>{$video.click}
+                                <div style="display: inline-block;"><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$video.gold}</div>
+                                <span><i class="btn fn-zan2"></i>{$video.good}</span>
+                            </div>
+                        </div>
+                        {/volist}
+                        {else/}
+                        <div style="color: #c1c1c1;">这家伙还没发布过.</div>
+                        {/notempty}
+
+                    </div>
+                </div>
+
+                <!--最新图册-->
+                <div class="mod-new">
+                    <div class="title"><h2>最新图册</h2></div>
+                    <div class="mod-row images">
+                        {notempty name='atlasList'}
+                        {volist name='atlasList' id='atlas'}
+                        <div class="mod-col">
+                            <a target="_blank" href="{:url('images/show',array('id'=>$atlas.id))}">
+                                <div class="pic-layer">
+                                    <img src="{$atlas.cover}">
+                                    <div class="subtitle">
+                                        <i class="btn fn-see"></i>{$atlas.click}
+                                        <i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$atlas.gold}
+                                        <span><i class="btn fn-time"></i>{:date('Y/m/d',$atlas.update_time)}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <p class="col-title">{$atlas.title}</p>
+                        </div>
+                        {/volist}
+                        {else/}
+                        <div style="color: #c1c1c1;">这家伙还没发布过.</div>
+                        {/notempty}
+                    </div>
+                </div>
+
+                <!--最新资讯-->
+                <div class="mod-new">
+                    <div class="title"><h2>最新资讯</h2></div>
+
+                    {notempty name='novelList'}
+                    <div class="mod-row novel-list novel-left">
+                        <ul>
+                            {volist name="novelList" id="novel"}
+                            <li>
+                                <a target="_blank" href="{:url('novel/show',array('id'=>$novel.id))}">
+                                    <div class="novelPic"><img src="{$novel.thumbnail}"></div>
+                                    <div class="novel-box">
+                                        <p>{$novel.title}</p>
+                                        <span class="text">{$novel.short_info|default="暂没短说明"}</span>
+                                        <div>
+                                            <div class="box-f">
+                                                <span><i class="btn fn-time"></i>{:date('Y/m/d',$novel.update_time)}</span>
+                                                <span><i class="btn fn-see"></i>{$novel.click}</span>
+                                                <span><i class="btn fn-jinbi1"></i>{$novel.gold}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                    {else/}
+                    <div style="color: #c1c1c1;">这家伙还没发布过.</div>
+                    {/notempty}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{include file="common/footer"}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<?php $menu = getMenu();?>
+<?php  $register_validate = empty(get_config('register_validate')) ? 0 : get_config('register_validate');?>
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+<meta charset='UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, maximum-scale=1, user-scalable=yes, minimal-ui'>
+<meta name="keywords" lang="zh-CN" content="{$seo['site_keywords']}"/>
+<meta name="description" lang="zh-CN" content="{$seo['site_description']}" />
+<title>{$page_title|default=""}{$seo['site_title']}</title>
+<link href="__ROOT__/tpl/ms360/static/awesome/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="__ROOT__/tpl/ms360/static/js/layui/css/layui.css">
+<link rel="stylesheet" href="__ROOT__/tpl/ms360/static/css/detail.css">
+<link rel="stylesheet" href="__ROOT__/tpl/ms360/static/css/common.css">
+
+<script type="text/javascript" src="__ROOT__/tpl/ms360/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__ROOT__/tpl/ms360/static/js/layer/layer.js"></script>
+<script type="text/javascript" src="__ROOT__/tpl/ms360/static/js/meisicms.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/tpl/ms360/static/js/layui/layui.js"></script>
+<style>
+.videologo {
+background: url({$seo['site_logo']});
+float:left;
+height: 48px;
+margin: 10px 0;
+overflow: hidden;
+text-indent: -9999px;
+width: 150px;
+background-size: 100% auto;
+}
+</style>
+</head>
+<body id="tvHome">
+<link href="__ROOT__/tpl/ms360/static/css/common.css" rel="stylesheet">
+<link href="__ROOT__/tpl/ms360/static/css/index.css" rel="stylesheet">
+<div class="header clearfix">
+  <div class="header-fixe clearfix">
+    <div class="wrapper header-wrap">
+      <h1 class="videologo"><a href="/" title="{$seo['site_title']}" target="_self">{$seo['site_title']}</a></h1>
+      <ul class="nav">
+        <li class="nav-more"><a href="/" target="_self">首页</a></li>
+        {volist name="menu" id="vo"}
+        <li {if condition="$vo['current'] eq 1"}class="nav-more nav-more-cur"{else}class="nav-more"{/if}> <a href="{$vo['url']}">{$vo['name']}<i class="arr"></i></a>
+          <div class="nav-pop"> <i class="nav-pop-arr"></i>
+            <h3 class="nav-pop-tit">{$vo['name']}分类</h3>
+            <ul class="nav-pop-list">
+              {notempty name="vo.sublist"}
+              {volist name="vo.sublist" id="v"}
+              <li><a href="{$v['url']}" target="_self">{$v['name']}</a></li>
+              {/volist}
+              {/notempty}
+            </ul>
+          </div>
+        </li>
+        {/volist}
+      <!-- <li class="nav-topics"><a href="{:url('system_pay/recharge')}" target="_blank"></li> -->
+      </ul>
+      <?php $controller = lcfirst(request()->controller());?>
+      <?php $memberInfo = get_member_info();$login_status = check_is_login();?>
+      <div class="login">
+        <div class="login-box" style="{if condition="$login_status['resultCode'] neq 1 "}display: block;{else/}display: none;{/if}">
+        <a data-toggle="modal" href="{:url('index/login')}">登录</a> | <a href="{:url('index/register')}" target="_blank">注册</a> </div>
+      <div class="user-info" style="{if condition="$login_status['resultCode'] neq 1 "}display: none;{else/}display: block;{/if}">
+      <div class="user-info-item"> <span class="user-img"> <a href="{:url('member/member')}"><img src="{if condition="session('member_info')['headimgurl'] neq ''"}{:session('member_info')['headimgurl']}{else/}/static/images{:url('member/member')}_dafault_headimg.jpg{/if}""></a></span> <span class="user-name"><a href="{:url('member/member')}" se_prerender_url="complete">{:session('member_info')['nickname']} <i class="fa fa-angle-down" aria-hidden="true"></i></a></span></div>
+      <div class="user-pop" style="left: 81px; display: none;"> <i class="user-pop-arr" style="left: 222px;"></i> <a href="javascript:void(0);" class="user-out" onClick="logout()" title="退出">退出</a>
+        <div class="user-pop-grade" style="display: block;">
+          <div class="user-pop-header"> <img src="{if condition="session('member_info')['headimgurl'] neq ''"}{:session('member_info')['headimgurl']}{else/}/static/images{:url('member/member')}_dafault_headimg.jpg{/if}"" alt=""></div>
+          <div class="user-pop-detail">
+            <div class="btn-pop-signin"> <a href="javascript:void(0);" style="color:#fff;" onClick="sign()">今日签到</a> </div>
+            <div class="name">
+              <p style="font-size:16px;">{:session('member_info')['nickname']}</p>
+              <div class="user-pop-level" style="color:#000;">级别：{if condition="$memberInfo.is_permanent eq 1"}永久VIP{else/}{if condition="$memberInfo['out_time'] gt time()"}{:safe_date('Y-m-d',$memberInfo['out_time'])}（<b style="color:red;">VIP</b>）{else/}普通会员{/if}{/if}</div>
+            </div>
+          </div>
+        </div>
+        <div class="user-pop-task" style="display: block;">
+          <ul>
+            <li>
+              <div class="pic"><i class="fa fa-upload" style="color:#33CC00;font-size:1.3rem"></i></div>
+              <div class="info"><span>上传视频与网友分享，还可以赚取佣金哦！</span></div>
+              <div class="status task-status-checkin"> <a href="{:url('member/video')}" target="_blank">
+                <p>上传</p>
+                </a> </div>
+            </li>
+            <li>
+              <div class="pic"><i class="fa fa-users" style="color:#FF0099;font-size:1.1rem"></i></div>
+              <div class="info"><span>成为本站三级分销商赚取丰厚佣金<span></div>
+              <div class="status task-status-watchLiveHalfhour"> <a href="{:url('member/agent')}" target="_blank">
+                <p>申请</p>
+                </a> </div>
+            </li>
+            <li>
+              <div class="pic"><i class="fa fa-share-alt" style="color:#FF6600;font-size:1.3rem"></i></div>
+              <div class="info"> <span>分享本站通过别人点击赚取观看金币</span></div>
+              <div class="status task-status-watchFiveAnchors"> <a href="{:url('member/member')}" target="_blank">
+                <p>分享</p>
+                </a> </div>
+            </li>
+          </ul>
+        </div>
+        <div class="user-pop-loadimg" style="display: none;"> <img src="__ROOT__/tpl/ms360/static/images/loading.gif"></div>
+        <div class="user-pop-nav"> <a href="{:url('member/member')}" target="_blank"> <i class="fa fa-user-circle fa-2x" style="line-height:33px;"></i><br>
+          个人中心</a> <a href="{:url('system_pay/recharge')}" target="_blank"> <i class="fa fa-diamond fa-2x" style="line-height:33px;"></i><br>
+          会员充值</a> <a href="{:url('member/collection_video')}" target="_blank"> <i class="fa fa-star fa-2x" style="line-height:33px;"></i><br>
+          我的收藏</a> <a href="{:url('homepage/index',array('uid'=>session('member_id')))}" target="_blank"> <i class="fa fa-home fa-2x" style="line-height:33px;"></i><br>
+          个人主页</a> </div>
+      </div>
+    </div>
+  </div>
+  <div class="hd-search">
+    <div class="hd-search-box">
+      <form {switch name="controller" }
+     {case value="images" } action="{:url('search/index',array('type'=>'atlas'))}"{/case}
+    {case value="atlas" } action="{:url('search/index',array('type'=>'atlas'))}"{/case}
+    {case value="novel"}action="{:url('search/index',array('type'=>'novel'))}"{/case}
+    {case value="search"}action="{:url('search/index',array('type'=>$type))}"{/case}
+    {default /}action="{:url('search/index',array('type'=>'video'))}"
+    {/switch} method="get" id="myform">
+      <input type="text" class="ms-search-input"  value='{if condition="isset($key_word)"}{:$key_word}{/if}' name="key_word" placeholder="输入关键词搜索...">
+      <button class="ms-search-submit" type="submit">搜索</button>
+      </form>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+</div>
+</div>

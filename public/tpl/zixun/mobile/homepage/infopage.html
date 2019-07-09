@@ -1,0 +1,137 @@
+{include file="homepage/common"}
+
+            </div>
+{notempty name='list'}
+<div>
+    <div class="item">
+        <label>排序：</label>
+        <ul id="orderCode" style="margin-left: -10px;">
+            <li id="lastTime" {if condition="$orderCode eq 'lastTime'"}class="current"{/if}><a href="#">最新</a></li>
+            <li id="hot" {if condition="$orderCode eq 'hot'"}class="current"{/if}><a href="#">最热</a></li>
+        </ul>
+    </div>
+</div>
+{/notempty}
+
+<div class="panel" style="margin-bottom: 40px;">
+    <ul class="novel-list">
+        {notempty name="list"}
+        {volist name="list" id="vo"}
+        <li>
+            <a href="{:url('novel/show',array('id'=>$vo['id']))}">
+                <div class="novelPic">
+                    <img src="{$vo['thumbnail']}">
+                </div>
+                <div class="novel-box">
+                    <p>{$vo['title']}</p>
+                    <span class="text">{$vo['short_info']|default="暂没短说明"}</span>
+                    <div>
+                        <div class="box-f">
+                            <span><i class="btn fn-time"></i>{$vo['update_time']|date="y/m/d",###}</span>
+                            <span><i class="btn fn-bofang"></i>{$vo['click']}</span>
+                            <span><i class="btn fn-jinbi1"></i>{$vo['gold']}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        {/volist}
+        {else/}
+        <div class="not-comment not">暂时没有数据 ~</div>
+        {/notempty}
+    </ul>
+</div>
+    </div>
+
+</div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='lastTime'}" >
+    <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+    <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+    <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+</form>
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').find('li').click(function(){
+            $('#current_orderCodes').val($(this).attr('id'));
+            $('#forms').submit();
+        })
+
+        var status = 1;
+        var page  = 0;
+        $(window).scroll(function(){
+            var srollPos = $(window).scrollTop();
+            var orderCode = $('#current_orderCodes').val();
+            var tag_id =  $('#current_tag_id').val();
+            var sub_id = $('#current_sub_cid').val();
+            var cid = $('#current_cid').val();
+            var data = {
+                "page" : page ,
+                "orderCode" : orderCode,
+                "tag_id" : tag_id,
+                "sub_id" : sub_id,
+                "cid" : cid,
+                "offset" : 10,
+                "type" : 'novel',
+                'userid':{$userinfo.id|default=0}
+            };
+            if(srollPos+$(window).height() > $(document).height() - 80){
+                if(status == 1) {
+                    status = 0;
+                    $.ajax({
+                        type: "POST",
+                        data: data,
+                        dataType: "JSON",
+                        url: "{:url('Api/moreData')}",
+                        success: function (data) {
+                            if(data.resultCode == 0){
+                                var datas = data.data.list;
+                                if(datas){
+                                    var html = '';
+                                    datas.forEach(function(item) {
+                                        var url =  '/novel/show/id/'+item['id'];
+                                        var update_time = item['update_time'];
+                                        var newDate = new Date(update_time * 1000);
+                                        if(item['short_info']){
+                                            var short_info = item['short_info'];
+                                        }else{
+                                            var short_info = "暂没短说明";
+                                        }
+                                        html += '<li>';
+                                        html += '<a href="'+url+'">';
+                                        html += '    <div class="novelPic">';
+                                        html += '    <img src="'+item['thumbnail']+'">';
+                                        html += '    </div>';
+                                        html += '    <div class="novel-box">';
+                                        html += '    <p>'+item['title']+'</p>';
+                                        html += '    <span class="text">'+short_info+'</span>';
+                                        html += '    <div>';
+                                        html += '    <div class="box-f">';
+                                        html += '    <span><i class="btn fn-time"></i>'+(newDate.getMonth() + 1)+'-'+newDate.getDate()+'</span>';
+                                        html += '<span><i class="btn fn-bofang"></i>'+item['click']+'</span>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        html += '</a>';
+                                        html += '</li>';
+                                    });
+                                    $('.not-comment').remove();
+                                    $('.novel-list').append(html);
+                                    page++;
+                                    status = 1;
+                                }else{
+                                    console.log('没有更多数据了！');
+                                }
+                            }else{
+                                console.log('没有更多数据了！');
+                            }
+                        }
+                    });
+                }
+            }
+        })
+    });
+
+</script>
+
+{include file="common/footer"}

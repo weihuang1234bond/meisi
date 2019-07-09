@@ -1,0 +1,119 @@
+{include file="homepage/common"}
+
+
+            </div>
+        {notempty name='list'}
+            <div class="item" id="homepage">
+                <label>排序：</label>
+                <ul id="orderCode" style="margin-left: -10px;">
+                    <li id="lastTime"  {if condition="$orderCode eq 'lastTime'"}class="current"{/if} ><a href="#">最新</a></li>
+                    <li id="hot" {if condition="$orderCode eq 'hot'"}class="current"{/if}  ><a href="#">最热</a></li>
+                </ul>
+            </div>
+        {/notempty}
+
+        <div class="panel" style="margin-bottom: 40px;">
+            <ul class="pic-list clearfix">
+                {notempty name="list"}
+                {volist name="list" id="vo"}
+                <li>
+                    <div class="ub-list">
+                        <a href="{:url('images/show',array('id'=>$vo['id']))}" class="ub-link">
+                            <div class="ub-pic" style="background-image: url('{$vo['cover']}');"></div>
+                            <span class="ub-tit">{$vo['title']}</span>
+                            <span class="ub-tit">
+                                <i class="btn fn-bofang"></i><span class="v-num" title="访问量">{$vo['click']}</span>
+                                <var style="float: right;"><i class="btn fn-time"></i>{:date('m/d',$vo['update_time'])}</var>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                {/volist}
+                {else/}
+                <div class="not-comment not">暂时没有数据 ~</div>
+                {/notempty}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+    <input type="hidden"  name="key_word" value="{$key_word|default=''}" >
+    <input type="hidden"  name="type" value="{$type|default='video'}" >
+</form>
+
+
+<script>
+    $(function(){
+        $('#orderCode').find('li').click(function(){
+            $('#current_orderCodes').val($(this).attr('id'));
+            $('#forms').submit();
+        });
+
+        var status = 1;
+        var page  = 0;
+        $(window).scroll(function(){
+            var srollPos = $(window).scrollTop();
+            var orderCode = $('#current_orderCodes').val();
+            var tag_id =  $('#current_tag_id').val();
+            var sub_id = $('#current_sub_cid').val();
+            var cid = $('#current_cid').val();
+            var data = {
+                "page" : page ,
+                "orderCode" : orderCode,
+                "cid" : cid,
+                "offset" : 20,
+                "type" : 'atlas',
+                'userid':{$userinfo.id|default=0}
+            };
+            if(srollPos+$(window).height() > $(document).height() - 80){
+                if(status == 1) {
+                    status = 0;
+                    $.ajax({
+                        type: "POST",
+                        data: data,
+                        dataType: "JSON",
+                        url: "{:url('Api/moreData')}",
+                        success: function (data) {
+                            if(data.resultCode == 0){
+                                var datas = data.data.list;
+                                if(datas){
+                                    var html = '';
+                                    datas.forEach(function(item) {
+                                        var url =  '/images/show/id/'+item['id'];
+                                        var update_time = item['update_time'];
+                                        var newDate = new Date(update_time * 1000);
+                                        html += '<li>';
+                                        html += '<div class="ub-list">';
+                                        html += '    <a href="'+url+'" class="ub-link">';
+                                        html += '    <div class="ub-pic"';
+                                        html += 'style="background-image: url('+item['cover']+');"></div>';
+                                        html += '    <span class="ub-tit">'+item['title']+'</span>';
+                                        html += '    <span class="ub-tit">';
+                                        html += '    <i class="btn fn-bofang"></i><span class="v-num" title="访问量">'+item['click']+'</span>';
+                                        html += '    <var style="float: right;"><i class="btn fn-time"></i>'+(newDate.getMonth() + 1)+'/'+newDate.getDate()+'</var>';
+                                        html += '</span>';
+                                        html += '</a>';
+                                        html += '</div>';
+                                        html += '</li>';
+                                    });
+                                    $('.not-comment').remove();
+                                    $('.pic-list').append(html);
+                                    page++;
+                                    status = 1;
+                                }else{
+                                    console.log('没有更多数据了！');
+                                }
+                            }else{
+                                console.log('没有更多数据了！');
+                            }
+                        }
+                    });
+                }
+            }
+        })
+    })
+</script>
+{include file="common/footer"}

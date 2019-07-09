@@ -1,0 +1,102 @@
+{include file="common/header"}
+<link href="__ROOT__/tpl/happy2018/peixin/css/msvod.css" rel="stylesheet">
+<script src="__ROOT__/tpl/happy2018/static/js/jquery.zclip.min.js"></script>
+<script>
+
+    $(function(){
+        $("#cp-btn").zclip({
+            path:'__ROOT__/tpl/happy2018/static/js/ZeroClipboard.swf', //记得把ZeroClipboard.swf引入到项目中
+            copy:function(){
+                return $('#tg-link').val();
+            }
+        });
+    });
+</script>
+<style>
+    .mod-row .mod-col{width: 223px;margin: 0 6px 15px 6px;}
+    .t-box .tab{margin-bottom: 20px;}
+    .novel-list li .novel-box{float: left;margin-left: 20px;}
+    .novel-left li{width: 48%;display: inline-block; float: left;border-bottom: 1px solid #eee !important;margin: 0;}
+    .novel-left li .novel-box{width: 400px;float: left;margin-left: 13px;}
+    .novel-left li .novel-box .text{margin: 0;}
+    .vault-main .sort-title .sort-item{line-height: 34px;}
+    .flow-list .flow-item{width: 235px;margin-right: 6px;}
+    .flow-list .flow-item .item-show{width:100%;}
+    .flow-list{padding: 0 20px;margin: 0;}
+    .pub-title{margin: 0 0px 20px;}
+    .flow-list .flow-item .info-title .title-name{max-width: 147px;}
+    .flow-list .flow-item{margin: 0 2px 20px 2px;}
+    .pub-title h3{font-weight: bold;}
+
+    .vault-main .sort-title{
+        margin: 0 22px 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 3px;
+        overflow: hidden;
+    }
+    .vault-main .sort-title .sort-label{
+        float: left;
+        width: 42px;
+        margin-top: 1px;
+        line-height: 30px;
+        color: #909090;
+        font-size: 14px;
+    }
+    .vault-main .sort-title .sort-item{
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 31px;
+    }
+    .vault-main .sort-title .sort-item select{
+        background: transparent;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .vault-main .sort-title .sort-stat{
+        float: right;
+        line-height: 34px;
+        font-size: 12px;
+        color: #999;
+    }
+    .vault-main .sort-title .sort-stat b{
+        margin: 0 4px;
+        font-weight: 400;
+    }
+</style>
+<div class="banner-img">
+    <div class="share">
+        <div style="width:1230px;margin: auto;">
+            <input type="text" id="tg-link"  onmouseover="this.select();" value="{:request()->domain()}/{$userinfo.id}" /><button id="cp-btn">复制</button>
+        </div>
+    </div>
+</div>
+<div class="layout-cont">
+
+    <!--<div class="content" id="vip-content">-->
+        <div class="v-content">
+            <div class="t-top">
+                <div class="l-vip">
+                    <div class="h-vip">
+                        <img style="max-width: 100%;max-height:100%;" src="{$userinfo.headimgurl}" />
+                    </div>
+                    <div class="info-vip">
+                        <p class="title">{$userinfo['nickname']}</p>
+                        <p>性别：{if $userinfo['sex']==1}男{elseif $userinfo.sex==2}女{else/}未知{/if}</p>
+                    </div>
+                </div>
+                <div class="r-vip">
+                    <ul>
+                        <li><span>视频</span>{$userVideoTotal}</li>
+                        <li><span>资讯</span>{$userNovelTotal}</li>
+                        <li><span>图册</span>{$userAtlasTotal}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="t-box">
+                <div class="tab">
+                    <a href="{:url('homepage/index')}" {if strtolower(request()->action())=='index'}class="cur"{/if}>首页</a>
+                    <a href="{:url('homepage/videopage')}" {if strtolower(request()->action()=='videopage')}class="cur"{/if}>视频</a>
+                    <a href="{:url('homepage/imgpage')}"  {if strtolower(request()->action()=='imgpage')}class="cur"{/if}>图册</a>
+                    <a href="{:url('homepage/infopage')}"  {if strtolower(request()->action()=='infopage')}class="cur"{/if}>资讯</a>
+                </div>

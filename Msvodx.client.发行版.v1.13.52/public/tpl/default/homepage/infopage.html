@@ -1,0 +1,79 @@
+{include file="homepage/common"}
+
+            </div>
+
+       <div class="novel-main">
+            <div class="novel-left">
+                <ul>
+                    {notempty name="list"}
+                        {volist name="list" id="vo"}
+                        <li>
+                            <a target="_blank" href="{:url('novel/show',array('id'=>$vo['id']))}">
+                                <div class="novelPic"><img src="{$vo['thumbnail']}" /></div>
+                                <div class="novel-box">
+                                    <p>{$vo['title']}</p>
+                                    <span class="text">{$vo['short_info']|default="暂没短说明"}</span>
+                                    <div>
+                                        <div class="box-f">
+                                            <span><i class="btn fn-time"></i>{$vo['update_time']|date="y-m-d H:i:s",###}</span>
+                                            <span><i class="btn fn-see"></i>{$vo['click']}</span>
+                                            <span><i class="btn fn-jinbi1"></i>{$vo['gold']}</span>
+                                        </div>
+                                        <div class="box-r">
+                                        {volist name="$tag[$vo['id']]" id="v"}
+                                        {if condition="isset($tags_list[$v])"}<span>{$tags_list[$v]}</span>{/if}
+                                        {/volist}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+                    {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                    {/notempty}
+                </ul>
+
+            </div>
+        </div>
+        <div class="sort-pager">
+            {$pages}
+        </div>
+    </div>
+    <form action="" method="get" id="forms">
+        <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+        <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+        <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        $('#sub_box').find('li').click(function(){
+            var sub = $(this).attr('data');
+            $('#current_sub_cid').val(sub);
+            $('#forms').submit();
+        })
+        $('#class_box').find('li').click(function(){
+            var cid = $(this).attr('data');
+            $('#current_cid').val(cid);
+            $('#current_sub_cid').val(0);
+            $('#forms').submit();
+        })
+        $('#tag_box').find('li').click(function(){
+            var tag_id = $(this).attr('data');
+            $('#current_tag_id').val(tag_id);
+            $('#forms').submit();
+        })
+
+        /*鼠标移动到列表上*/
+        $(".novel-left li a").hover(function(){
+            $(this).find("p").css("color","#3b9eff");
+        },function(){
+            $(this).find("p").css("color","#333");
+        });
+
+    });
+
+</script>
+{include file="common/footer"}

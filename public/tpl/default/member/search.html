@@ -1,0 +1,69 @@
+{include file="common/header"}
+<link href="__ROOT__/tpl/default/static/css/video-sort.css" rel="stylesheet">
+
+<style>
+    .vault-main{
+        padding: 20px 20px 0;
+    }
+    .vault-main .sort-box .panel .sort-cel{box-shadow: 0px 1px 13px #dedede;margin-bottom: 12px;}
+    .vault-main .sort-box .panel .sort-cel .pic-bg{height:223px;line-height: 223px;}
+    .vault-main .sort-box .panel .sort-cel .title{height: 40px;line-height: 40px;margin-bottom: 5px;}
+    .vault-main .sort-title h2{font-weight: bold;color: #444;margin-bottom: 10px;padding-left: 10px;}
+</style>
+
+<div class="s-body">
+    <div class="content">
+        <div class="vault-main">
+            <div class="sort-title">
+                <h2>会员搜索结果</h2>
+            </div>
+            <div class="sort-box">
+                <ul class="panel">
+                    {notempty name="list"}
+                    {volist name="list" id="v"}
+                    <li class="sort-cel">
+                        <div class="sort-pack pic-bg">
+                            <a href="{:url('homepage/index',array('uid'=>$v['id']))}">
+                                <img src="{$v['headimgurl']}">
+                            </a>
+                            <div class="subtitle">性别:{if $v.sex==1}男{elseif $v.sex==2}女{else/}未知{/if}<span>加入时间:{:date('Y-m-d',$v['add_time'])}</span></div>
+                            <span class="collect-box"><i class="btn fn-shoucang1"></i></span>
+                        </div>
+                        <div class="title">
+                            <?php
+                            $regex  = '/('.$key_word.')/i';
+                            preg_match_all($regex,$v['nickname'],$rs);
+                            foreach($rs[1] as $val){
+                                $keywords =$val;
+                                  $v['nickname'] = str_replace( $keywords,"<font>$keywords</font>",$v['nickname']);
+                            }
+                            ?>
+                            {$v['nickname']}
+                        </div>
+                    </li>
+                    {/volist}
+                    {else/}
+                    <div class="not-comment not">暂时没有数据 ~</div>
+                    {/notempty}
+                </ul>
+            </div>
+            <div class="sort-pager">
+                {$pages}
+            </div>
+        </div>
+    </div>
+    <form action="" method="get" id="forms">
+        <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+        <input type="hidden"  name="key_word" value="{$key_word|default=''}" >
+        <input type="hidden"  name="type" value="{$type|default='video'}" >
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#orderCode').change(function(){
+            $('#current_orderCodes').val($(this).val());
+            $('#forms').submit();
+        })
+    })
+</script>
+{include file="common/footer"}

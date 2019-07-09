@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <title>沟通中</title>
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/newcj/css/themes.css?v=2017129">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/newcj/css/h5app.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/newcj/fonts/iconfont.css?v=2016070717">
+    <script src="__STATIC__/newcj/js/jquery.min.js"></script>
+    <script src="__STATIC__/newcj/js/dist/flexible/flexible_css.debug.js"></script>
+    <script src="__STATIC__/newcj/js/dist/flexible/flexible.debug.js"></script>
+</head>
+<body ontouchstart>
+<div class='fui-page-group'>
+<div class='fui-page chatDetail-page'>
+    <div class="chat-header flex">
+        <i class="icon icon-toleft t-48"></i>
+        <span class="shop-titlte t-30">客服小姐姐</span>
+        <span class="shop-online t-26"></span>
+        <span class="into-shop">返回奇米吧首页</span>
+    </div>
+    <div class="fui-content navbar" style="padding:1.2rem 0 1.35rem 0;">
+        <div class="chat-content">
+            <p style="display: none;text-align: center;padding-top: 0.5rem" id="more"><a>加载更多</a></p>
+            <p class="chat-time"><span class="time">{:date('Y-m-d H:i:s')}</span></p>
+<!--            <div class="chat-text section-left flex">-->
+<!--            <span class="char-img" style="background-image: url(http://tp5.test/static/newcj/img/123.jpg)"></span>-->
+<!--            <span class="text"><i class="icon icon-sanjiao4 t-32"></i>你好</span>-->
+<!--        </div>-->
+
+<!--            <div class="chat-text section-right flex">-->
+<!--            <span class="text"><i class="icon icon-sanjiao3 t-32"></i>你好</span>-->
+<!--            <span class="char-img" style="background-image: url(http://tp5.test/static/newcj/img/132.jpg)"></span>-->
+<!--           </div>-->
+        </div>
+    </div>
+    <div class="fix-send flex footer-bar">
+        <i class="icon icon-emoji1 t-50"></i>
+        <input class="send-input t-28" maxlength="200">
+        <i class="icon icon-add t-50" style="color: #888;"></i>
+        <span class="send-btn">发送</span>
+    </div>
+</div>
+</div>
+<script>
+    let from_id = {$from_id};
+
+    let to_id = {$to_id};
+
+    let ws = new WebSocket("ws://23.225.154.210:8282");
+
+    ws.onmessage = function (e) {
+
+        let message = eval("("+e.data+")");
+            switch (message.type) {
+                case "init":
+                    let bild = '{"type":"bind","from_id":"'+from_id+'"}';
+                    ws.send(bild);
+                    return;
+                case "text":
+                    $(".chat-content").append('<div class="chat-text section-left flex">\n' +
+                        '            <span class="char-img" style="background-image: url(http://tp5.test/static/newcj/img/123.jpg)"></span>\n' +
+                        '            <span class="text"><i class="icon icon-sanjiao4 t-32"></i>'+message.data+'</span>\n' +
+                        '        </div>')
+                    return;
+            }
+        console.log(e);
+    };
+
+    $(".send-btn").click(function () {
+
+        let text = $(".send-input").val();
+
+        let message = '{"data":"'+text+'","type":"say","from_id";"'+from_id+'","to_id":"'+to_id+'"}';
+
+        $(".chat-content").append('<div class="chat-text section-right flex">\n' +
+            '            <span class="text"><i class="icon icon-sanjiao3 t-32"></i>'+text+'</span>\n' +
+            '            <span class="char-img" style="background-image: url(http://tp5.test/static/newcj/img/132.jpg)"></span>\n' +
+            '           </div>')
+
+        ws.send("message");
+
+        $(".send-input").val("");
+    })
+
+</script>
+</body>
+</html>

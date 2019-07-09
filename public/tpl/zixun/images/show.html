@@ -1,0 +1,122 @@
+{include file="common/header"}
+<link rel="stylesheet" href="__ROOT__/tpl/zixun/static/css/viewer.min.css">
+
+{if condition="$permit eq 0"}
+<script>
+    imagespermit({$atlasInfo['gold']},{$atlasInfo['id']});
+</script>
+{/if}
+<style>
+    .sele {
+        display: inline-block;
+        padding: 7px 11px;
+        margin-right: 19px;
+        right: 34px;
+        margin-top: 8px;
+        margin-right: 18px;
+        border-radius: 12px;
+        color: #fff;
+        background: #ccc;
+    }
+    .sele:hover{
+        background:#5cb7f9;
+
+    }
+    .select{
+        background:#689931;
+    }
+    .sele a{color: #fff;text-decoration: none;cursor: pointer;}
+</style>
+<div class="eg-mt-30 eg-mb-30">
+    <div class="eg-width-1200 eg-radius">
+        <div class="package eg-package">
+            <div class="novel-left">
+                <h1>{$atlasInfo['title']}</h1>
+                <div class="source">
+                    •&nbsp;&nbsp;发布时间: <var>{:date('Y/m/d H:i:s',$atlasInfo['add_time'])}</var>
+                    &nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;作者 :<var>{if $atlasInfo.user_id>0}<a title="进入ta的主页"  href="{:url('homepage/index',array('uid'=>$atlasInfo['user_id']))}">{$atlasInfo['username']|default='无'}</a></var>{else/}管理员{/if}
+                    &nbsp;&nbsp;•
+                    <span class="see"><i class='btn fn-zan2 {if condition="$isGooded"}isSelected{/if}' id="giveGoodBtn"></i><var id="goodNum">{$atlasInfo['good']}</var></span>
+                </div>
+            </div>
+            {if condition="$permit eq 1"}
+            {if condition="isset($list)"}
+            <div class="wrapper" id="atlas">
+                {volist name="list" id="vo"}
+                <div class="image">
+                    <img data-original="{$vo['url']}" src="{$vo['url']}" alt="{$vo['id']}" />
+                    <span class="collect-box favorite">
+                        <i class="btn fn-shoucang1" onclick="select_atlas({$vo['id']})"></i>
+                    </span>
+                </div>
+                {/volist}
+            </div>
+            <div class="sort-pager">
+                {$pages}
+            </div>
+            {/if}
+            {else/}
+            <div class="not-comment not">当前图册要付费才能观看 ~</div>
+            {/if}
+        </div>
+    </div>
+</div>
+<div class="select-box layui-form" style="min-height:150px; display: none;">
+    <input name="collect_id" id="collect_id" type="hidden" value="">
+    <div class="form-box">
+        <div class="layui-form-item">
+            <div class="layui-inline" style="padding-left: 13px;">
+                {volist name="atlas_list" id="vv"}
+                <span class="sele"  data-atlas="{$vv['id']}"><a>{$vv['title']}</a></span>
+                {/volist}
+            </div>
+        </div>
+        {if empty($atlas_list)}
+        <div class="establish album-btn">
+            <a>创建图册</a>
+        </div>
+        {else}
+        <div class="layui-layer-btn layui-layer-btn-" id="layui-layer-btn" style="    padding-top: 45px;" ><a class="layui-layer-btn0">添加图片</a></div>
+        {/if}
+    </div>
+</div>
+
+<script type="text/javascript" src="__ROOT__/tpl/zixun/static/js/viewer.min.js"></script>
+<script>
+    var viewer = new Viewer(document.getElementById('atlas'), {
+        url: 'data-original'
+    });
+</script>
+<script>
+
+    $(function() {
+
+        $('#code').text($('#sample').html());
+
+        $(".wrapper .image").hover(function(){
+            $(this).find("span").stop().animate({top:"0"});
+        },function () {
+            $(this).find("span").stop().animate({top:"-40px"});
+        });
+
+        //点赞
+        {if condition='$isGooded==false'}
+        $("#giveGoodBtn").on('click',function(){
+            var reqData={resourceType:'atlas',resourceId:{$atlasInfo['id']}};
+            $.post('{:url("api/giveGood")}',reqData,function(data){
+                //console.log(data);
+                if(data.resultCode==0){
+                    $('#goodNum').html(data.data.good);
+                    $('#giveGoodBtn').addClass("isSelected");
+
+                    layer.msg('点赞成功',{time:1000,icon:1});
+                }else{
+                    layer.msg('点赞失败，原因：'+data.error,{time:1000,icon:2});
+                }
+            },'JSON');
+        });
+        {/if}
+    });
+
+</script>
+{include file="common/footer"}

@@ -1,0 +1,63 @@
+{include file="common/header"}
+<script src="__ROOT__/tpl/zixun/static/js/jquery.zclip.min.js"></script>
+<script>
+    setInterval(function(){
+        doItPerSecond();
+    },4000);
+
+    function doItPerSecond() {
+        var self = document.getElementsByClassName("fn-huangguan");
+
+    }
+    $(function(){
+        $("#cp-btn").zclip({
+            path:'__ROOT__/tpl/zixun/static/js/ZeroClipboard.swf', //记得把ZeroClipboard.swf引入到项目中
+            copy:function(){
+                return $('#tg-link').val();
+            }
+        });
+    });
+</script>
+<style>
+    .eg-title-1 em span{font-size: 20px;}
+    .eg-width-1200 .package {padding: 0px 30px 15px 30px;}
+    .eg-film-list{width: 100%;}
+    .eg-film-list ul li{margin: 0 20px 20px 0;}
+    .eg-item-one {width: 100%;}
+    .vault-main{padding: 20px 20px 0;box-shadow: none;}
+    .t-box .tab a.cur {color: #689931;}
+</style>
+
+<div class="s-body">
+    <div class="banner-img">
+        <div class="share">
+            <input type="text" id="tg-link"  onmouseover="this.select();" value="{:request()->domain()}/{$userinfo.id}" /><button id="cp-btn">复制</button>
+        </div>
+    </div>
+    <div class="content" id="vip-content">
+        <div class="v-content">
+            <div class="t-top">
+                <div class="l-vip">
+                    <div class="h-vip">
+                        <img src="{$userinfo.headimgurl}" />
+                    </div>
+                    <div class="info-vip">
+                        <p class="title">{$userinfo['nickname']}</p>
+                        <p>性别：{if $userinfo['sex']==1}男{elseif $userinfo.sex==2}女{else/}未知{/if}</p>
+                    </div>
+                </div>
+                <div class="r-vip">
+                    <ul>
+                        <li><span>视频</span>{$userVideoTotal}</li>
+                        <li><span>资讯</span>{$userNovelTotal}</li>
+                        <li><span>图册</span>{$userAtlasTotal}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="t-box">
+                <div class="tab">
+                    <a href="{:url('homepage/index')}" {if strtolower(request()->action())=='index'}class="cur"{/if}>首页</a>
+                    <a href="{:url('homepage/videopage')}" {if strtolower(request()->action()=='videopage')}class="cur"{/if}>视频</a>
+                    <a href="{:url('homepage/imgpage')}"  {if strtolower(request()->action()=='imgpage')}class="cur"{/if}>图册</a>
+                    <a href="{:url('homepage/infopage')}"  {if strtolower(request()->action()=='infopage')}class="cur"{/if}>资讯</a>
+                </div>

@@ -1,0 +1,88 @@
+{include file="common/header"}
+{include file="common/adver"}
+
+<div class="tips-box"> </div>
+<script type="text/javascript" src="/tpl/ms360/static/js/index.js"></script>
+<script>
+setInterval(function(){
+doItPerSecond();
+},4000);
+function doItPerSecond() {
+var self = document.getElementsByClassName("fn-huangguan");
+}
+/*公告弹窗*/
+</script>
+{notempty name="notice"}
+<div class="copyright-tips">
+  <div class="layout-cont"> <span><i class="fa fa-volume-up" aria-hidden="true"></i> &nbsp;公告：</span>
+    <ul>
+      {volist name="notice" id="v"}
+      <li><a {if condition="$v['type'] eq 1"} onClick="showNotice('{$v['content']}')" {else/} href="{$v['url']}"   target='_bank' {/if} > {$i}、{$v['title']}</a></li>
+      {/volist}
+    </ul>
+  </div>
+</div>
+{/notempty}
+</div>
+<div class="section">
+  <div class="wrapper clearfix">
+    <div class="recommend">
+      <h3>网友<span>在看</span></h3>
+      <ul class="rec-list">
+        <?php
+        $params = array(
+        'type' => 'video',
+         'limit'=>12,);
+         $new_list = get_recom_data($params);
+         ?>
+        {volist name="new_list" id="vo"}
+        <li> <a href="{:url('video/play',array('id'=>$vo['id']))}" title="{$vo['title']}" target="_blank"> <img src="/tpl/ms360/static/images/404.png" data-original="{$vo['thumbnail']}">
+          <!--<em class="hot"></em>-->
+          <p class="title"> <span>{$vo['title']}</span> <em>{$vo['click']}</em></p>
+          <p class="play"></p>
+          </a> </li>
+        {/volist}
+      </ul>
+    </div>
+    <div class="my-live">
+      <h3>视频<span>排行</span></h3>
+      <div class="my-live-lists">
+        <ul>
+          {volist name="hot_list" id="vo"}
+          <li> <a href="{:url('video/play',array('id'=>$vo['id']))}" target="_blank">
+            <div class="pic"> <img src="/tpl/ms360/static/images/404.png" data-original="{$vo['thumbnail']}">
+              <p class="play"></p>
+            </div>
+            <div class="txt">
+              <p class="title">{$vo['title']}</p>
+              <p class="summary">20{$vo['update_time']|date="y-m-d",###}</p>
+              <p class="info"> <span>{$vo['click']}</span></p>
+            </div>
+            </a> </li>
+          {/volist}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{volist name="video_list" id="vo"}
+{notempty name="$vo['list']"}
+<div class="section alternate">
+  <div class="wrapper">
+    <h3 class="yxlm"> <img class="ms-icon" src="/tpl/ms360/static/images/lmtb.png" />{$vo['name']}
+	<a class="more" href="/video/lists.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid={$vo['id']}">更多&gt;</a> </h3>
+    <ul class="live-list clearfix">
+      {volist name="$vo['list']" id="v"}
+      <li> <a href="{:url('video/play',array('id'=>$v['id']))}" title="{$v['title']}"> <img src="/tpl/ms360/static/images/404.png" data-original="{$v['thumbnail']}">
+        <p class="title"> <span>{$v['title']}</span> <em>{$v['click']}</em> </p>
+        <p class="desc"> <span>20{$v['update_time']|date="y-m-d",###}</span> <em><i class="fa fa-usd" aria-hidden="true"></i> {$v['gold']}</em> </p>
+        <p class="play"></p>
+        <p class="time">{$v['play_time']}</p>
+        </a> </li>
+      {/volist}
+    </ul>
+  </div>
+</div>
+{/notempty}
+{/volist}
+{include file="common/footer"}

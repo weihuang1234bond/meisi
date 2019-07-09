@@ -1,0 +1,130 @@
+{include file="common/header"}
+
+    <div id="eg-content" class="eg-mt-30 eg-mb-30">
+        <div class="eg-width-1200 eg-radius">
+            <div class="package">
+                <div class="eg-border-b eg-pt-15 eg-mb-20">
+                    <div class="eg-search-two eg-pb-10">
+                        <div class="eg-text-select overflow" id="class_box">
+                            <span class="fl"><strong>分类：</strong></span>
+                            <span class="fl {empty name="cid"}on{/empty}"  data="0"><a href="#" title="全部">全部</a></span>
+                            {volist name="class_list" id="vo"}
+                            <span class="fl  {if condition="$cid eq $vo['id']"}on{/if}"data="{$vo['id']}" >
+                                <a href="javascript:;" title="{$vo['name']}">{$vo['name']}</a>
+                            </span>
+                            {/volist}
+                        </div>
+                        {notempty name="class_sublist"}
+                        <div class="eg-text-select overflow" id="sub_box">
+                            <span class="fl"><strong>子分类：</strong></span>
+                            <span class="fl {empty name="sub_cid"}on{/empty}"   data="0"><a href="#" title="全部">全部</a></span>
+                            {volist name="class_sublist" id="vo"}
+                            <span class="fl  {if condition="$sub_cid eq $vo['id']"}on{/if}" data="{$vo['id']}" >
+                                <a href="javascript:;" title="{$vo['name']}">{$vo['name']}</a>
+                            </span>
+                            {/volist}
+                        </div>
+                        {/notempty}
+                        <div class="eg-text-select overflow" id="tag_box">
+                            <span class="fl"><strong>标签：</strong></span>
+                            <span class="fl {empty name="tag_id"}on {/empty}" data="0"><a href="#" title="全部">全部</a></span>
+                            {volist name="tag_list" id="vo"}
+                            <span class="fl {if condition="$tag_id eq $vo['id']"}on{/if}"data="{$vo['id']}"  >
+                                <a href="javascript:;" title="{$vo['name']}">{$vo['name']}</a>
+                            </span>
+                            {/volist}
+                        </div>
+                        {if condition="$area_list"}
+                        <div class="eg-text-select overflow" id="area_box">
+                            <span class="fl"><strong>{$classname['name']}：</strong></span>
+                            <span class="fl {empty name="area_id"}on{/empty}"  data="0">
+                                <a href="javascript:;" title="全部">全部</a>
+                            </span>
+                            {volist name="area_list" id="vo"}
+                            <span class="fl  {if condition="$area_id eq $vo['id']"}on{/if}" data="{$vo['id']}" >
+                                <a href="javascript:;" title="{$vo['name']}">{$vo['name']}</a>
+                            </span>
+                            {/volist}
+                        </div>
+                    {/if}
+                    </div>
+                </div>
+                <div class="eg-film-list">
+                    <ul class="eg-pb-10 overflow">
+                        {notempty name="list"}
+                        {volist name="list" id="vo"}
+                        <li class="eg-mb-20">
+                            <a href="{:url('images/show',array('id'=>$vo['id']))}">
+                                <div class="box1 eg-mb-10">
+                                    <img src="{$vo['cover']}" alt="{$vo['title']}">
+                                </div>
+                                <div class="box2 tc eg-font-size-20 eg-mb-5">
+                                    <a href="{:url('images/show',array('id'=>$vo['id']))}" title="{$vo['title']}">{$vo['title']}</a>
+                                </div>
+                                <div class="box3 tc eg-color-666">{:date('Y-m-d',$vo['update_time'])}</div>
+                                <div class="box3 tc eg-color-666 eg-mb-5">
+                                    <span><i class="btn fn-see"></i>{$vo['click']}</span>
+                                    <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$vo['gold']}</span>
+                                    <span><i class="btn fn-zan2"></i>{$vo['good']}</span>
+                                </div>
+                                <div class="eg-menu-five eg-font-size-14 eg-margin-center">
+                                    <a href="{:url('images/show',array('id'=>$vo['id']))}" title="查看详情" >查看详情</a>
+                                </div>
+                            </a>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <div class="not-comment not">暂时没有数据 ~</div>
+                        {/notempty}
+                    </ul>
+                </div>
+                <div class="sort-pager">
+                    {$pages}
+                </div>
+            </div>
+        </div>
+    </div>
+<form action="" method="get" id="forms">
+    <input type="hidden" id="current_orderCodes"  name="orderCode" value="{$orderCode|default='0'}" >
+    <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+    <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+    <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+    <input type="hidden" id="current_area_id" name="area_id"  value="{$area_id|default='0'}" >
+</form>
+<script>
+    $('.xcx').mouseover(function () {
+        $('.xcx-scan').hide();
+        $('.wx-scan').show();
+    })
+    
+    $('.xcx').mouseleave(function () {
+        $('.xcx-scan').show();
+        $('.wx-scan').hide();
+    })
+
+    $(function(){
+        $('#sub_box').find('.fl').click(function(){
+            var sub = $(this).attr('data');
+            $('#current_sub_cid').val(sub);
+            $('#forms').submit();
+        })
+        $('#class_box').find('.fl').click(function(){
+            var cid = $(this).attr('data');
+            $('#current_cid').val(cid);
+            $('#current_sub_cid').val(0);
+            $('#forms').submit();
+        })
+        $('#tag_box').find('.fl').click(function(){
+            var tag_id = $(this).attr('data');
+            $('#current_tag_id').val(tag_id);
+            $('#forms').submit();
+        })
+        $('#area_box').find('.fl').click(function(){
+            var area_id = $(this).attr('data');
+            $('#current_area_id').val(area_id);
+            $('#forms').submit();
+        })
+    });
+
+</script>
+{include file="common/footer"}

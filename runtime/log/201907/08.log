@@ -1,0 +1,428 @@
+---------------------------------------------------------------
+[ 2019-07-08T11:31:26+08:00 ] 23.225.154.210 175.176.26.33 GET /member/addvideo.html
+[ info ] qm668.xyz/member/addvideo.html [运行时间：0.078733s][吞吐率：12.70req/s] [内存消耗：3,342.96kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b13c41884967ac1a046af1204e079d17.php:111]
+---------------------------------------------------------------
+[ 2019-07-08T11:39:32+08:00 ] 23.225.154.210 14.123.227.65 GET /member/addvideo.html
+[ info ] www.qm668.xyz/member/addvideo.html [运行时间：0.078346s][吞吐率：12.76req/s] [内存消耗：3,364.14kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b13c41884967ac1a046af1204e079d17.php:111]
+---------------------------------------------------------------
+[ 2019-07-08T13:08:22+08:00 ] 23.225.154.210 175.176.26.33 POST /api/moredata.html
+[ info ] qm668.xyz/api/moredata.html [运行时间：0.056720s][吞吐率：17.63req/s] [内存消耗：3,220.38kb] [文件加载：63]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column '1user_id' in 'where clause'[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2019-07-08T15:45:30+08:00 ] 23.225.154.211 101.227.139.194 GET /video/play/id/11.html
+[ info ] qm.qm668.xyz/video/play/id/11.html [运行时间：0.094133s][吞吐率：10.62req/s] [内存消耗：3,438.04kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/video/play.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T15:45:30+08:00 ] 23.225.154.211 101.91.60.109 GET /video/play/id/11.html
+[ info ] qm.qm668.xyz/video/play/id/11.html [运行时间：0.094641s][吞吐率：10.57req/s] [内存消耗：3,438.13kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/video/play.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T15:45:36+08:00 ] 23.225.154.211 180.97.118.219 GET /video/play/id/7.html
+[ info ] qm.qm668.xyz/video/play/id/7.html [运行时间：0.088517s][吞吐率：11.30req/s] [内存消耗：3,437.66kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/video/play.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T15:45:43+08:00 ] 23.225.154.211 101.89.239.232 GET /video/play/id/7.html
+[ info ] qm.qm668.xyz/video/play/id/7.html [运行时间：0.094011s][吞吐率：10.64req/s] [内存消耗：3,437.63kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/video/play.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T15:46:02+08:00 ] 23.225.154.211 61.129.6.227 GET /video/play/id/11.html
+[ info ] qm.qm668.xyz/video/play/id/11.html [运行时间：0.090085s][吞吐率：11.10req/s] [内存消耗：3,438.48kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/video/play.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T15:47:08+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.081319s][吞吐率：12.30req/s] [内存消耗：3,237.04kb] [文件加载：70]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/index.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T20:40:07+08:00 ] 23.225.154.210 175.176.26.33 GET /video/play/id/7.html
+[ info ] www.qm668.xyz/video/play/id/7.html [运行时间：0.107709s][吞吐率：9.28req/s] [内存消耗：3,688.02kb] [文件加载：71]
+[ error ] [0]模板文件不存在:./tpl/ms360/common/head.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Template.php:1082]
+---------------------------------------------------------------
+[ 2019-07-08T20:42:28+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.111417s][吞吐率：8.98req/s] [内存消耗：3,638.21kb] [文件加载：75]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:43:27+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.101493s][吞吐率：9.85req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:44:01+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.123200s][吞吐率：8.12req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:44:04+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.097652s][吞吐率：10.24req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:44:56+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.100797s][吞吐率：9.92req/s] [内存消耗：3,476.51kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:44:56+08:00 ] 23.225.154.210 175.176.26.33 GET /video/play/id/7.html
+[ info ] www.qm668.xyz/video/play/id/7.html [运行时间：0.120641s][吞吐率：8.29req/s] [内存消耗：4,023.91kb] [文件加载：76]
+[ error ] [8]未定义变量: login_status[/www/wwwroot/www.qimiba.xyz/runtime/temp/8188820233ac0c47b96a33dc2a9c2a28.php:653]
+---------------------------------------------------------------
+[ 2019-07-08T20:44:59+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.096913s][吞吐率：10.32req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:06+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.106172s][吞吐率：9.42req/s] [内存消耗：3,474.16kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:09+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.110527s][吞吐率：9.05req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:10+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.093497s][吞吐率：10.70req/s] [内存消耗：3,474.16kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:12+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.094743s][吞吐率：10.55req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:42+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.103091s][吞吐率：9.70req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:45:45+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.109371s][吞吐率：9.14req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:09+08:00 ] 23.225.154.210 175.176.26.33 GET /video/play/id/7.html
+[ info ] www.qm668.xyz/video/play/id/7.html [运行时间：0.133311s][吞吐率：7.50req/s] [内存消耗：4,026.13kb] [文件加载：76]
+[ error ] [8]未定义变量: login_status[/www/wwwroot/www.qimiba.xyz/runtime/temp/8188820233ac0c47b96a33dc2a9c2a28.php:653]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:26+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.092818s][吞吐率：10.77req/s] [内存消耗：3,474.16kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:26+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.100610s][吞吐率：9.94req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:28+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.107241s][吞吐率：9.32req/s] [内存消耗：3,474.16kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:35+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.111340s][吞吐率：8.98req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.100406s][吞吐率：9.96req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:46:52+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.089944s][吞吐率：11.12req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:47:29+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.115709s][吞吐率：8.64req/s] [内存消耗：3,476.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:47:34+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.094303s][吞吐率：10.60req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:47:41+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.095075s][吞吐率：10.52req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:47:42+08:00 ] 23.225.154.210 175.176.26.33 GET /video/play/id/7.html
+[ info ] www.qm668.xyz/video/play/id/7.html [运行时间：0.122472s][吞吐率：8.17req/s] [内存消耗：4,037.68kb] [文件加载：76]
+[ error ] [8]未定义变量: login_status[/www/wwwroot/www.qimiba.xyz/runtime/temp/8188820233ac0c47b96a33dc2a9c2a28.php:675]
+---------------------------------------------------------------
+[ 2019-07-08T20:47:44+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.097995s][吞吐率：10.20req/s] [内存消耗：3,474.28kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:48:20+08:00 ] 23.225.154.210 175.176.26.33 GET /video/play/id/7.html
+[ info ] www.qm668.xyz/video/play/id/7.html [运行时间：0.110616s][吞吐率：9.04req/s] [内存消耗：3,771.20kb] [文件加载：74]
+[ error ] [8]未定义变量: login_status[/www/wwwroot/www.qimiba.xyz/runtime/temp/8188820233ac0c47b96a33dc2a9c2a28.php:675]
+---------------------------------------------------------------
+[ 2019-07-08T20:48:27+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.099302s][吞吐率：10.07req/s] [内存消耗：3,474.29kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:48:28+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.112984s][吞吐率：8.85req/s] [内存消耗：3,474.26kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:49:01+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.098963s][吞吐率：10.10req/s] [内存消耗：3,318.25kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:49:21+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.107344s][吞吐率：9.32req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:49:51+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.090921s][吞吐率：11.00req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:50:14+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.105999s][吞吐率：9.43req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:50:16+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.092385s][吞吐率：10.82req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:51:43+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.100056s][吞吐率：9.99req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:51:49+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.099522s][吞吐率：10.05req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:51:52+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.094483s][吞吐率：10.58req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:51:59+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.094329s][吞吐率：10.60req/s] [内存消耗：3,210.40kb] [文件加载：70]
+[ error ] [0]模板文件不存在:./tpl/ms360/index/index.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T20:52:16+08:00 ] 23.225.154.211 117.29.51.236 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.085667s][吞吐率：11.67req/s] [内存消耗：3,160.85kb] [文件加载：70]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/index.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T20:52:21+08:00 ] 23.225.154.211 117.29.51.236 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.086446s][吞吐率：11.57req/s] [内存消耗：3,163.39kb] [文件加载：70]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/index.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T20:53:17+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.100439s][吞吐率：9.96req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:53:46+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.099244s][吞吐率：10.08req/s] [内存消耗：3,476.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:53:47+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.113405s][吞吐率：8.82req/s] [内存消耗：3,474.26kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:54:39+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.098777s][吞吐率：10.12req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:00+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.122624s][吞吐率：8.16req/s] [内存消耗：3,476.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:11+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.102859s][吞吐率：9.72req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:15+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.102264s][吞吐率：9.78req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:46+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.097321s][吞吐率：10.28req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.105426s][吞吐率：9.49req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:55:54+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.103324s][吞吐率：9.68req/s] [内存消耗：3,474.26kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:56:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.107628s][吞吐率：9.29req/s] [内存消耗：3,318.25kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:56:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.099776s][吞吐率：10.02req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:57:19+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.099264s][吞吐率：10.07req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:59:06+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.097872s][吞吐率：10.22req/s] [内存消耗：3,318.25kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:59:15+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.098589s][吞吐率：10.14req/s] [内存消耗：3,474.29kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:59:16+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.095689s][吞吐率：10.45req/s] [内存消耗：3,474.26kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:59:22+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.101872s][吞吐率：9.82req/s] [内存消耗：3,474.33kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T20:59:35+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.105023s][吞吐率：9.52req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:00:11+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.107256s][吞吐率：9.32req/s] [内存消耗：3,305.70kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:00:15+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.098034s][吞吐率：10.20req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:01:33+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.101514s][吞吐率：9.85req/s] [内存消耗：3,318.25kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:01:49+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.108932s][吞吐率：9.18req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:02:36+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.104664s][吞吐率：9.55req/s] [内存消耗：3,476.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:03:26+08:00 ] 23.225.154.211 117.29.51.236 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.077005s][吞吐率：12.99req/s] [内存消耗：3,160.80kb] [文件加载：70]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/index.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-08T21:03:38+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.108228s][吞吐率：9.24req/s] [内存消耗：3,318.25kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:04:05+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.119601s][吞吐率：8.36req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:04:14+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.101628s][吞吐率：9.84req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:04:57+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.093213s][吞吐率：10.73req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:04:57+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.091965s][吞吐率：10.87req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:05:11+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.099593s][吞吐率：10.04req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:05:15+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.104640s][吞吐率：9.56req/s] [内存消耗：3,303.47kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:06:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.096917s][吞吐率：10.32req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:07:25+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.090545s][吞吐率：11.04req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:08:08+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.093544s][吞吐率：10.69req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:08:43+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.101621s][吞吐率：9.84req/s] [内存消耗：3,476.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:09:13+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.100633s][吞吐率：9.94req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:09:39+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.102465s][吞吐率：9.76req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:10:11+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.092063s][吞吐率：10.86req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:10:15+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.093453s][吞吐率：10.70req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:12:02+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.096124s][吞吐率：10.40req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:12:21+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.106300s][吞吐率：9.41req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:12:30+08:00 ] 23.225.154.211 117.29.51.236 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.092137s][吞吐率：10.85req/s] [内存消耗：3,253.66kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:12:48+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.110077s][吞吐率：9.08req/s] [内存消耗：3,474.30kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:13:27+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.105663s][吞吐率：9.46req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:13:43+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.102588s][吞吐率：9.75req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:13:46+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.101663s][吞吐率：9.84req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:13:47+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.093339s][吞吐率：10.71req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:13:49+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.108642s][吞吐率：9.20req/s] [内存消耗：3,303.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:01+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.089542s][吞吐率：11.17req/s] [内存消耗：3,303.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:24+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.101471s][吞吐率：9.86req/s] [内存消耗：3,303.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:30+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.101329s][吞吐率：9.87req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:34+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.112638s][吞吐率：8.88req/s] [内存消耗：3,303.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:38+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.088890s][吞吐率：11.25req/s] [内存消耗：3,303.52kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:14:50+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.109286s][吞吐率：9.15req/s] [内存消耗：3,316.02kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:15:12+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.101518s][吞吐率：9.85req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:15:16+08:00 ] 23.225.154.211 117.29.51.236 GET /video/lists.html
+[ info ] qm.qm668.xyz/video/lists.html [运行时间：0.107282s][吞吐率：9.32req/s] [内存消耗：3,535.52kb] [文件加载：78]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/a3ffaec340fb2e213a1614fd4c3a19ef.php:255]
+---------------------------------------------------------------
+[ 2019-07-08T21:15:52+08:00 ] 23.225.154.211 175.176.26.33 GET /
+[ info ] qm.qm668.xyz/ [运行时间：0.099416s][吞吐率：10.06req/s] [内存消耗：3,303.34kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]
+---------------------------------------------------------------
+[ 2019-07-08T21:17:03+08:00 ] 23.225.154.210 175.176.26.33 GET /
+[ info ] qm668.xyz/ [运行时间：0.104154s][吞吐率：9.60req/s] [内存消耗：3,251.95kb] [文件加载：73]
+[ error ] [8]未定义变量: register_validate[/www/wwwroot/www.qimiba.xyz/runtime/temp/5cefffa858cec52cfaee925dfeaff9d0.php:277]

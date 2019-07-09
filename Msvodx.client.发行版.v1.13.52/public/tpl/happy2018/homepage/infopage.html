@@ -1,0 +1,78 @@
+{include file="homepage/common"}
+
+            </div>
+        <div class="wrap" id="wrap" style="margin-top:15px;">
+            <div class="software-wrap">
+                <div class="news-cont">
+                    <div class="software-lesson">
+                        <ul class="lesson-cont clearfix">
+                            {notempty name="list"}
+                            {volist name="list" id="vo"}
+                            <li class="lesson-item fl">
+                                <a href="{:url('novel/show',array('id'=>$vo['id']))}" class="item-img fl" title="{$vo['title']}" target="_blank">
+                                    <img src="{$vo['thumbnail']}" alt="{$vo['title']}"></a>
+                                <div class="img-info">
+                                    <div style="width:100%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
+                                        <a href="{:url('novel/show',array('id'=>$vo['id']))}" style="" class="les-tit" target="_blank">{$vo['title']}</a>
+                                    </div>
+                                    <p class="les-num"> <span><i class="fa fa-calendar-o"></i>{$vo['update_time']|date="y-m-d H:i:s",###}</span>
+                                        <em class="fg-line">|</em>
+                                        <span><i class="fa fa-eye"></i>{$vo['click']}</span>
+                                        <em class="fg-line">|</em>
+                                        <span><i class="fa fa-dot-circle-o"></i>{$vo['gold']}</span>
+                                    </p>
+                                    <p class="pre-num" style="width:280px;overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">{$vo['short_info']|default="暂没简介"}</p>
+                                    <a href="{:url('novel/show',array('id'=>$vo['id']))}" class="to-learn-btn tran" target="_blank">立即阅读</a>
+                                </div>
+                            </li>
+                            {/volist}
+                            {else/}
+                            <div align="center" style="margin-top:20px;color:red;height:200px;line-height:200px;width:1240px;border: 1px solid #eee;">这家伙还没发布过.</div>
+                            {/notempty}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sort-pager">
+            {$pages}
+        </div>
+    </div>
+    <form action="" method="get" id="forms">
+        <input type="hidden" id="current_tag_id" name="tag_id"  value="{$tag_id|default='0'}" >
+        <input type="hidden" id="current_sub_cid" name="sub_cid"  value="{$sub_cid|default='0'}" >
+        <input type="hidden" id="current_cid" name="cid"  value="{$cid|default='0'}" >
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        $('#sub_box').find('li').click(function(){
+            var sub = $(this).attr('data');
+            $('#current_sub_cid').val(sub);
+            $('#forms').submit();
+        })
+        $('#class_box').find('li').click(function(){
+            var cid = $(this).attr('data');
+            $('#current_cid').val(cid);
+            $('#current_sub_cid').val(0);
+            $('#forms').submit();
+        })
+        $('#tag_box').find('li').click(function(){
+            var tag_id = $(this).attr('data');
+            $('#current_tag_id').val(tag_id);
+            $('#forms').submit();
+        })
+
+        /*鼠标移动到列表上*/
+        $(".novel-left li a").hover(function(){
+            $(this).find("p").css("color","#3b9eff");
+        },function(){
+            $(this).find("p").css("color","#333");
+        });
+
+    });
+
+</script>
+{include file="common/footer"}

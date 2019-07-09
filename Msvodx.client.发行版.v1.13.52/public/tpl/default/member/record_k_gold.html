@@ -1,0 +1,73 @@
+{include file="common/header"}
+<link rel="stylesheet" href="__ROOT__/tpl/default/static/css/viewer.min.css">
+<link rel="stylesheet" href="__ROOT__/tpl/default/static/css/member.css">
+<script type="application/javascript" charset="utf-8" src="/static/UEditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.all.min.js"></script>
+
+<style>
+.summary{min-height: 110px;}
+.summary .t-top{background: #3b9eff40;height:110px;}
+.summary .t-top .l-vip .h-vip{margin: 10px 0 0 0;width: 90px;height:90px;line-height:90px;display: inline-block;float: left;}
+.summary .t-top .l-vip .h-vip img{max-width: 100%;max-height:100%;}
+.summary .t-top .l-vip .info-vip{margin-left: 30px;margin-top: 30px;display: inline-block;}
+.summary .t-top .r-vip{margin-top: 20px;}
+.summary .t-top .r-vip li{border-right: 1px solid #fff;}
+</style>
+
+<div class="s-body">
+    <div class="content">
+        <!--左边选择-->
+        {include file="member/common"}
+        <!--右边内容-->
+        <div class="M-content">
+            <div class="M-info">
+                <div class="v-content summary">
+                    <div class="t-top">
+                        <div class="l-vip">
+                            <div class="h-vip">
+                                <img src="{$member_info['headimgurl']|default=''}" />
+                            </div>
+                            <div class="info-vip">
+                                <p class="title">{$member_info['nickname']|default='未命名'}</p>
+                                <p>总K币：{$member_info['k_money']|default='0'}</p>
+                            </div>
+                        </div>
+                        <div class="r-vip">
+                            <ul>
+                                <li><span>提现总额</span>{$total_data['total_tixian']|number_format=###,2}</li>
+                                <li><span>提成总额</span>{$total_data['total_commission']|number_format=###,2}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>单号</th>
+                            <th>K币数</th>
+                            <th>时间</th>
+                            <th>说明</th>
+                        </tr>
+                        {volist name='list' id='v'}
+                        <tr>
+                            <td><div class="name">{$v['id']}</div></td>
+                            <td>{$v['gold']}</td>
+                            <td>{:date('Y-m-d H:i:s',$v['add_time'])}</td>
+                            <td>{$v['explain']}</td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sort-pager">
+                    <ul class="pagination">
+                        {$pages}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="common/footer"}

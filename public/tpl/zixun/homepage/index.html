@@ -1,0 +1,125 @@
+{include file="homepage/common"}
+                <!--最新视频-->
+                <div class="eg-width-1200 eg-radius eg-mb-30" style="margin-top: 0px !important;">
+                    <div class="package-one">
+                        <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                            <em class="one fl"><span>最新视频</span></em>
+                        </h3>
+                        <div class="new-project">
+                            <ul class="overflow">
+                                {volist name='videoList' id='video'}
+                                <li class="eg-border new">
+                                    <div class="box1">
+                                        <a title="{$video.title}" href="{:url('video/play',array('id'=>$video.id))}" target="_blank">
+                                            <div class="video-play-btn"></div>
+                                            <img src="{$video.thumbnail}" alt="{$video.title}" class="">
+                                        </a>
+                                    </div>
+                                    <div class="video-info-cnt">
+                                        <a class="box2 eg-mb-10" title="{$video.title}" target="_blank" href="{:url('video/play',array('id'=>$video.id))}">
+                                            <span class="video-times">{$video.play_time}</span>
+                                            <p>{$video.title}</p>
+                                        </a>
+                                        <div class="box3">
+                                            <div class="author eg-mb-10">
+                                                <div class="subtitle">
+                                                    <span><i class="btn fn-see"></i>{$video.click}</span>
+                                                    <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$video.gold}</span>
+                                                    <span style="float:right;"><i class="btn fn-time"></i>{$video.good}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--最新图册-->
+                <div class="eg-width-1200 eg-radius eg-mb-30">
+
+                    <div class="package">
+
+                        <h3 class="eg-title-1 eg-border-b eg-mb-15 overflow">
+                            <em class="two fl"><span>最新图册</span></em>
+                        </h3>
+
+                        <div class="eg-film-list">
+                            <ul class="eg-pb-10 overflow">
+                                {volist name='atlasList' id='atlas'}
+                                <li>
+                                    <div class="box1 eg-mb-10">
+                                        <img src="{$atlas.cover}" alt="{$atlas.title}">
+                                    </div>
+                                    <div class="box2 tc eg-font-size-20 eg-mb-5">
+                                        <a target="_blank" href="{:url('images/show',array('id'=>$atlas.id))}" title="{$atlas.title}">{$atlas.title}</a>
+                                    </div>
+                                    <div class="box3 tc eg-color-666">{:date('Y/m/d',$atlas.update_time)}</div>
+                                    <div class="box3 tc eg-color-666 eg-mb-5">
+                                        <span><i class="btn fn-see"></i>{$atlas.click}</span>
+                                        <span><i class="btn fn-jinbi1" style="margin-left: 5px;"></i>{$atlas.gold}</span>
+                                        <span><i class="btn fn-zan2"></i>{$atlas.good}</span>
+                                    </div>
+                                    <div class="eg-menu-five eg-font-size-14 eg-margin-center">
+                                        <a target="_blank" href="{:url('images/show',array('id'=>$atlas.id))}" title="查看详情">查看详情</a>
+                                    </div>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--最新小说-->
+                <div class="eg-width-1200 eg-radius eg-mb-30">
+
+                    <div class="package">
+                        <h3 class="eg-title-1 eg-border-b overflow">
+                            <em class="three eg-mr-20 fl"><span>最新小说</span></em>
+                        </h3>
+                        <div class="eg-item-one">
+                            <ul>
+                                {volist name="novelList" id="novel"}
+                                <li class="eg-border-b overflow">
+                                    <div class="eg-pic pos-r fl eg-mr-20">
+                                        <a target="_blank" href="{:url('novel/show',array('id'=>$novel.id))}">
+                                            <img src="{$novel.thumbnail}" alt="{$novel.title}"></a>
+                                    </div>
+                                    <div class="eg-info pos-r overflow">
+                                        <div class="play-count-two tc pos-a">
+                                            <div class="p1 eg-color-666"><span>全网点击量</span></div>
+                                            <div class="p2 eg-font-size-24">{$novel.click}</div>
+                                        </div>
+                                        <dl class="eg-mb-15">
+                                            <dt class="eg-pl-20 eg-mb-10">
+                                                <a target="_blank" href="{:url('novel/show',array('id'=>$novel.id))}" title="{$novel.title}">{$novel.title}</a>
+                                            </dt>
+                                            <dd>
+                                                {$vo['novel.short_info']|default="暂没短说明"}
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="box-f">
+                                            <span><i class="btn fn-time"></i>{:date('Y/m/d',$novel.update_time)}</span>
+                                            <span><i class="btn fn-see"></i>{$novel.click}</span>
+                                            <span><i class="btn fn-jinbi1"></i>{$novel.gold}</span>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                {/volist}
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{include file="common/footer"}

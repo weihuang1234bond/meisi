@@ -1,0 +1,112 @@
+---------------------------------------------------------------
+[ 2019-07-06T14:50:22+08:00 ] 23.225.154.210 110.54.150.72 GET /share/index.html
+[ info ] qm668.xyz/share/index.html [运行时间：0.065638s][吞吐率：15.24req/s] [内存消耗：3,136.55kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T14:50:50+08:00 ] 23.225.154.210 110.54.150.72 GET /share/index.html
+[ info ] qm668.xyz/share/index.html [运行时间：0.059455s][吞吐率：16.82req/s] [内存消耗：3,136.55kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:00:58+08:00 ] 23.225.154.210 110.54.150.72 GET /share/index.html
+[ info ] qm668.xyz/share/index.html [运行时间：0.061000s][吞吐率：16.39req/s] [内存消耗：3,138.05kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:46:50+08:00 ] 23.225.154.210 175.176.26.185 GET /share/index.html
+[ info ] www.qm668.xyz/share/index.html [运行时间：0.068001s][吞吐率：14.71req/s] [内存消耗：3,141.08kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:47:01+08:00 ] 23.225.154.210 180.163.220.68 GET /share/index.html
+[ info ] www.qm668.xyz/share/index.html [运行时间：0.060424s][吞吐率：16.55req/s] [内存消耗：3,135.23kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:47:20+08:00 ] 23.225.154.210 180.163.220.5 GET /share/index.html
+[ info ] www.qm668.xyz/share/index.html [运行时间：0.059317s][吞吐率：16.86req/s] [内存消耗：3,134.81kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:47:23+08:00 ] 23.225.154.210 180.163.220.66 GET /share/index.html
+[ info ] www.qm668.xyz/share/index.html [运行时间：0.064427s][吞吐率：15.52req/s] [内存消耗：3,135.27kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T15:56:58+08:00 ] 23.225.154.210 175.176.26.185 GET /share/index.html
+[ info ] qm668.xyz/share/index.html [运行时间：0.065688s][吞吐率：15.22req/s] [内存消耗：3,167.84kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T16:01:58+08:00 ] 23.225.154.211 175.176.24.109 GET /member/addatlas.html
+[ info ] qm.qm668.xyz/member/addatlas.html [运行时间：0.088663s][吞吐率：11.28req/s] [内存消耗：3,542.58kb] [文件加载：75]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/3741b631a11a07ee5a584bc4a5c1b80c.php:110]
+---------------------------------------------------------------
+[ 2019-07-06T16:02:10+08:00 ] 23.225.154.211 175.176.24.109 GET /member/addvideo.html
+[ info ] qm.qm668.xyz/member/addvideo.html [运行时间：0.089032s][吞吐率：11.23req/s] [内存消耗：3,399.21kb] [文件加载：73]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/36a9256aa391e7ceaff80b9a9e60fc24.php:158]
+---------------------------------------------------------------
+[ 2019-07-06T18:01:24+08:00 ] 23.225.154.210 175.176.26.185 GET /member/addvideo.html
+[ info ] qm668.xyz/member/addvideo.html [运行时间：0.083087s][吞吐率：12.04req/s] [内存消耗：3,345.65kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b13c41884967ac1a046af1204e079d17.php:111]
+---------------------------------------------------------------
+[ 2019-07-06T18:01:30+08:00 ] 23.225.154.210 175.176.26.185 GET /member/addnovel.html
+[ info ] qm668.xyz/member/addnovel.html [运行时间：0.074109s][吞吐率：13.49req/s] [内存消耗：3,339.82kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/4178c7a3e0066957fec28814dab8a652.php:101]
+---------------------------------------------------------------
+[ 2019-07-06T18:01:40+08:00 ] 23.225.154.210 175.176.26.185 GET /member/addatlas.html
+[ info ] qm668.xyz/member/addatlas.html [运行时间：0.081574s][吞吐率：12.26req/s] [内存消耗：3,342.83kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b484bd4a904242d896c5af24d87a53f4.php:66]
+---------------------------------------------------------------
+[ 2019-07-06T18:02:15+08:00 ] 23.225.154.210 61.151.178.166 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.074422s][吞吐率：13.44req/s] [内存消耗：3,307.38kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:02:22+08:00 ] 23.225.154.210 101.89.239.216 GET /member/video.html
+[ info ] qm668.xyz/member/video.html [运行时间：0.065505s][吞吐率：15.27req/s] [内存消耗：3,307.31kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:02:28+08:00 ] 23.225.154.210 61.151.178.166 GET /member/novel.html
+[ info ] qm668.xyz/member/novel.html [运行时间：0.068894s][吞吐率：14.52req/s] [内存消耗：3,307.38kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:02:38+08:00 ] 23.225.154.210 61.129.7.235 GET /member/img.html
+[ info ] qm668.xyz/member/img.html [运行时间：0.069674s][吞吐率：14.35req/s] [内存消耗：3,307.30kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:02:58+08:00 ] 23.225.154.210 101.91.62.99 GET /member/record_video.html
+[ info ] qm668.xyz/member/record_video.html [运行时间：0.064857s][吞吐率：15.42req/s] [内存消耗：3,307.35kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:04:08+08:00 ] 23.225.154.210 61.151.178.236 GET /member/record_pay.html
+[ info ] qm668.xyz/member/record_pay.html [运行时间：0.067631s][吞吐率：14.79req/s] [内存消耗：3,307.34kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:08:55+08:00 ] 23.225.154.210 175.176.26.185 GET /member/addvideo.html
+[ info ] www.qm668.xyz/member/addvideo.html [运行时间：0.081198s][吞吐率：12.32req/s] [内存消耗：3,343.94kb] [文件加载：72]
+[ error ] [8]未定义变量: custom_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/b13c41884967ac1a046af1204e079d17.php:111]
+---------------------------------------------------------------
+[ 2019-07-06T18:11:27+08:00 ] 23.225.154.210 175.176.26.185 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.071211s][吞吐率：14.04req/s] [内存消耗：3,338.81kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:11:27+08:00 ] 23.225.154.210 175.176.26.185 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.069398s][吞吐率：14.41req/s] [内存消耗：3,338.81kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:11:36+08:00 ] 23.225.154.210 175.176.26.185 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.077923s][吞吐率：12.83req/s] [内存消耗：3,338.81kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:11:42+08:00 ] 23.225.154.210 175.176.26.185 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.069524s][吞吐率：14.38req/s] [内存消耗：3,338.85kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:11:43+08:00 ] 23.225.154.210 175.176.26.185 GET /member/member.html
+[ info ] qm668.xyz/member/member.html [运行时间：0.078499s][吞吐率：12.74req/s] [内存消耗：3,338.85kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:19:58+08:00 ] 23.225.154.210 101.227.139.163 GET /member/record_novel.html
+[ info ] qm668.xyz/member/record_novel.html [运行时间：0.083867s][吞吐率：11.92req/s] [内存消耗：3,307.41kb] [文件加载：69]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:38:02+08:00 ] 23.225.154.211 175.176.24.174 GET /member/member.html
+[ info ] qm.qm668.xyz/member/member.html [运行时间：0.068589s][吞吐率：14.58req/s] [内存消耗：3,367.19kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]
+---------------------------------------------------------------
+[ 2019-07-06T18:38:08+08:00 ] 23.225.154.211 175.176.24.174 GET /member/member.html
+[ info ] qm.qm668.xyz/member/member.html [运行时间：0.075686s][吞吐率：13.21req/s] [内存消耗：3,367.19kb] [文件加载：70]
+[ error ] [0]variable type error： array[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/Response.php:318]

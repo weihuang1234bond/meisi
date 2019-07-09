@@ -1,0 +1,184 @@
+---------------------------------------------------------------
+[ 2019-07-04T16:02:13+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.106801s][吞吐率：9.36req/s] [内存消耗：3,464.12kb] [文件加载：78]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T16:02:17+08:00 ] 23.225.154.210 110.54.176.12 GET /novel/lists.html
+[ info ] qm668.xyz/novel/lists.html [运行时间：0.092275s][吞吐率：10.84req/s] [内存消耗：3,455.37kb] [文件加载：78]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/9553ea024eb0879eb81c73d833fdeae2.php:131]
+---------------------------------------------------------------
+[ 2019-07-04T16:03:39+08:00 ] 23.225.154.210 110.54.176.12 GET /novel/lists.html
+[ info ] qm668.xyz/novel/lists.html [运行时间：0.083287s][吞吐率：12.01req/s] [内存消耗：3,286.26kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/9553ea024eb0879eb81c73d833fdeae2.php:131]
+---------------------------------------------------------------
+[ 2019-07-04T16:23:09+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.099485s][吞吐率：10.05req/s] [内存消耗：3,295.20kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T16:25:17+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.091033s][吞吐率：10.99req/s] [内存消耗：3,295.20kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T16:25:20+08:00 ] 23.225.154.210 110.54.176.12 GET /novel/lists.html
+[ info ] qm668.xyz/novel/lists.html [运行时间：0.098206s][吞吐率：10.18req/s] [内存消耗：3,288.48kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/9553ea024eb0879eb81c73d833fdeae2.php:131]
+---------------------------------------------------------------
+[ 2019-07-04T16:41:54+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.082670s][吞吐率：12.10req/s] [内存消耗：3,320.19kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:09+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.082047s][吞吐率：12.19req/s] [内存消耗：3,319.45kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:13+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.085966s][吞吐率：11.63req/s] [内存消耗：3,317.65kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:17+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.083584s][吞吐率：11.96req/s] [内存消耗：3,341.59kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:18+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.098205s][吞吐率：10.18req/s] [内存消耗：3,335.42kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:19+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.091928s][吞吐率：10.88req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:19+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.102185s][吞吐率：9.79req/s] [内存消耗：3,335.13kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:23+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.090044s][吞吐率：11.11req/s] [内存消耗：3,335.13kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:30+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.116403s][吞吐率：8.59req/s] [内存消耗：3,696.95kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:42:39+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] www.qm668.xyz/video/play/id/8.html [运行时间：0.111765s][吞吐率：8.95req/s] [内存消耗：3,696.80kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:00+08:00 ] 23.225.154.210 14.123.224.103 GET /video/play/id/8.html
+[ info ] www.qm668.xyz/video/play/id/8.html [运行时间：0.120156s][吞吐率：8.32req/s] [内存消耗：3,699.05kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:10+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.117358s][吞吐率：8.52req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:13+08:00 ] 23.225.154.210 14.123.224.103 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.100451s][吞吐率：9.96req/s] [内存消耗：3,314.57kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:21+08:00 ] 23.225.154.210 14.123.224.103 GET /video/play/id/8.html
+[ info ] www.qm668.xyz/video/play/id/8.html [运行时间：0.123031s][吞吐率：8.13req/s] [内存消耗：3,696.72kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:24+08:00 ] 23.225.154.210 14.123.224.103 GET /
+[ info ] www.qm668.xyz/ [运行时间：0.098182s][吞吐率：10.19req/s] [内存消耗：3,314.57kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:30+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.106186s][吞吐率：9.42req/s] [内存消耗：3,341.59kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:34+08:00 ] 23.225.154.210 175.176.26.13 GET /
+[ info ] qm668.xyz/ [运行时间：0.101614s][吞吐率：9.84req/s] [内存消耗：3,341.59kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:34+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.109958s][吞吐率：9.09req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:38+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.111671s][吞吐率：8.95req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:41+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.115555s][吞吐率：8.65req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:43+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.111520s][吞吐率：8.97req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:45+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.108717s][吞吐率：9.20req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:47+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.109779s][吞吐率：9.11req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:50+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.111474s][吞吐率：8.97req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:43:57+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.113506s][吞吐率：8.81req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:44:00+08:00 ] 23.225.154.210 14.123.224.103 GET /
+[ info ] qm668.xyz/ [运行时间：0.107590s][吞吐率：9.29req/s] [内存消耗：3,351.82kb] [文件加载：73]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:44:04+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.111067s][吞吐率：9.00req/s] [内存消耗：3,702.16kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:44:07+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.119152s][吞吐率：8.39req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T16:44:09+08:00 ] 23.225.154.210 175.176.26.13 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.092582s][吞吐率：10.80req/s] [内存消耗：3,699.93kb] [文件加载：74]
+[ error ] [8]未定义数组索引: id[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/template/taglib/Cx.php:84]
+---------------------------------------------------------------
+[ 2019-07-04T17:01:15+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.078632s][吞吐率：12.72req/s] [内存消耗：3,294.48kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T17:01:19+08:00 ] 23.225.154.210 110.54.176.12 GET /novel/lists.html
+[ info ] qm668.xyz/novel/lists.html [运行时间：0.075989s][吞吐率：13.16req/s] [内存消耗：3,285.53kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/9553ea024eb0879eb81c73d833fdeae2.php:131]
+---------------------------------------------------------------
+[ 2019-07-04T17:01:44+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.097169s][吞吐率：10.29req/s] [内存消耗：3,294.48kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T17:02:33+08:00 ] 23.225.154.210 180.163.220.5 GET /index/remind.html
+[ info ] www.qm668.xyz/index/remind.html [运行时间：0.078574s][吞吐率：12.73req/s] [内存消耗：3,106.10kb] [文件加载：69]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/remind.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-04T17:03:08+08:00 ] 23.225.154.210 180.163.220.68 GET /index/remind.html
+[ info ] www.qm668.xyz/index/remind.html [运行时间：0.074957s][吞吐率：13.34req/s] [内存消耗：3,106.10kb] [文件加载：69]
+[ error ] [0]模板文件不存在:./tpl/ms360/mobile/index/remind.html[/www/wwwroot/www.qimiba.xyz/thinkphp/library/think/view/driver/Think.php:80]
+---------------------------------------------------------------
+[ 2019-07-04T17:10:52+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.098721s][吞吐率：10.13req/s] [内存消耗：3,294.48kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T17:12:46+08:00 ] 23.225.154.210 110.54.176.12 GET /images/lists.html
+[ info ] qm668.xyz/images/lists.html [运行时间：0.088008s][吞吐率：11.36req/s] [内存消耗：3,296.70kb] [文件加载：76]
+[ error ] [8]未定义变量: area_list[/www/wwwroot/www.qimiba.xyz/runtime/temp/94a1f027dda815e0c05694cfdf7cef4b.php:133]
+---------------------------------------------------------------
+[ 2019-07-04T17:40:37+08:00 ] 23.225.154.210 14.123.224.103 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.110604s][吞吐率：9.04req/s] [内存消耗：3,488.18kb] [文件加载：72]
+[ error ] [8]未定义变量: seo[/www/wwwroot/www.qimiba.xyz/application/controller/Video.php:257]
+---------------------------------------------------------------
+[ 2019-07-04T17:44:41+08:00 ] 23.225.154.210 14.123.224.103 GET /video/play/id/8.html
+[ info ] qm668.xyz/video/play/id/8.html [运行时间：0.104804s][吞吐率：9.54req/s] [内存消耗：3,488.24kb] [文件加载：72]
+[ error ] [8]未定义变量: seoInfo[/www/wwwroot/www.qimiba.xyz/application/controller/Video.php:257]
+---------------------------------------------------------------
+[ 2019-07-04T17:56:14+08:00 ] 23.225.154.210 14.123.224.103 GET /video/lists/cid/35.html
+[ info ] qm668.xyz/video/lists/cid/35.html [运行时间：0.040918s][吞吐率：24.44req/s] [内存消耗：1,944.91kb] [文件加载：51]
+[ error ] [0]语法解析错误: syntax error, unexpected '>', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'[/www/wwwroot/www.qimiba.xyz/application/controller/Video.php:45]
+---------------------------------------------------------------
+[ 2019-07-04T18:01:12+08:00 ] 23.225.154.210 14.123.224.103 GET /video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=0
+[ info ] qm668.xyz/video/lists/cid/35.html?orderCode=lastTime&tag_id=0&sub_cid=0&cid=35&area_id=0 [运行时间：0.098649s][吞吐率：10.14req/s] [内存消耗：3,331.27kb] [文件加载：73]
+[ error ] [8]未定义数组索引: name[/www/wwwroot/www.qimiba.xyz/application/controller/Video.php:138]
