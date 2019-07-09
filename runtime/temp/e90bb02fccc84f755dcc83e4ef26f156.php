@@ -1,58 +1,89 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:34:"./tpl/ms360/mobile/video/play.html";i:1562572114;s:35:"./tpl/ms360/mobile/common/head.html";i:1562590060;s:37:"./tpl/ms360/mobile/common/footer.html";i:1562590060;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:34:"./tpl/ms360/mobile/video/play.html";i:1562665059;s:37:"./tpl/ms360/mobile/common/header.html";i:1562665000;s:37:"./tpl/ms360/mobile/common/footer.html";i:1562665001;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo (isset($page_title) && ($page_title !== '')?$page_title:""); ?>_<?php echo $seo['site_title']; ?></title>
+    <?php $menu = getMenu();?>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="telephone=no" name="format-detection">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/common.css" />
-    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/member.css">
-    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/style.css" />
-    <link rel="stylesheet" href="__ROOT__/tpl/default/static/js/layui/css/layui.css">
+    <title><?php echo $seo['site_title']; ?></title>
+    <meta name="keywords" lang="zh-CN" content="<?php echo $seo['site_keywords']; ?>"/>
+    <meta name="description" lang="zh-CN" content="<?php echo $seo['site_description']; ?>" />
+    <!-- <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/swiper.min.css">
+ -->    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/common.css" />
+
 
     <script src="__ROOT__/tpl/ms360/mobile/static/js/jquery-3.2.1.min.js"></script>
+    <!-- <script src="__ROOT__/tpl/ms360/mobile/static/js/swiper.min.js"></script> -->
     <script type="text/javascript" src="__ROOT__/tpl/ms360/mobile/static/js/layer_mobile/layer.js"></script>
-
-    <script type="text/javascript" charset="utf-8" src="__ROOT__/tpl/default/static/js/layui/layui.js"></script>
-    <script type="text/javascript" src="__ROOT__/tpl/ms360/mobile/static/js/common.js"></script>
+    <script type="text/javascript" src="__ROOT__/tpl/ms360/mobile/static/js/common.js?v=1.0"></script>
     <link rel="stylesheet" href="__ROOT__/tpl/default/static/css/font_485358_gtgl3zs6gyvqjjor/iconfont.css">
-    <!--
-    <script>
-        layui.use(['form', 'layedit', 'laydate'], function(){ });
-    </script>
-    -->
-    <?php $menu = getMenu();?>
+
+
 </head>
 <body>
-    
+<div>
 <header class="js-header">
-    <div  class="head">
-        <a id="navBackBtn" href="javascript:history.go(-1);" class="go-back"><i></i></a>
-        <span id="navTopTitle"></span>
-        <div class="menu"><i class="btn fn-sort"></i></div>
-    </div>
-    <nav class="js-nav">
-        <ul>
-            <?php if(is_array($menu) || $menu instanceof \think\Collection || $menu instanceof \think\Paginator): $i = 0; $__LIST__ = $menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-            <li <?php if($vo['current'] == 1): ?>class="cur"<?php endif; ?> >
-            <a  target="_self" href="<?php echo $vo['url']; ?>" >
-                <?php echo $vo['name']; if(!(empty($vo['sublist']) || (($vo['sublist'] instanceof \think\Collection || $vo['sublist'] instanceof \think\Paginator ) && $vo['sublist']->isEmpty()))): ?>
-                <div class="menu-two">
-                    <?php if(is_array($vo['sublist']) || $vo['sublist'] instanceof \think\Collection || $vo['sublist'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['sublist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-                    <a target="_self" <?php if($v['current'] == 1): ?>class="cur"<?php endif; ?> href="<?php echo $v['url']; ?>"><?php echo $v['name']; ?></a>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
+<div class="dingbutu"  ><img src="http://43.226.124.180/images/12.gif" width="100%"></div>
+  
+
+        <div class="head">
+            <a class="logo"><img src="<?php echo $seo['site_logo_mobile']; ?>"/></a>
+            <?php $controller =  lcfirst(request()->controller());?>
+            <form
+                <?php switch($controller): case "images": ?> action="<?php echo url('search/index',array('type'=>'atlas')); ?>"<?php break; case "atlas": ?> action="<?php echo url('search/index',array('type'=>'atlas')); ?>"<?php break; case "novel": ?>action="<?php echo url('search/index',array('type'=>'novel')); ?>"<?php break; case "search": ?>action="<?php echo url('search/index',array('type'=>$type)); ?>"<?php break; default: ?>
+                action="<?php echo url('search/index',array('type'=>'video')); ?>"
+                <?php endswitch; ?>
+            method="get" id="myform">
+            <div class="search">
+                <div style="display: inline-block;float: left;">
+                    <?php if($controller=="atlas" || isset($type)&& $type=='atlas'): ?> <span class="choice-box1">图册<i class="btn fn-triangle"></i></span>
+                    <?php elseif($controller=="images" || isset($type)&& $type=='images'): ?> <span class="choice-box1">图册<i class="btn fn-triangle"></i></span>
+                    <?php elseif($controller=="novel" || isset($type)&& $type=='novel'): ?> <span class="choice-box1">资讯<i class="btn fn-triangle"></i></span>
+                    <?php elseif($controller=="member" || isset($type)&& $type=='member'): ?> <span class="choice-box1">会员<i class="btn fn-triangle"></i></span>
+                    <?php elseif($controller=="video" || isset($type)&& $type=='video'): ?> <span class="choice-box1">视频<i class="btn fn-triangle"></i></span>
+                    <?php else: ?>
+                    <span class="choice-box1">视频<i class="btn fn-triangle"></i></span>
+                    <?php endif; ?>
+
+                    <div class="choice-btn">
+                        <div class="choice-shadow">
+                            <p onclick="$('#myform').attr('action','<?php echo url('search/index',array('type'=>'video')); ?>')">视频</p>
+                            <p onclick="$('#myform').attr('action','<?php echo url('search/index',array('type'=>'atlas')); ?>')">图册</p>
+                            <p onclick="$('#myform').attr('action','<?php echo url('search/index',array('type'=>'novel')); ?>')">资讯</p>
+                            <p onclick="$('#myform').attr('action','<?php echo url('search/index',array('type'=>'member')); ?>')">会员</p>
+                            <?php if(isset($type)): ?><p onclick="$('#myform').attr('action','<?php echo url('search/index',array('type'=>$type)); ?>')">自动</p><?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <input class="js-placeholder" placeholder="请输入" type="search" value='<?php if(isset($key_word)): ?><?php echo $key_word; endif; ?>' name="key_word"><i class="btn fn-sousuo" onclick="$('#myform').submit();" style="float: right;width: 23px;"></i>
             </div>
-            <?php endif; ?>
-            </a>
-            </li>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
-        </ul>
-    </nav>
-    <div class="nav-masklayer"></div>
-</header>
+            </form>
 
+            <div class="menu"><span class="btn fn-sort"></span></div>
+        </div>
+        <nav class="js-nav">
+            <ul>
+                <?php if(is_array($menu) || $menu instanceof \think\Collection || $menu instanceof \think\Paginator): $i = 0; $__LIST__ = $menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                <li <?php if($vo['current'] == 1): ?>class="cur"<?php endif; ?> >
+                <a  target="_self" href="<?php echo $vo['url']; ?>" >
+                    <?php echo $vo['name']; if(!(empty($vo['sublist']) || (($vo['sublist'] instanceof \think\Collection || $vo['sublist'] instanceof \think\Paginator ) && $vo['sublist']->isEmpty()))): ?>
+                    <div class="menu-two">
+                        <?php if(is_array($vo['sublist']) || $vo['sublist'] instanceof \think\Collection || $vo['sublist'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['sublist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+                                <a target="_self" <?php if($v['current'] == 1): ?>class="cur"<?php endif; ?> href="<?php echo $v['url']; ?>"><?php echo $v['name']; ?></a>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </div>
+                    <?php endif; ?>
+                </a>
+                </li>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+            </ul>
+        </nav>
+        <div class="nav-masklayer"></div>
+    </header>
+    <div class="content">
 
-<div class="box">
 <?php $login_status = check_is_login();?>
 <link rel="stylesheet" href="__ROOT__/tpl/happy2018/mobile/static/css/play.css">
 <style type="text/css">
@@ -122,6 +153,10 @@
     .baiduyytf iframe body{
         text-align: center;
     }
+    .marg{
+    position:relative;
+    top:90px;
+}
 </style>
 <script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
 <script src="/static/msvodx/js/video_mobile.js"></script>
@@ -452,6 +487,7 @@ $infodata = mb_substr($content, 0, 20);//截取80个汉字
 <!--    <div class="video-box" id="playerBox">
         <img src="<?php echo $videoInfo['thumbnail']; ?>" width="100%" height="100%" />
     </div>-->
+    <div class="marg">
 <div class="video-box" style="position: relative;height:215px;">
     <div class="leftz">
         <div class="left">
@@ -604,7 +640,7 @@ $infodata = mb_substr($content, 0, 20);//截取80个汉字
         </div>
     </div>
 </div>
-
+</div>
 </div>
 <input type="hidden" id="ad_on" value="0">
 <link rel="stylesheet" href="__ROOT__/tpl/happy2018/mobile/static/css/touchTouch.css">
@@ -833,7 +869,9 @@ $infodata = mb_substr($content, 0, 20);//截取80个汉字
 <?php echo $wechatCode; ?>
 <footer>
     <a class="navFooter" target="_self" href="/"><i class="btn fn-shouye"></i>首页</a>
-    <a class="navFooter active" target="_self" href="<?php echo url('video/lists'); ?>"><i class="btn fn-sort"></i>分类</a>
+    <a class="navFooter active" target="_self" href="<?php echo url('Video/lists'); ?>"><i class="btn fn-sort"></i>视频</a>
+     <a class="navFooter active" target="_self" href="<?php echo url('Images/lists'); ?>"><i class="btn fn-sort"></i>图片</a>
+      <a class="navFooter active" target="_self" href="<?php echo url('Novel/lists'); ?>"><i class="btn fn-sort"></i>小说</a>
     <a class="navFooter" target="_self" href="<?php echo url('Share/Index'); ?>"><i class="btn fn-xuanchuan"></i>宣传</a>
     <a class="navFooter" target="_self" href="<?php echo url('member/member'); ?>"><i class="btn fn-wode"></i>我的</a>
 </footer>

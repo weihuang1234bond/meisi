@@ -1,4 +1,4 @@
-{include file="common/head"}
+{include file="common/header"}
 <?php $login_status = check_is_login();?>
 <link rel="stylesheet" href="__ROOT__/tpl/happy2018/mobile/static/css/play.css">
 <style type="text/css">
@@ -68,6 +68,10 @@
     .baiduyytf iframe body{
         text-align: center;
     }
+    .marg{
+    position:relative;
+    top:90px;
+}
 </style>
 <script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
 <script src="/static/msvodx/js/video_mobile.js"></script>
@@ -398,6 +402,7 @@ $infodata = mb_substr($content, 0, 20);//截取80个汉字
 <!--    <div class="video-box" id="playerBox">
         <img src="{$videoInfo['thumbnail']}" width="100%" height="100%" />
     </div>-->
+    <div class="marg">
 <div class="video-box" style="position: relative;height:215px;">
     <div class="leftz">
         <div class="left">
@@ -550,7 +555,7 @@ $infodata = mb_substr($content, 0, 20);//截取80个汉字
         </div>
     </div>
 </div>
-
+</div>
 </div>
 <input type="hidden" id="ad_on" value="0">
 <link rel="stylesheet" href="__ROOT__/tpl/happy2018/mobile/static/css/touchTouch.css">

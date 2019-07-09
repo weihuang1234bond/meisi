@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:35:"./tpl/ms360/mobile/video/lists.html";i:1562572114;s:37:"./tpl/ms360/mobile/common/header.html";i:1562594960;s:37:"./tpl/ms360/mobile/common/footer.html";i:1562590060;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:35:"./tpl/ms360/mobile/video/lists.html";i:1562572114;s:37:"./tpl/ms360/mobile/common/header.html";i:1562665000;s:37:"./tpl/ms360/mobile/common/footer.html";i:1562665001;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +10,12 @@
     <title><?php echo $seo['site_title']; ?></title>
     <meta name="keywords" lang="zh-CN" content="<?php echo $seo['site_keywords']; ?>"/>
     <meta name="description" lang="zh-CN" content="<?php echo $seo['site_description']; ?>" />
-    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/swiper.min.css">
-    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/common.css" />
+    <!-- <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/swiper.min.css">
+ -->    <link rel="stylesheet" href="__ROOT__/tpl/ms360/mobile/static/css/common.css" />
 
 
     <script src="__ROOT__/tpl/ms360/mobile/static/js/jquery-3.2.1.min.js"></script>
-    <script src="__ROOT__/tpl/ms360/mobile/static/js/swiper.min.js"></script>
+    <!-- <script src="__ROOT__/tpl/ms360/mobile/static/js/swiper.min.js"></script> -->
     <script type="text/javascript" src="__ROOT__/tpl/ms360/mobile/static/js/layer_mobile/layer.js"></script>
     <script type="text/javascript" src="__ROOT__/tpl/ms360/mobile/static/js/common.js?v=1.0"></script>
     <link rel="stylesheet" href="__ROOT__/tpl/default/static/css/font_485358_gtgl3zs6gyvqjjor/iconfont.css">
@@ -313,7 +313,9 @@
 <?php echo $wechatCode; ?>
 <footer>
     <a class="navFooter" target="_self" href="/"><i class="btn fn-shouye"></i>首页</a>
-    <a class="navFooter active" target="_self" href="<?php echo url('video/lists'); ?>"><i class="btn fn-sort"></i>分类</a>
+    <a class="navFooter active" target="_self" href="<?php echo url('Video/lists'); ?>"><i class="btn fn-sort"></i>视频</a>
+     <a class="navFooter active" target="_self" href="<?php echo url('Images/lists'); ?>"><i class="btn fn-sort"></i>图片</a>
+      <a class="navFooter active" target="_self" href="<?php echo url('Novel/lists'); ?>"><i class="btn fn-sort"></i>小说</a>
     <a class="navFooter" target="_self" href="<?php echo url('Share/Index'); ?>"><i class="btn fn-xuanchuan"></i>宣传</a>
     <a class="navFooter" target="_self" href="<?php echo url('member/member'); ?>"><i class="btn fn-wode"></i>我的</a>
 </footer>

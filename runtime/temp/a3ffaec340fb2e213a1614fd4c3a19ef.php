@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:28:"./tpl/ms360/video/lists.html";i:1562404991;s:30:"./tpl/ms360/common/header.html";i:1562592688;s:29:"./tpl/ms360/common/adver.html";i:1562411089;s:30:"./tpl/ms360/common/footer.html";i:1562231560;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:28:"./tpl/ms360/video/lists.html";i:1562404991;s:30:"./tpl/ms360/common/header.html";i:1562664923;s:29:"./tpl/ms360/common/adver.html";i:1562411089;s:30:"./tpl/ms360/common/footer.html";i:1562231560;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

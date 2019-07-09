@@ -4,12 +4,8 @@
 </style>
         <!--滚动条-->
         <div class="swiper-container" style="margin-top:90px">
-            <div class="swiper-wrapper">
-                {volist name="seo['banner']" id="v"}
-                <div class="swiper-slide" style="background: url({$v['images_url']}) no-repeat;background-size: cover;background-position: center;">
-                    <!--<img src="{$v['images_url']}" />-->
-                </div>
-                {/volist}
+            <div class="adver-moblie">
+                    <script src="__ROOT__/tpl/ms360/static/js/home/first.js"></script>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
@@ -113,7 +109,7 @@
 
 
 
-<script>
+<!-- <script>
     var swiper = new Swiper('.swiper-container', {
         autoplay:true,
         pagination: {
@@ -121,6 +117,6 @@
         },
     });
 
-</script>
+</script> -->
 
 {include file="common/footer"}
